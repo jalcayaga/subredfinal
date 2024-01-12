@@ -26,7 +26,7 @@ import people03 from "./people03.png";
 import robot1 from "./robot1.png";
 import img1React from "./img1React.png";
 import axpro from "./axpro.png";
-import Axpro1 from "./Axpro1.jpg";
+import Axpro1 from "./AXPRO1.jpg";
 import AlarmaGSM from "./AlarmaGSM.png";
 import alarmaAxproliving from "./alarmaAxproliving.jpg"
 import ManoRobotalarma from "./ManoRobotalarma.png";
