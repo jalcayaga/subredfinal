@@ -1,8 +1,6 @@
 {
     "rewrites":  [
-      {"source": "<Home />", "destination": "/"},
-      {"source": "<Camara/>", "destination": "/camara"},
-      {"source": "<Alarma />", "destination": "/alarma"}
-     
+      {"source": "/(.*)", "destination": "/"}
     ]
   }
+  
