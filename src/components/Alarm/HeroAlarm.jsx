@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../style";
 import { discount, robot1, ManoRobotalarma } from "../../assets";
 import GetStarted from "../GetStarted";
-import GetStartedAlarm from "../../components/Alarm/GetStartedAlarm"; // Importa el componente GetStartedAlarm
+import GetStartedAlarm from "../../components/Alarm/GetStartedAlarm";
 import { motion } from "framer-motion";
 
 

@@ -28,7 +28,9 @@ const ShuffleHero = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 500) {
+      const scrollThreshold = window.innerWidth >= 768 ? 2024 : 6350;
+
+      if (window.scrollY > scrollThreshold) {
         controls.start({ opacity: 1, y: 0 });
         setShowText(true);
       }
@@ -47,7 +49,7 @@ const ShuffleHero = () => {
         <motion.h3
           initial={{ opacity: 0, y: 60 }}
           animate={controls}
-          transition={{ duration: 2}}
+          transition={{ duration: 1}}
           className="text-5xl text-yell md:text-8xl font-semibold"
         >
           Un nuevo modo de protección.
@@ -56,7 +58,7 @@ const ShuffleHero = () => {
           <motion.p
             initial={{ opacity: 0, y: 60 }}
             animate={controls}
-            transition={{ duration: 2}}
+            transition={{ duration: 1}}
             className="text-base md:text-lg text-white my-4 md:my-6"
           >
             Deja tu seguridad en nuestras manos, asesórate por expertos y encuentra soluciones definitivas. Subred

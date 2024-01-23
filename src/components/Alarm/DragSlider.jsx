@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import styles, { layout } from "../../style";
@@ -27,10 +26,10 @@ const ShuffleHero = () => {
   const controls = useAnimation();
   const [showText, setShowText] = useState(false);
 
-//ajustar segun se amplia el landing page, regula el scroll para que aparezca el texto.
+  //ajustar segun se amplia el landing page, regula el scroll para que aparezca el texto.
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 4000)  {
+      if (window.scrollY > 500) {
         controls.start({ opacity: 1, y: 0 });
         setShowText(true);
       }
@@ -49,7 +48,7 @@ const ShuffleHero = () => {
         <motion.h3
           initial={{ opacity: 0, y: 60 }}
           animate={controls}
-          transition={{ duration: 1}}
+          transition={{ duration: 1 }}
           className="text-5xl text-yell md:text-8xl font-semibold"
         >
           Un nuevo modo de protección.
@@ -58,10 +57,11 @@ const ShuffleHero = () => {
           <motion.p
             initial={{ opacity: 0, y: 60 }}
             animate={controls}
-            transition={{ duration: 1}}
+            transition={{ duration: 1 }}
             className="text-base md:text-lg text-white my-4 md:my-6"
           >
-            Deja tu seguridad en nuestras manos, asesórate por expertos y encuentra soluciones definitivas. Subred
+            Deja tu seguridad en nuestras manos, asesórate por expertos y
+            encuentra soluciones definitivas. Subred
           </motion.p>
         )}
       </div>
@@ -152,7 +152,6 @@ const squareData = [
     id: 16,
     src: image16,
   },
-  
 ];
 
 const generateSquares = () => {
@@ -185,7 +184,7 @@ const ShuffleGrid = () => {
   const shuffleSquares = () => {
     setSquares(generateSquares());
 
-    timeoutRef.current = setTimeout(shuffleSquares, 3000); 
+    timeoutRef.current = setTimeout(shuffleSquares, 3000);
   };
 
   return (

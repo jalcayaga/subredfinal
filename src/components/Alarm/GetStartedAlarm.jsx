@@ -1,4 +1,3 @@
-
 import React from "react";
 import styles  from "../../style";
 import { arrowUp } from "../../assets";
@@ -23,7 +22,7 @@ const GetStartedAlarm = () => (
           <span className="text-white t ml-2">Saber</span>
         </p>
       </div>
-
+      
       <p className="flex flex-row font-poppins font-medium text-[18px] leading-[23px]">
         <img
           src={arrowUp}

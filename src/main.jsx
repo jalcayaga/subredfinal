@@ -1,3 +1,18 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ChakraProvider } from '@chakra-ui/react';
+import AppRouter from './router/index';
+
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ChakraProvider>
+      <AppRouter />
+    </ChakraProvider>
+  </React.StrictMode>
+);
+
 // import React from 'react';
 // import ReactDOM from 'react-dom/client';
 // import { ChakraProvider } from '@chakra-ui/react'
@@ -16,21 +31,4 @@
 //   </React.StrictMode>
 // );
 
-
-
-// opcion gpt
-
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { ChakraProvider } from '@chakra-ui/react';
-import AppRouter from './router/index';
-
-import './index.css';
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ChakraProvider>
-      <AppRouter />
-    </ChakraProvider>
-  </React.StrictMode>
-);
+//2da opcion

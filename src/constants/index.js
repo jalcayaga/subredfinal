@@ -62,21 +62,21 @@ export const features = [
 
 export const featuresAlarm = [
   {
-    id: "feature-1",
+    id: "feat-1",
     icon: star,
     title: "Amplia Cobertura en Seguridad",
     content:
       "Ten el control absoluto en todo momento. Activa y desactiva tu alarma donde estes a través del celular.",
   },
   {
-    id: "feature-2",
+    id: "feat-2",
     icon: shield,
     title: "Tranquilidad para ti y tu Familia",
     content:
       "Somos una empresa comprometida con la seguridad de tu hogar o negocio. Te asesoramos en todo el proceso para que obtengas la mayor calidad tecnica posible y lograr cubrir todos los puntos criticos "
   },
   {
-    id: "feature-3",
+    id: "feat-3",
     icon: send,
     title: "Alertas Inmediatas",
     content:
@@ -86,21 +86,21 @@ export const featuresAlarm = [
 
 export const featuresCam = [
   {
-    id: "feature-1",
+    id: "featur-1",
     icon: star,
     title: "Amplia Cobertura en Seguridad",
     content:
       "Ten el control absoluto en todo momento. Activa y desactiva tu alarma donde estes a través del celular.",
   },
   {
-    id: "feature-2",
+    id: "featur-2",
     icon: shield,
     title: "Tranquilidad para ti y tu Familia",
     content:
       "Somos una empresa comprometida con la seguridad de tu hogar o negocio. Te asesoramos en todo el proceso para que obtengas la mayor calidad tecnica posible y lograr cubrir todos los puntos criticos "
   },
   {
-    id: "feature-3",
+    id: "featur-3",
     icon: send,
     title: "Alertas Inmediatas",
     content:
@@ -131,7 +131,7 @@ export const feedback = [
     img: people03,
   },
   {
-    id: "feedback-3",
+    id: "feedback-4",
     content: "Lograron solucionar un problematica en nuestra empresa, ofreciendo servicio de calidad post instalacion y asesoramiento continuo",
     name: "Jose Romanini",
     title: "Ingeniero ITO",

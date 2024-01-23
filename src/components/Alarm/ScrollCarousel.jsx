@@ -2,31 +2,31 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 
 const ScrollCarousel = () => {
-  return (
-    <div className="overflow-hidden">
-      <HorizontalScrollCarousel />
-    </div>
-  );
-};
+    return (
+      <div className="overflow-hidden">
+        <HorizontalScrollCarousel />
+      </div>
+    );
+  };
 
 const HorizontalScrollCarousel = () => {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
+    const targetRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+      target: targetRef,
+    });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-110%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-110%"]);
 
   return (
-    <section ref={targetRef} className="relative">
-      <div className="sticky top-0 flex items-center overflow-x-scroll h-[45vh]">
-        <motion.div style={{ x }} className="flex gap-4">
-          {cards.map((card, index) => {
-            return <Card card={card} key={card.id} index={index} />;
-          })}
-        </motion.div>
-      </div>
-    </section>
+      <section ref={targetRef} className="relative">
+        <div className="sticky top-0 flex items-center overflow-x-scroll h-[45vh]">
+          <motion.div style={{ x }} className="flex gap-4">
+            {cards.map((card, index) => {
+              return <Card card={card} key={card.id} index={index} />;
+            })}
+          </motion.div>
+        </div>
+      </section>
   );
 };
 
