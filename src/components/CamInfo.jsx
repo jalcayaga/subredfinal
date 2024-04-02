@@ -1,29 +1,29 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage03, AXPROLandingpage04  } from "../assets";
+import { AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage03, AXPROLandingpage04, Card4Cam, Card3Cam, Card2Cam  } from "../assets";
 
 const CamInfo = () => {
   const cards = [
     {
-      title: "Evite una intrusión antes de que se produzca",
+      title: "Importancia de la Seguridad:",
       imageSrc: AXPROLandingpage01,
       description:
-        "Para una mayor seguridad, colóquelo alrededor de las ventanas, puertas y otras áreas donde se puedan producir intrusiones. Los detectores AX PRO ofrecen una detección precisa en interiores y exteriores y una protección integral, de día y de noche.",
+      "Desde disuadir el crimen hasta proporcionar evidencia vital en casos de incidentes, nuestras cámaras de seguridad ofrecen una amplia gama de beneficios. Con SubRed Ingenieria, puedes confiar en que tu seguridad está en buenas manos.",
     },
     {
       title: "Detecte los riesgos antes de que ocurran",
-      imageSrc: AXPROLandingpage02,
-      description: "El sistema AX PRO también ayuda a que los hogares sean más seguros para las familias. Ofrece detección de incendios y fugas de agua antes de que se produzca el desastre, lo que aporta una seguridad superior en cada esquina.",
+      imageSrc: Card2Cam,
+      description: "En SubRed Ingenieria, estamos a la vanguardia de la tecnología de seguridad. Nuestras cámaras de alta definición, sistemas de grabación en la nube y capacidades de monitoreo remoto te ofrecen una visión clara y completa de tu entorno, en cualquier momento y desde cualquier lugar.",
     },
     {
-      title: "Manténgase informado con vídeos en tiempo real",
-      imageSrc: AXPROLandingpage03,
-      description: "Gracias a la tecnología IVaaS de Hikvision, los propietarios de viviendas o negocios pueden verificar las alarmas viendo clips de vídeo o imágenes GIF cuando están fuera de la propiedad, con lo que se mantienen seguros e informados.",
+      title: "Personalización de Soluciones:",
+      imageSrc: Card3Cam,
+      description: "Entendemos que cada cliente es único. Por eso, ofrecemos soluciones personalizadas que se adaptan a tus necesidades específicas de seguridad. Ya sea en un entorno residencial, comercial o industrial, tenemos la experiencia para diseñar el sistema perfecto para ti.",
     },
     {
       title: "Control inteligente con un sistema escalable",
-      imageSrc: AXPROLandingpage04,
-      description: "Configure un control inteligente en su hogar con toda una gama de dispositivos de control inteligentes, relés, tomas de corriente y mucho más. Además, el sistema AX PRO es flexible y puede vincularse con otros dispositivos Hikvision, lo que ofrece aún más posibilidades.",
+      imageSrc: Card4Cam,
+      description:"Nuestras cámaras de seguridad son la respuesta perfecta para monitorear y proteger tu propiedad. Con tecnología de última generación, ofrecemos una vigilancia continua y una tranquilidad inigualable.",
     },
   ];
 

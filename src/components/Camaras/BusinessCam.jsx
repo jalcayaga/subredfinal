@@ -1,5 +1,5 @@
 
-import { logo, axpro } from "../../assets";
+import { logo, axpro, Dahuabusiness } from "../../assets";
 import styles, { layout } from "../../style";
 import Button from "../Button";
 import { featuresCam } from "../../constants";
@@ -37,7 +37,7 @@ const BusinessCam = () => (
   >
     <div className={layout.sectionInfo}>
     <img
-          src={axpro}
+          src={Dahuabusiness}
           alt="billing"
           className="w-[100%] h-[50%] flex relative z-[5]"
         />
@@ -47,9 +47,7 @@ const BusinessCam = () => (
         <br className="sm:block hidden" /> en nuestras manos.
       </h2> */}
       <p className={`${styles.paragraph} max-w-[470px] mt-8 mx-8`}>
-        Con nuestro avanzado sistema de alarmas, podrás cuidar de tu hogar o
-        comunidad como nunca antes. Obtén la paz mental que mereces al proteger
-        lo que más valoras.
+      Descubre una nueva forma de protección con nuestro avanzado sistema de cámaras de seguridad. Ahora podrás vigilar tu hogar o comunidad de una manera sin precedentes. Obtén la tranquilidad que mereces al resguardar lo que más valoras.
       </p>
 
       {/* <Button styles={`mt-10`} /> */}

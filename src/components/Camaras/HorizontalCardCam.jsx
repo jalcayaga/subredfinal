@@ -60,10 +60,7 @@ const HorizontalCard = () => {
               <Heading size="lg" className="font-poppins py-6" fontSize="30"> Seguridad Integral</Heading>
 
               <Text py="3 font-poppins" fontSize="18">
-
- Mantén un ojo vigilante en cada rincón de tu espacio,
- tanto en el interior como en el exterior. 
- Nuestra amplia gama de detectores te protege contra intrusiones, roturas de vidrio, incendios, humo, escapes de agua o gas, y mucho más. Tu tranquilidad es nuestra prioridad.
+              Desde disuadir el crimen hasta proporcionar evidencia crucial en caso de incidentes, nuestras cámaras de seguridad ofrecen una amplia gama de beneficios. Con nuestras soluciones, puedes estar seguro de que tu seguridad está en buenas manos.
               </Text>
              
 

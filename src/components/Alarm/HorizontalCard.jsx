@@ -45,6 +45,7 @@ const HorizontalCard = () => {
             maxW={{ base: "100%", sm: "200px", lg: "300px", xl: "500px" }}
             src={ImageAlarm}
             alt="Imagen alarma"
+            bg="white"
           />
 
           <Stack
@@ -64,7 +65,7 @@ const HorizontalCard = () => {
                 Mantén un ojo vigilante en cada rincón de tu espacio, tanto en
                 el interior como en el exterior. Nuestra amplia gama de
                 detectores te protege contra intrusiones, roturas de vidrio,
-                incendios, humo, escapes de agua o gas, y mucho más. Tu
+                incendios, humo, fugas de agua o gas, y mucho más. Tu
                 tranquilidad es nuestra prioridad.
               </Text>
             </CardBody>

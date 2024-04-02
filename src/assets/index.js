@@ -38,6 +38,13 @@ import sethikvision from "./sethikvision.jpg"
 import logoSeguridad from "./logoSeguridad.png"
 import CartelcamarasSubred from "./CartelcamarasSubred.png"
 
+import Card4Cam from "./SMB_DAHUA_2.jpg"
+import Card3Cam from "./Tioc_card_3.jpg"
+import Card2Cam from "./dahua_fullcolor.jpg"
+
+
+
+import Dahuabusiness from "./Dahua_business_cam.png"
 export {
   airbnb,
   bill,
@@ -77,5 +84,9 @@ export {
   AXPROLandingpage04,
   sethikvision,
   logoSeguridad,
-  CartelcamarasSubred
+  CartelcamarasSubred,
+  Card4Cam,
+  Card3Cam,
+  Card2Cam,
+  Dahuabusiness
 }

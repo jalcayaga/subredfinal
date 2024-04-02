@@ -90,21 +90,21 @@ export const featuresCam = [
     icon: star,
     title: "Amplia Cobertura en Seguridad",
     content:
-      "Ten el control absoluto en todo momento. Activa y desactiva tu alarma donde estes a través del celular.",
+    "Disfruta de una cobertura completa en seguridad con nuestro sistema. Con una amplia gama de cámaras estratégicamente ubicadas, garantizamos que cada rincón de tu propiedad esté bajo vigilancia constante. Con nuestra tecnología de punta, tendrás tranquilidad 24/7",
   },
   {
     id: "featur-2",
     icon: shield,
     title: "Tranquilidad para ti y tu Familia",
     content:
-      "Somos una empresa comprometida con la seguridad de tu hogar o negocio. Te asesoramos en todo el proceso para que obtengas la mayor calidad tecnica posible y lograr cubrir todos los puntos criticos "
+    "En nuestra empresa, nos dedicamos plenamente a garantizar la seguridad de tu hogar o negocio. Te brindamos asesoramiento integral durante todo el proceso para asegurarnos de que obtengas la más alta calidad técnica posible y puedas cubrir todos los aspectos críticos de seguridad."
   },
   {
     id: "featur-3",
     icon: send,
     title: "Alertas Inmediatas",
     content:
-      "Recibe notificaciones instantáneas ante cualquier actividad sospechosa. Nuestro sistema de alarma te mantiene informado para que puedas tomar medidas rápidas y eficaces.",
+    "Vizualiza en tu celular al instante ante cualquier actividad sospechosa. Nuestro sistema de CCTV te mantiene al tanto para que puedas tomar acciones rápidas y efectivas ante cualquier eventualidad.",
   },
 ];
 

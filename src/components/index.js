@@ -32,6 +32,8 @@ import ScrollCarouselCam from "./Camaras/ScrollCarouselCam";
 import BillingCam from "./Camaras/BillingCam";
 
 
+import Loader from "./Loader"
+
 export {
   Navbar,
   Billing,
@@ -65,6 +67,8 @@ export {
   HorizontalCardCam,
   NavCam,
   ScrollCarouselCam,
-  BillingCam
+  BillingCam,
+
+  Loader
 
 }
