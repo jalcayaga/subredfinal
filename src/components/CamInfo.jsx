@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage03, AXPROLandingpage04, Card4Cam, Card3Cam, Card2Cam, Card1Cam  } from "../assets";
+import {Card4Cam, Card3Cam, Card2Cam, Card1Cam  } from "../assets";
 
 const CamInfo = () => {
   const cards = [

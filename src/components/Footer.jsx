@@ -11,9 +11,9 @@ const Footer = () => (
           alt="subred Ingeniería"
           className="w-[266px] h-[104px] object-contain"
         />
-        <p className={`${styles.paragraph} mt-4 max-w-[312px]`}>
-          Desde código de programación a cámaras, tenemos protección a medida. <br />
-          Tu seguridad, nuestra pasión.
+        <p className={`${styles.paragraph} mt-4 max-w-[312px] px-10`}>
+            Contáctanos: <br /> +569 58216959 <br /> +569 96985294
+     
         </p>
       </div>
 

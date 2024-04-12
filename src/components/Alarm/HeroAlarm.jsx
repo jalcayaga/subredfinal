@@ -34,7 +34,7 @@ const HeroAlarm = () => {
 
         <div className="flex flex-row justify-between items-center w-full">
           <h1
-            className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] 
+            className="flex-1 font-poppins font-semibold ss:text-[72px] text-[43px] 
           text-white ss:leading-[100.8px] leading-[75px]"
           > 
             Contamos con 
@@ -48,7 +48,7 @@ const HeroAlarm = () => {
           </div>
         </div>
         <h1
-          className="font-poppins font-semibold ss:text-[68px] text-[52px]
+          className="font-poppins font-semibold ss:text-[68px] text-[43px]
          text-white ss:leading-[100.8px] leading-[75px] w-full"
         >
           Obtén el control de tu hogar!

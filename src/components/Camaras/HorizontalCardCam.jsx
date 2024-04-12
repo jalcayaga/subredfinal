@@ -60,7 +60,7 @@ const HorizontalCard = () => {
             color="white"
           >
             <CardBody>
-              <Heading size="lg" className="font-poppins py-6" fontSize={{ base: "24px", lg: "38px" }}>Seguridad Integral</Heading>
+              <Heading size="lg" className="font-poppins py-1" fontSize={{ base: "24px", lg: "38px" }}>Seguridad Integral</Heading>
 
               <Text py="3" fontSize={{ base: "15px", lg: "18px" }} className="font-poppins font-normal text-dimWhite">
                 Desde disuadir el crimen hasta proporcionar evidencia crucial en caso de incidentes, nuestras cámaras de seguridad ofrecen una amplia gama de beneficios. Con nuestras soluciones, puedes estar seguro de que tu seguridad está en buenas manos.
@@ -74,12 +74,13 @@ const HorizontalCard = () => {
           </Stack>
         </Card>
       </motion.div>
+
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 100 }}
         transition={{ duration: 0.5 }}
-        className="mt-2 p-6 container-fluid sm:px-16px flex justify-center items-center"
+        className="mt-0 p-3 container-fluid sm:px-16px flex justify-center items-center"
       >
         <Card
           direction={{ base: "column", sm: "row" }}

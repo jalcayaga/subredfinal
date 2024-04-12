@@ -104,7 +104,7 @@ function Slider() {
       </AnimatePresence>
 
       {/* Left Arrow - Tamaño para pantalla pequeña (móvil) */}
-      <div className='md:hidden absolute top-1/2 -translate-y-1/16 left-5 text-xl rounded-full p-1 bg-black/20 text-white cursor-pointer'>
+      <div className='md:hidden absolute top-1/2 -translate-y-1/16 left-8 text-xxl rounded-full p-1 bg-black/20 text-white cursor-pointer'>
         <BsChevronCompactLeft onClick={prevSlide} size={20} />
       </div>
       {/* Left Arrow - Tamaño para pantalla grande (desktop) */}
@@ -114,7 +114,7 @@ function Slider() {
       
        {/* Right Arrow - Tamaño para pantalla pequeña (móvil) */}
        <div className='pt-0'>
-          <div className='md:hidden absolute top-1/2 -translate-y-1/32 right-5 text-xl rounded-full p-1 pt-0 bg-black/20 text-white cursor-pointer'>
+          <div className='md:hidden absolute top-1/2 -translate-y-1/16 right-8 text-xxl rounded-full p-1  bg-black/20 text-white cursor-pointer'>
             <BsChevronCompactRight onClick={nextSlide} size={20} />
           </div>
        </div>
@@ -128,7 +128,7 @@ function Slider() {
           <div
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
-            className={`text-4xl cursor-pointer mx-2 ${
+            className={`text-xs cursor-pointer mx-2 ${
               slideIndex === currentIndex ? 'text-yell' : ''
             }`}
           >
@@ -136,6 +136,8 @@ function Slider() {
           </div>
         ))}
       </div>
+
+          
     </div>
   );
 }

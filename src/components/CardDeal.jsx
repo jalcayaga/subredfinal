@@ -35,7 +35,7 @@ const CardDeal = () => {
       >
         <h2 className={styles.heading2}>
         Especialistas en Fondo Concursables: <br className="sm:block hidden" />{" "}
-        FNDR 8%, FIS, GORE, FONDEVE, Presidente de la República.
+        PP, FNDR 8%, FIS, GORE, FONSEC, FONDEVE, Presidente de la República.
         </h2>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
          
