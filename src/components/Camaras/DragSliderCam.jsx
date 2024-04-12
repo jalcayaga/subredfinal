@@ -61,7 +61,7 @@ const ShuffleHero = () => {
             transition={{ duration: 1}}
             className="text-base md:text-lg text-white my-4 md:my-6"
           >
-            Deja tu seguridad en nuestras manos, asesórate por expertos y encuentra soluciones definitivas. Subred
+            Deja tu seguridad en nuestras manos, asesórate por expertos y encuentra soluciones definitivas. Subred Ingenieria a la vanguardia en tecnologia.
           </motion.p>
         )}
       </div>

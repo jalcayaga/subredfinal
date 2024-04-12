@@ -10,14 +10,14 @@ const NavAlarm = () => {
   return (
     <nav className="w-full flex py-5 justify-between items-center navbar  ">
       <img
-        src={logoSeguridad}
+        src={logo}
         alt="SubRed Ingeniería"
-        className="w-[130px] h-[60px]"
+        className="w-[180px] h-[95px]"
       />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
    
-          {navLinks.map((nav, index) => (
+          {navLinks.map((nav, index) => ( 
             <li
               key={nav.id}
               className={`font-poppins font-normal text-dimWhite hover:text-yell cursor-pointer text-[16px] 

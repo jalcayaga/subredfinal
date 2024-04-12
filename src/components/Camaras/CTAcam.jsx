@@ -10,7 +10,7 @@ const CTAcam = () => (
     <div className="flex-1 flex flex-col">
       <h5 className="font-poppins font-semibold xs:text-[35px] text-[40px]
                    text-white xs:leading-[76.8px] leading-[66.8px] w-full" >
-        Tu seguridad, nuestro compromiso.<br /> elije tu alarma!
+        Tu seguridad, nuestro compromiso.<br /> elije tu sistema de Cámaras!
       </h5>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
         Experimenta la tranquilidad y protección que ofrecen nuestras

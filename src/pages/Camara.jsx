@@ -1,7 +1,7 @@
 import styles from "../style";
 
 import {
- BillingCam,BusinessCam, CTAcam, DragSliderCam, GetStartedCam, HorizontalCardCam, NavCam, FooterCam, CamInfo
+ BillingCam,BusinessCam, CTAcam, DragSliderCam, GetStartedCam, HorizontalCardCam, NavCam, FooterCam, CamInfo, SliderCam
 } from "../components";
 import { Grid } from "@chakra-ui/react";
 
@@ -20,6 +20,7 @@ const Camara = () => (
     <div className={`bg-primary container mx-auto flex flex-justify-between`}>
       <div className={`${styles.boxWidth} text-white text-center`}>
         <HorizontalCardCam />
+        <SliderCam />
         
       </div>
     </div>
@@ -27,7 +28,7 @@ const Camara = () => (
     <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
         <DragSliderCam />
-        <CTAcam />
+        {/* <CTAcam /> */}
         <FooterCam/>
       </div>
     </div>

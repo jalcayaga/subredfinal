@@ -1,5 +1,5 @@
 
-import { card } from "../assets";
+import { card, card1 } from "../assets";
 import styles, { layout } from "../style";
 import Button from "./Button";
 import { motion, useAnimation } from "framer-motion";
@@ -34,12 +34,11 @@ const CardDeal = () => {
         ref={infoRef}
       >
         <h2 className={styles.heading2}>
-          Descubre la excelencia en diseño web <br className="sm:block hidden" />{" "}
-          y desarrollo de software.
+        Especialistas en Fondo Concursables: <br className="sm:block hidden" />{" "}
+        FNDR 8%, FIS, GORE, FONDEVE, Presidente de la República.
         </h2>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Creamos soluciones digitales, diseñando páginas web y software a medida.
-          Experiencia y calidad en cada paso.
+         
         </p>
         <Button styles={`mt-5`} />
       </motion.div>
@@ -51,7 +50,7 @@ const CardDeal = () => {
         className={layout.sectionImg}
         ref={imgRef}
       >
-        <img src={card} alt="billing" className="w-[100%] h-[100%]" />
+        <img src={card1} alt="billing" className="w-[100%] h-[100%]" />
       </motion.div>
     </section>
   );

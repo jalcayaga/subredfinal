@@ -54,7 +54,7 @@ const BillingCam = () => (
         Somos especialistas certificados en la instalación de cámaras de seguridad Dahua y Hikvision. Protege tu hogar o comunidad con nuestro servicio de confianza.
       </motion.p>
 
-      <motion.div
+      {/* <motion.div
         className="flex flex-row flex-wrap sm:mt-10 mt-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -76,7 +76,8 @@ const BillingCam = () => (
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         />
-      </motion.div>
+      </motion.div> */}
+
     </div>
   </motion.section>
 );

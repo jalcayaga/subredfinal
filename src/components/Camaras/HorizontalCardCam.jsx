@@ -1,4 +1,5 @@
 
+
 import React from "react";
 import styles from "../../style";
 import { motion } from "framer-motion";
@@ -19,9 +20,11 @@ import ImageAlarm from "../../assets/CartelAlarmaMastering.png";
 import ImageAlarm2 from "../../assets/axproscheme.jpeg"
 import ImageCam from "../../assets/CartelcamarasSubred.png";
 
+import EncuestaCadem  from "../../assets/temor-a-la-delincuencia-cadem.jpg";
+
 const HorizontalCard = () => {
   const cardStyles = {
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
   };
 
   return (
@@ -57,12 +60,11 @@ const HorizontalCard = () => {
             color="white"
           >
             <CardBody>
-              <Heading size="lg" className="font-poppins py-6" fontSize="30"> Seguridad Integral</Heading>
+              <Heading size="lg" className="font-poppins py-6" fontSize={{ base: "24px", lg: "38px" }}>Seguridad Integral</Heading>
 
-              <Text py="3 font-poppins" fontSize="18">
-              Desde disuadir el crimen hasta proporcionar evidencia crucial en caso de incidentes, nuestras cámaras de seguridad ofrecen una amplia gama de beneficios. Con nuestras soluciones, puedes estar seguro de que tu seguridad está en buenas manos.
+              <Text py="3" fontSize={{ base: "15px", lg: "18px" }} className="font-poppins font-normal text-dimWhite">
+                Desde disuadir el crimen hasta proporcionar evidencia crucial en caso de incidentes, nuestras cámaras de seguridad ofrecen una amplia gama de beneficios. Con nuestras soluciones, puedes estar seguro de que tu seguridad está en buenas manos.
               </Text>
-             
 
             </CardBody>
 
@@ -95,24 +97,23 @@ const HorizontalCard = () => {
             color="white"
           >
             <CardBody>
-              <Heading size="lg">Simplicidad a través de la innovación</Heading>
+              <Heading size="lg" className="font-poppins py-6" fontSize={{ base: "25px", lg: "38px" }}>Temor a sufrir un delito llega a nivel más alto en 9 años según Cadem: 82% está "muy preocupado"</Heading>
 
-             <Text py="6" fontSize="15">
-  En SubRed, creemos que la innovación se traduce en productos que pueden hacer más cosas y que son más sencillos de usar. El sistema AX PRO es el ejemplo perfecto: es un nuevo e increíble diseño que combina los potentes y fiables sistemas de seguridad del pasado con la sencillez de la mejor tecnología del futuro.<br /><br />
-  AX PRO es tanto convencional como revolucionario, con una estabilidad inalámbrica probada, una amplia gama de productos de primera clase y fácil de usar tanto para los instaladores como para los usuarios finales. Una configuración sencilla y una protección potente, ya sea para la propiedad de un empresario o para los seres queridos de un particular, aporta tranquilidad todos los días, todo el día.
-</Text>
+             <Text py="4" fontSize={{ base: "14px", lg: "16px" }} className="font-poppins font-normal text-dimWhite">
+             Según un reciente estudio de Cadem, este alarmante aumento en la percepción de inseguridad no solo es un llamado de atención para la sociedad en su conjunto, sino también una urgente señal para aquellos involucrados en la protección y seguridad de nuestras comunidades, como lo son los vecinos de toda la V región.
+          
+                <br /><br />
+                En respuesta a esta creciente preocupación, Subred Ingeniería y Seguridad se enfrenta al desafío de encontrar soluciones efectivas que aborden este problema de manera integral. Reconociendo la complejidad del fenómeno delictivo y su impacto en la tranquilidad y bienestar de las personas, es imperativo que nuestra labor se enfoque en estrategias proactivas y preventivas. Es por eso que nuestra fuerte apuesta es el monitoreo constante de nuestros sistemas de seguridad, 24/7 full color y vizualizando desde cualquier a traves del celular, eso sumado a la grabación constante de todo lo que ocurra permitira tener lugares más seguros, vecinos mas tranquilos y comunidades organizadas.
+            </Text>
 
             </CardBody>
 
-            {/* <CardFooter>
-             
-            </CardFooter> */}
           </Stack>
 
           <Image
             objectFit="cover"
-            maxW={{ base: "100%", sm: "200px", lg: "460px", xl: "600px" }}
-            src={ImageAlarm2}
+            maxW={{ base: "180%", sm: "200px", lg: "300px", xl: "500px" }}
+            src={EncuestaCadem}
             alt="Alarmaaxpro"
           />
         </Card>
@@ -122,3 +123,4 @@ const HorizontalCard = () => {
 };
 
 export default HorizontalCard;
+

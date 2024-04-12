@@ -45,7 +45,7 @@ const HorizontalCard = () => {
             maxW={{ base: "100%", sm: "200px", lg: "300px", xl: "500px" }}
             src={ImageAlarm}
             alt="Imagen alarma"
-            bg="white"
+            bg="black"
           />
 
           <Stack
@@ -61,7 +61,7 @@ const HorizontalCard = () => {
                 Seguridad Integral
               </Heading>
 
-              <Text py="3 font-poppins" fontSize="18">
+              <Text py="3 font-poppins" fontSize={{ base: "15px", lg: "18px" }}>
                 Mantén un ojo vigilante en cada rincón de tu espacio, tanto en
                 el interior como en el exterior. Nuestra amplia gama de
                 detectores te protege contra intrusiones, roturas de vidrio,
@@ -99,7 +99,7 @@ const HorizontalCard = () => {
             <CardBody>
               <Heading size="lg">Simplicidad a través de la innovación</Heading>
 
-              <Text py="6" fontSize="15">
+              <Text py="6"  fontSize={{ base: "15px", lg: "18px" }}>
                 En SubRed, creemos que la innovación se traduce en productos que
                 pueden hacer más cosas y que son más sencillos de usar. El
                 sistema AX PRO es el ejemplo perfecto: es un nuevo e increíble

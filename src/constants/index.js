@@ -30,10 +30,10 @@ export const navLinks = [
     title: "Alarmas", 
   },
   
-  {
-    id: "Blog",
-    title: "Blog",
-  },
+  // {
+  //   id: "Blog",
+  //   title: "Blog",
+  // },
 ];
 
 export const features = [

@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage03, AXPROLandingpage04, Card4Cam, Card3Cam, Card2Cam  } from "../assets";
+import { AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage03, AXPROLandingpage04, Card4Cam, Card3Cam, Card2Cam, Card1Cam  } from "../assets";
 
 const CamInfo = () => {
   const cards = [
     {
       title: "Importancia de la Seguridad:",
-      imageSrc: AXPROLandingpage01,
+      imageSrc: Card1Cam,
       description:
       "Desde disuadir el crimen hasta proporcionar evidencia vital en casos de incidentes, nuestras cámaras de seguridad ofrecen una amplia gama de beneficios. Con SubRed Ingenieria, puedes confiar en que tu seguridad está en buenas manos.",
     },
@@ -33,8 +33,8 @@ const CamInfo = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 100 }}
       color="transparent"
-      transition={{ duration: 0.5 }}
-      className="mt-2 p-6 container mx-auto sm:px-4 lg:px-24 xl:px-55 2xl:px-64 flex justify-center "
+      transition={{ duration: 2}}
+      className="mt-2 p-2 container mx-auto sm:px-4 lg:px-15 py-1 xl:px-25 2xl:px-64 flex justify-center items-center"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
         {cards.map((card, index) => (

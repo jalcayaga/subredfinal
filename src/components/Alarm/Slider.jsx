@@ -2,21 +2,60 @@ import React, { useState } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 import { motion, AnimatePresence } from 'framer-motion';
-import { axpro,AlarmaGSM, sethikvision, Axpro1, alarmaAxproliving } from '../assets/';
+import { axpro,AlarmaGSM, sethikvision, Axpro1, alarmaAxproliving, slidealarm1, slidealarm2, slidealarm3, slidealarm4, slidealarm5, slidealarm6, slidealarm7, slidealarm8, slidealarm9, slidealarm10, slidealarm11, slidealarm12, slidealarm13, slidealarm14, slidealarm15, slidealarm16, slidealarm17 } from '../../assets'
 
 function Slider() {
   const slides = [
     {
-      url: alarmaAxproliving,
+      url: slidealarm1,
     },
     {
-      url: sethikvision,
+      url: slidealarm2,
     },
     {
-      url: Axpro1,
+      url: slidealarm3,
     },
     {
-      url: AlarmaGSM,
+      url: slidealarm4,
+    },
+    {
+      url: slidealarm5,
+    },
+    {
+      url: slidealarm6,
+    },
+    {
+      url: slidealarm7,
+    },
+    {
+      url: slidealarm8,
+    },
+    {
+      url: slidealarm9,
+    },
+    {
+      url: slidealarm10,
+    },
+    {
+      url: slidealarm11,
+    },
+    {
+      url: slidealarm12,
+    },
+    {
+      url: slidealarm13,
+    },
+    {
+      url: slidealarm14,
+    },
+    {
+      url: slidealarm15,
+    },
+    {
+      url: slidealarm16,
+    },
+    {
+      url: slidealarm17,
     },
   ];
 
@@ -43,7 +82,7 @@ function Slider() {
       <h3 className="text-2xl text-yell md:text-5xl py-12 font-semibold text-center">
         Control y Monitoreo en tiempo real. 
         <br></br>   
-        Conoce nuestros sistemas AXpro.
+        Algunos proyectos alarmas y Luces solaresLED.
       </h3>
       <AnimatePresence mode='wait'>
         <motion.div

@@ -37,7 +37,7 @@ const Alarma = () => (
     <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
         <DragSlider />
-        <CTAalarm />
+        {/* <CTAalarm /> */}
         <Footer />
       </div>
     </div>

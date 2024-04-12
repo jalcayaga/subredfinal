@@ -6,8 +6,8 @@ const Software = () => (
   <section className={layout.section}>
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-        Descubre la excelencia en diseño web <br className="sm:block hidden" />{" "}
-        y desarrollo de software.
+        Especialistas en Fondo Concursables <br className="sm:block hidden" />{" "}
+        FNDR 8%, FIS, GORE, FONDEVE, Presidente de la República.
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
         Creamos soluciones digitales, diseñando páginas web y software a medida.

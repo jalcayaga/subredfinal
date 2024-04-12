@@ -83,7 +83,7 @@ const Navbar = () => {
       <img
         src={logo}
         alt="SubRed Ingeniería"
-        className="w-[185px] h-[95px]"
+        className="w-[180px] h-[95px]"
       />
 
 

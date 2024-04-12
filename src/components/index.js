@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import Testimonials from "./Testimonials";
 import Hero from "./Hero";
 import CamInfo from "./CamInfo";
-import Slider from "./Slider";
+import Slider from "./Alarm/Slider";
 import HeroAlarm from "./Alarm/HeroAlarm";
 import CTAalarm from "./Alarm/CTAalarm";
 import GetStartedAlarm from "./Alarm/GetStartedAlarm";
@@ -30,6 +30,7 @@ import HorizontalCardCam  from "./Camaras/HorizontalCardCam";
 import NavCam from "./Camaras/NavCam";  
 import ScrollCarouselCam from "./Camaras/ScrollCarouselCam";
 import BillingCam from "./Camaras/BillingCam";
+import SliderCam from "./Camaras/SliderCam"
 
 
 import Loader from "./Loader"
@@ -68,6 +69,7 @@ export {
   NavCam,
   ScrollCarouselCam,
   BillingCam,
+  SliderCam,
 
   Loader
 

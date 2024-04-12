@@ -58,7 +58,7 @@ const HeroAlarm = () => {
            y monitoreo para notificarte ante posibles accesos no autorizados.
            <br/> 
            <br/> 
-               <p className="text-[20px]">Contactanos hoy y obtén tu sistema a medida sin costos extras mensuales</p>
+               <p className="text-[16px]">Contactanos hoy y obtén tu sistema a medida sin costos extras mensuales</p>
         </p>
       </div>
       <div
