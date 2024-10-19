@@ -51,7 +51,7 @@ const BillingCam = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Somos especialistas certificados en la instalación de cámaras de seguridad Dahua y Hikvision. Protege tu hogar o comunidad con nuestro servicio de confianza.
+        Somos especialistas certificados en la instalación de cámaras de seguridad Dahua y Hikvision. Protege tu hogar, comunidad o empresa con nuestro servicio de confianza.
       </motion.p>
 
       {/* <motion.div

@@ -47,7 +47,7 @@ const BusinessCam = () => (
         <br className="sm:block hidden" /> en nuestras manos.
       </h2> */}
       <p className={`${styles.paragraph} max-w-[470px] mt-8 mx-8`}>
-      Descubre una nueva forma de protección con nuestro avanzado sistema de cámaras de seguridad. Ahora podrás vigilar tu hogar o comunidad de una manera sin precedentes. Obtén la tranquilidad que mereces al resguardar lo que más valoras.
+      Descubre una nueva forma de protección con nuestro avanzado sistema de cámaras de seguridad. Ahora podrás vigilar tu comunidad o empresa de una manera sin precedentes. Obtén la tranquilidad que mereces al resguardar lo que más valoras.
       </p>
 
       {/* <Button styles={`mt-10`} /> */}
