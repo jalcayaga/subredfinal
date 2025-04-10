@@ -1,18 +1,16 @@
-
 import React from "react";
-import styles  from "../../style";
+import styles from "../../style";
 import { arrowUp } from "../../assets";
 import { motion } from "framer-motion";
 
-
 const GetStartedAlarm = () => (
   <motion.div
-  whileHover={{ scale: 1, rotate: 25 }}
-  whileTap={{
-    scale: 1.3,
-    rotate: -5,
-    borderRadius: "100%"}}
-
+    whileHover={{ scale: 1, rotate: 25 }}
+    whileTap={{
+      scale: 1.3,
+      rotate: -5,
+      borderRadius: "100%",
+    }}
     className={`${styles.flexCenter} w-[120px] h-[120px] rounded-full bg-yell p-[2.5px] cursor-pointer`}
   >
     <div
