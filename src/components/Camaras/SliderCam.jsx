@@ -65,7 +65,7 @@
 
 //   return (
 //     <div className='max-w-screen-xl mx-auto py-10 px-2 relative group overflow-hidden'>
-//       <h3 className="text-2xl text-yell md:text-5xl py-12 font-semibold text-center">
+//       <h3 className="text-2xl text-gn md:text-5xl py-12 font-semibold text-center">
 //         Algunos de nuestros
 //         <br></br>   
 //         Trabajos.
@@ -115,7 +115,7 @@
 //             key={slideIndex}
 //             onClick={() => goToSlide(slideIndex)}
 //             className={`text-s cursor-pointer mx-2 ${
-//               slideIndex === currentIndex ? 'text-yell' : ''
+//               slideIndex === currentIndex ? 'text-gn' : ''
 //             }`}
 //           >
 //             <RxDotFilled />
@@ -153,7 +153,7 @@ function Slider() {
 
   return (
     <div className='max-w-screen-xl mx-auto py-10 px-2 relative group overflow-hidden'>
-      <h3 className="text-2xl text-yell md:text-5xl py-12 font-semibold text-center">
+      <h3 className="text-2xl text-gn md:text-5xl py-12 font-semibold text-center">
         Algunos de nuestros
         <br />   
         Trabajos.
@@ -200,7 +200,7 @@ function Slider() {
           <div
             key={slideIndex}
             onClick={() => setCurrentIndex(slideIndex)}
-            className={`text-xs cursor-pointer mx-2 ${slideIndex === currentIndex ? 'text-yell' : ''}`}
+            className={`text-xs cursor-pointer mx-2 ${slideIndex === currentIndex ? 'text-gn' : ''}`}
           >
             <RxDotFilled />
           </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { logo } from "../assets";
 import "./Home.css";
@@ -25,9 +25,21 @@ function NetworkArt() {
   return <div className="sr-network" aria-label="Ilustración de una red conectada" role="img">
     <div className="sr-network-glow" />
     <svg viewBox="0 0 520 460" aria-hidden="true">
-      <defs><linearGradient id="sr-line" x1="0" x2="1"><stop stopColor="#22d3ee" stopOpacity=".15"/><stop offset="1" stopColor="#22d3ee" stopOpacity=".8"/></linearGradient><filter id="sr-glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <defs><linearGradient id="sr-line" x1="0" x2="1"><stop stopColor="#00c9e4" stopOpacity=".15"/><stop offset="1" stopColor="#00c9e4" stopOpacity=".8"/></linearGradient><filter id="sr-glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
       <g className="sr-lines" fill="none" stroke="url(#sr-line)" strokeWidth="1.5"><path d="M260 225 95 98M260 225 430 85M260 225 80 350M260 225 445 355M95 98 430 85M80 350 445 355M95 98 80 350M430 85 445 355"/><path d="M260 225 95 98M260 225 430 85M260 225 80 350M260 225 445 355" strokeDasharray="5 9"/></g>
-      <g filter="url(#sr-glow)"><circle cx="260" cy="225" r="44" fill="#0d2531" stroke="#22d3ee" strokeWidth="2"/><circle cx="260" cy="225" r="31" fill="#22d3ee" opacity=".12"/><circle cx="95" cy="98" r="20" fill="#102a35" stroke="#22d3ee" strokeWidth="2"/><circle cx="430" cy="85" r="20" fill="#2a2618" stroke="#fbbf24" strokeWidth="2"/><circle cx="80" cy="350" r="20" fill="#102a35" stroke="#22d3ee" strokeWidth="2"/><circle cx="445" cy="355" r="20" fill="#2a2618" stroke="#fbbf24" strokeWidth="2"/></g>
+      <g filter="url(#sr-glow)">
+        <circle className="sr-pulse-ring sr-pulse-center" cx="260" cy="225" r="43"/>
+        <circle cx="260" cy="225" r="36" fill="#0d2531" stroke="#00c9e4" strokeWidth="2"/>
+        <circle cx="260" cy="225" r="25" fill="#00c9e4" opacity=".12"/>
+        <circle className="sr-pulse-ring" cx="95" cy="98" r="23" style={{ animationDelay: "-1.2s" }}/>
+        <circle cx="95" cy="98" r="17" fill="#102a35" stroke="#00c9e4" strokeWidth="2"/>
+        <circle className="sr-pulse-ring sr-pulse-green" cx="430" cy="85" r="23" style={{ animationDelay: "-2.4s" }}/>
+        <circle cx="430" cy="85" r="17" fill="#1e2917" stroke="#84bd00" strokeWidth="2"/>
+        <circle className="sr-pulse-ring" cx="80" cy="350" r="23" style={{ animationDelay: "-2s" }}/>
+        <circle cx="80" cy="350" r="17" fill="#102a35" stroke="#00c9e4" strokeWidth="2"/>
+        <circle className="sr-pulse-ring sr-pulse-green" cx="445" cy="355" r="23" style={{ animationDelay: "-1s" }}/>
+        <circle cx="445" cy="355" r="17" fill="#1e2917" stroke="#84bd00" strokeWidth="2"/>
+      </g>
       <g fill="#e7f3f6" fontFamily="system-ui,sans-serif" fontSize="12" fontWeight="700" textAnchor="middle"><text x="260" y="229">SUBRED</text><text x="95" y="65">CCTV</text><text x="430" y="50">ENERGÍA</text><text x="80" y="393">WIFI</text><text x="445" y="398">SOPORTE</text></g>
     </svg>
     <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> Conectividad activa <b>ESTABLE</b></div>
@@ -38,6 +50,27 @@ function NetworkArt() {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    const items = document.querySelectorAll(".sr-reveal");
+    if (!("IntersectionObserver" in window)) {
+      items.forEach((item) => item.classList.add("is-visible"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return <main className="subred-home">
     <div className="sr-topline"><div className="sr-wrap">INGENIERÍA Y SOPORTE EN LA REGIÓN DE VALPARAÍSO <span>Quilpué · Villa Alemana · Viña del Mar</span></div></div>
     <header className="sr-header"><div className="sr-wrap sr-nav">
@@ -50,33 +83,33 @@ export default function Home() {
     </div></header>
 
     <section className="sr-hero"><div className="sr-wrap sr-hero-grid">
-      <div className="sr-hero-copy"><div className="sr-kicker"><span/> TECNOLOGÍA QUE TE ACOMPAÑA</div>
+      <div className="sr-hero-copy sr-reveal"><div className="sr-kicker"><span/> TECNOLOGÍA QUE TE ACOMPAÑA</div>
         <h1>Conectamos lo que <em>más importa.</em></h1>
         <p>Seguridad, conectividad y soporte técnico para hogares y empresas. Soluciones pensadas para tu espacio, instaladas por personas que saben.</p>
         <div className="sr-actions"><a className="sr-button" href={whatsapp()} target="_blank" rel="noreferrer">Cuéntanos tu proyecto <Arrow/></a><a className="sr-text-link" href="#servicios">Conoce nuestros servicios <span>↓</span></a></div>
         <div className="sr-proof"><span className="sr-proof-icon">✳</span><span><b>Atención cercana, soluciones a medida</b><small>Desde Quilpué para la Región de Valparaíso</small></span></div>
       </div>
-      <NetworkArt/>
+      <div className="sr-reveal sr-reveal-late"><NetworkArt/></div>
       <div className="sr-hero-index"><span>01 / 04</span><span>Infraestructura · Seguridad · Soporte</span></div>
     </div></section>
 
     <div className="sr-areas" aria-label="Zonas de atención"><div className="sr-wrap"><span>ÁREA DE ATENCIÓN</span><b>QUILPUÉ</b><i>✳</i><b>VILLA ALEMANA</b><i>✳</i><b>VIÑA DEL MAR</b><i>✳</i><b>VALPARAÍSO</b><i>✳</i><b>Y ALREDEDORES</b></div></div>
 
     <section id="servicios" className="sr-section"><div className="sr-wrap">
-      <div className="sr-section-head"><div><div className="sr-eyebrow">LO QUE HACEMOS</div><h2>Tecnología útil.<br/><em>Trabajo bien hecho.</em></h2></div><p>Cada lugar tiene necesidades distintas. Te ayudamos a encontrar una solución que funcione en tu día a día.</p></div>
-      <div className="sr-service-grid">{services.map(service => <article className="sr-service" key={service.number}>
+      <div className="sr-section-head sr-reveal"><div><div className="sr-eyebrow">LO QUE HACEMOS</div><h2>Tecnología útil.<br/><em>Trabajo bien hecho.</em></h2></div><p>Cada lugar tiene necesidades distintas. Te ayudamos a encontrar una solución que funcione en tu día a día.</p></div>
+      <div className="sr-service-grid">{services.map((service, index) => <article className="sr-service sr-reveal" style={{ "--sr-reveal-delay": `${index * 90}ms` }} key={service.number}>
         <div className="sr-service-top"><span className="sr-service-icon">{service.icon}</span><span>{service.number}</span></div><h3>{service.title}</h3><p>{service.text}</p>
         {service.link.startsWith("/") ? <Link to={service.link} className="sr-service-link">{service.label}<Arrow/></Link> : <a href={service.link} target="_blank" rel="noreferrer" className="sr-service-link">{service.label}<Arrow/></a>}
       </article>)}</div>
     </div></section>
 
-    <section id="nosotros" className="sr-process"><div className="sr-wrap sr-process-grid"><div><div className="sr-eyebrow">ASÍ LO HACEMOS</div><h2>Claro desde el primer <em>mensaje.</em></h2><p className="sr-process-intro">Nos importa que entiendas qué instalamos, por qué lo recomendamos y cómo usarlo.</p><a className="sr-button sr-button-outline" href={whatsapp("Hola SubRed, quiero conversar sobre un proyecto") } target="_blank" rel="noreferrer">Conversemos <Arrow/></a></div>
-      <div className="sr-steps"><article><span>01</span><div><h3>Nos cuentas</h3><p>Conversamos sobre tu necesidad y el lugar donde trabajaremos.</p></div></article><article><span>02</span><div><h3>Revisamos contigo</h3><p>Evaluamos alternativas y aclaramos el alcance antes de cotizar.</p></div></article><article><span>03</span><div><h3>Instalamos y explicamos</h3><p>Dejamos el sistema funcionando y te mostramos cómo utilizarlo.</p></div></article></div>
+    <section id="nosotros" className="sr-process"><div className="sr-wrap sr-process-grid"><div className="sr-reveal"><div className="sr-eyebrow">ASÍ LO HACEMOS</div><h2>Claro desde el primer <em>mensaje.</em></h2><p className="sr-process-intro">Nos importa que entiendas qué instalamos, por qué lo recomendamos y cómo usarlo.</p><a className="sr-button sr-button-outline" href={whatsapp("Hola SubRed, quiero conversar sobre un proyecto") } target="_blank" rel="noreferrer">Conversemos <Arrow/></a></div>
+      <div className="sr-steps">{[["01", "Nos cuentas", "Conversamos sobre tu necesidad y el lugar donde trabajaremos."], ["02", "Revisamos contigo", "Evaluamos alternativas y aclaramos el alcance antes de cotizar."], ["03", "Instalamos y explicamos", "Dejamos el sistema funcionando y te mostramos cómo utilizarlo."]].map(([number, title, copy], index) => <article className="sr-reveal" style={{ "--sr-reveal-delay": `${index * 100}ms` }} key={number}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
     </div></section>
 
-    <section id="preguntas" className="sr-section sr-faq"><div className="sr-wrap sr-faq-grid"><div><div className="sr-eyebrow">PREGUNTAS FRECUENTES</div><h2>¿Tienes dudas?<br/><em>Partamos por aquí.</em></h2><p>Si tu consulta es más específica, escríbenos directamente.</p><a href={whatsapp("Hola SubRed, tengo una consulta") } target="_blank" rel="noreferrer" className="sr-inline-link">Hablar por WhatsApp <Arrow/></a></div><div>{faqs.map(([question, answer]) => <details className="sr-faq-item" key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div></section>
+    <section id="preguntas" className="sr-section sr-faq"><div className="sr-wrap sr-faq-grid"><div className="sr-reveal"><div className="sr-eyebrow">PREGUNTAS FRECUENTES</div><h2>¿Tienes dudas?<br/><em>Partamos por aquí.</em></h2><p>Si tu consulta es más específica, escríbenos directamente.</p><a href={whatsapp("Hola SubRed, tengo una consulta") } target="_blank" rel="noreferrer" className="sr-inline-link">Hablar por WhatsApp <Arrow/></a></div><div>{faqs.map(([question, answer], index) => <details className="sr-faq-item sr-reveal" style={{ "--sr-reveal-delay": `${index * 80}ms` }} key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div></section>
 
-    <section className="sr-cta"><div className="sr-wrap sr-cta-content"><div><div className="sr-eyebrow">HABLEMOS DE TU PROYECTO</div><h2>Una buena solución<br/>empieza con una <em>conversación.</em></h2></div><a className="sr-button sr-button-light" href={whatsapp()} target="_blank" rel="noreferrer">Escríbenos por WhatsApp <Arrow/></a><div className="sr-cta-orbit" aria-hidden="true"/></div></section>
+    <section className="sr-cta"><div className="sr-wrap sr-cta-content"><div className="sr-reveal"><div className="sr-eyebrow">HABLEMOS DE TU PROYECTO</div><h2>Una buena solución<br/>empieza con una <em>conversación.</em></h2></div><a className="sr-button sr-button-light sr-reveal sr-reveal-late" href={whatsapp()} target="_blank" rel="noreferrer">Escríbenos por WhatsApp <Arrow/></a><div className="sr-cta-orbit" aria-hidden="true"/></div></section>
 
     <footer className="sr-footer"><div className="sr-wrap"><div className="sr-footer-main"><div><Link to="/" className="sr-footer-logo"><img src={logo} alt="SubRed Ingeniería"/></Link><p>Ingeniería, seguridad y soporte<br/>desde Quilpué, Chile.</p></div><div className="sr-footer-nav"><div><b>Explora</b><a href="#servicios">Servicios</a><Link to="/camara">Cámaras</Link><Link to="/alarma">Alarmas</Link></div><div><b>Contacto</b><a href="tel:+56958216959">+56 9 5821 6959</a><a href="tel:+56996985294">+56 9 9698 5294</a><a href={whatsapp()} target="_blank" rel="noreferrer">WhatsApp</a></div></div></div><div className="sr-footer-bottom"><span>© {new Date().getFullYear()} SubRed Ingeniería E.I.R.L.</span><span>Quilpué · Región de Valparaíso · Chile</span></div></div></footer>
     <a className="sr-whatsapp" href={whatsapp()} target="_blank" rel="noreferrer" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.3 2.4 2.1 4.2 4.5 4.5l1-1.1 2 1c-.2 1-1 1.8-2.1 1.8-3.6-.2-6.9-3.4-7.1-7 0-1.1.8-1.9 1.8-2.1l1 2L9 8.5Z"/></svg></a>

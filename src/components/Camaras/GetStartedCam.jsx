@@ -11,7 +11,7 @@ const GetStartedAlarm = () => (
       rotate: -5,
       borderRadius: "100%",
     }}
-    className={`${styles.flexCenter} w-[120px] h-[120px] rounded-full bg-yell p-[2.5px] cursor-pointer`}
+    className={`${styles.flexCenter} w-[120px] h-[120px] rounded-full bg-gn p-[2.5px] cursor-pointer`}
   >
     <div
       className={`${styles.flexCenter} flex-col bg-primary w-[100%] h-[100%] rounded-full`}

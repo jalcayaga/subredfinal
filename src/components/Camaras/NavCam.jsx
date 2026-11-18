@@ -20,7 +20,7 @@
 //           {navLinks.map((nav, index) => (
 //             <li
 //               key={nav.id}
-//               className={`font-poppins font-normal text-dim-white hover:text-red cursor-pointer text-[16px]
+//               className={`font-poppins font-normal text-dim-white hover:text-gn cursor-pointer text-[16px]
 //                           ${
 //                 active === nav.title ? "text-white text-[22px] " : "text-dim-white"
 //               } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
@@ -52,9 +52,9 @@
 //               <li
 //                 key={nav.id}
 //                 className={`font-poppins font-medium 
-//                             text-dim-white hover:text-red
+//                             text-dim-white hover:text-gn
 //                             cursor-pointer text-[15px] ${
-//                   active === nav.title ? "text-red text-[23px]" : "text-dim-white"
+//                   active === nav.title ? "text-gn text-[23px]" : "text-dim-white"
 //                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
 //                 onClick={() => setActive(nav.title)}
 //               >
@@ -89,7 +89,7 @@ const NavCam = () => {
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal text-dim-white hover:text-red cursor-pointer text-[16px]
+            className={`font-poppins font-normal text-dim-white hover:text-gn cursor-pointer text-[16px]
                         ${
               active === nav.title ? "text-white text-[22px] " : "text-dim-white"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
@@ -121,9 +121,9 @@ const NavCam = () => {
               <li
                 key={nav.id}
                 className={`font-poppins font-medium 
-                            text-dim-white hover:text-red
+                            text-dim-white hover:text-gn
                             cursor-pointer text-[15px] ${
-                  active === nav.title ? "text-red text-[23px]" : "text-dim-white"
+                  active === nav.title ? "text-gn text-[23px]" : "text-dim-white"
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >

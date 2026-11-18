@@ -19,7 +19,7 @@ const GetStartedAlarm = () => {
         rotate: -5,
         borderRadius: "100%",
       }}
-      className={`${styles.flexCenter} w-[120px] h-[120px] rounded-full bg-yell p-[2.5px] cursor-pointer`}
+      className={`${styles.flexCenter} w-[120px] h-[120px] rounded-full bg-gn p-[2.5px] cursor-pointer`}
       onClick={handleWhatsappClick}
     >
       <div

@@ -20,7 +20,7 @@ const NavAlarm = () => {
           {navLinks.map((nav, index) => ( 
             <li
               key={nav.id}
-              className={`font-poppins font-normal text-dim-white hover:text-yell cursor-pointer text-[16px]
+              className={`font-poppins font-normal text-dim-white hover:text-gn cursor-pointer text-[16px]
                           ${
                 active === nav.title ? "text-white text-[25px] " : "text-dim-white"
               } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
@@ -52,9 +52,9 @@ const NavAlarm = () => {
               <li
                 key={nav.id}
                 className={`font-poppins font-medium 
-                            text-dim-white hover:text-yell
+                            text-dim-white hover:text-gn
                             cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-yell text-[20px]" : "text-dim-white"
+                  active === nav.title ? "text-gn text-[20px]" : "text-dim-white"
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >

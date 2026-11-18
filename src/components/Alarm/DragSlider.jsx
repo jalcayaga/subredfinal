@@ -49,7 +49,7 @@ const ShuffleHero = () => {
           initial={{ opacity: 0, y: 60 }}
           animate={controls}
           transition={{ duration: 1 }}
-          className="text-5xl text-yell md:text-8xl font-semibold"
+          className="text-5xl text-gn md:text-8xl font-semibold"
         >
           Un nuevo modo de protección.
         </motion.h3>

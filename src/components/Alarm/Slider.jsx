@@ -79,7 +79,7 @@ function Slider() {
 
   return (
     <div className='max-w-screen-xl mx-auto py-10 px-2 relative group overflow-hidden'>
-      <h3 className="text-2xl text-yell md:text-5xl py-12 font-semibold text-center">
+      <h3 className="text-2xl text-gn md:text-5xl py-12 font-semibold text-center">
         Control y Monitoreo en tiempo real. 
         <br></br>   
         Algunos proyectos alarmas y Luces solaresLED.
@@ -129,7 +129,7 @@ function Slider() {
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
             className={`text-xs cursor-pointer mx-2 ${
-              slideIndex === currentIndex ? 'text-yell' : ''
+              slideIndex === currentIndex ? 'text-gn' : ''
             }`}
           >
             <RxDotFilled />

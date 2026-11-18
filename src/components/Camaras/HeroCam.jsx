@@ -39,7 +39,7 @@ const HeroCam = () => {
           >
             Contamos con 
             <br className="sm:block hidden" />{" "}
-            <span className="text-yell">Alarmas Gsm/Wifi. </span>{" "}
+            <span className="text-gn">Alarmas Gsm/Wifi. </span>{" "}
           </h1>
           <div className="ss:flex hidden md:mr-4 mr-0">
 
