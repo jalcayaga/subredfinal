@@ -26,4 +26,10 @@ html.subred-scrollbar::-webkit-scrollbar{width:10px}
 html.subred-scrollbar::-webkit-scrollbar-track{background:#080e19}
 html.subred-scrollbar::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#00c9e4,#20d7ac 52%,#84bd00);border:2px solid #080e19;border-radius:999px}
 html.subred-scrollbar::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#42e4f5,#64e7c5 52%,#a0df26)}
+.sr-back-to-top{position:fixed;z-index:16;right:29px;bottom:88px;width:44px;height:44px;display:grid;place-items:center;padding:0;border:1px solid transparent;border-radius:50%;background:linear-gradient(#0d1724,#0d1724) padding-box,linear-gradient(145deg,#00c9e4,#20d7ac 52%,#84bd00) border-box;color:#eafcff;box-shadow:0 6px 24px rgba(0,0,0,.35),0 0 18px rgba(0,201,228,.12);opacity:0;visibility:hidden;transform:translateY(8px) scale(.92);pointer-events:none;cursor:pointer;transition:opacity .2s,visibility .2s,transform .2s,box-shadow .2s}
+.sr-back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0) scale(1);pointer-events:auto}
+.sr-back-to-top:hover{box-shadow:0 8px 28px rgba(0,0,0,.45),0 0 22px rgba(0,201,228,.28)}
+.sr-back-to-top:focus-visible{outline:2px solid #00c9e4;outline-offset:3px}
+.sr-back-to-top svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:640px){.sr-back-to-top{right:17px;bottom:73px;width:42px;height:42px}}
 @media(prefers-reduced-motion:reduce){.subred-home *, .subred-home *::before,.subred-home *::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.subred-home .sr-reveal{opacity:1;transform:none}}
