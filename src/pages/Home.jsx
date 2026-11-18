@@ -11,9 +11,9 @@ const Arrow = () => <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h1
 const services = [
   { number: "01", icon: "◉", title: "Cámaras de seguridad", text: "Diseño, instalación y configuración de sistemas CCTV con acceso remoto.", link: "/camara", label: "Explorar cámaras" },
   { number: "02", icon: "⌁", title: "Alarmas para hogar y negocio", text: "Soluciones de seguridad y alertas para proteger tus espacios.", link: "/alarma", label: "Explorar alarmas" },
-  { number: "03", icon: "⌘", title: "Redes y conectividad", text: "WiFi, cableado y soporte para que tus equipos se mantengan conectados.", link: whatsapp("Hola SubRed, necesito asesoría en redes y conectividad"), label: "Consultar servicio" },
-  { number: "04", icon: "ϟ", title: "Energía y respaldo", text: "Asesoría en soluciones solares y respaldo eléctrico según tu proyecto.", link: whatsapp("Hola SubRed, quiero consultar por energía solar y respaldo"), label: "Consultar proyecto" },
-  { number: "05", icon: "⌂", title: "Domótica con Home Assistant", text: "Conectamos y mejoramos tus equipos para reunir tu hogar inteligente en un solo sistema.", link: "#domotica", label: "Explorar domótica" },
+  { number: "03", icon: "⌘", title: "Redes y conectividad", text: "WiFi, cableado y soporte para que tus equipos se mantengan conectados.", link: "/redes", label: "Explorar redes" },
+  { number: "04", icon: "ϟ", title: "Energía y respaldo", text: "Asesoría en soluciones solares y respaldo eléctrico según tu proyecto.", link: "/energia", label: "Explorar energía" },
+  { number: "05", icon: "⌂", title: "Domótica con Home Assistant", text: "Conectamos y mejoramos tus equipos para reunir tu hogar inteligente en un solo sistema.", link: "/domotica", label: "Explorar domótica" },
 ];
 
 const faqs = [
@@ -124,7 +124,7 @@ export default function Home() {
       <div className="sr-section-head sr-reveal"><div><div className="sr-eyebrow">LO QUE HACEMOS</div><h2>Tecnología útil.<br/><em>Trabajo bien hecho.</em></h2></div><p>Cada lugar tiene necesidades distintas. Te ayudamos a encontrar una solución que funcione en tu día a día.</p></div>
       <div className="sr-service-grid">{services.map((service, index) => <article className="sr-service sr-reveal" style={{ "--sr-reveal-delay": `${index * 90}ms` }} key={service.number}>
         <div className="sr-service-top"><span className="sr-service-icon">{service.icon}</span><span>{service.number}</span></div><h3>{service.title}</h3><p>{service.text}</p>
-        {service.link.startsWith("/") ? <Link to={service.link} className="sr-service-link">{service.label}<Arrow/></Link> : service.link.startsWith("#") ? <a href={service.link} className="sr-service-link">{service.label}<Arrow/></a> : <a href={service.link} target="_blank" rel="noreferrer" className="sr-service-link">{service.label}<Arrow/></a>}
+        {service.link.startsWith("/") ? <Link to={service.link} className="sr-service-link">{service.label}<Arrow/></Link> : <a href={service.link} target="_blank" rel="noreferrer" className="sr-service-link">{service.label}<Arrow/></a>}
       </article>)}</div>
     </div></section>
 
@@ -154,7 +154,7 @@ export default function Home() {
 
     <section className="sr-cta"><div className="sr-wrap sr-cta-content"><div className="sr-reveal"><div className="sr-eyebrow">HABLEMOS DE TU PROYECTO</div><h2>Una buena solución<br/>empieza con una <em>conversación.</em></h2></div><a className="sr-button sr-button-light sr-reveal sr-reveal-late" href={whatsapp()} target="_blank" rel="noreferrer">Escríbenos por WhatsApp <Arrow/></a><div className="sr-cta-orbit" aria-hidden="true"/></div></section>
 
-    <footer className="sr-footer"><div className="sr-wrap"><div className="sr-footer-main"><div><Link to="/" className="sr-footer-logo"><img src={logo} alt="SubRed Ingeniería"/></Link><p>Ingeniería, seguridad y soporte<br/>desde Quilpué, Chile.</p></div><div className="sr-footer-nav"><div><b>Explora</b><a href="#servicios">Servicios</a><a href="#domotica">Domótica</a><Link to="/camara">Cámaras</Link><Link to="/alarma">Alarmas</Link></div><div><b>Contacto</b><a href="tel:+56958216959">+56 9 5821 6959</a><a href="tel:+56996985294">+56 9 9698 5294</a><a href={whatsapp()} target="_blank" rel="noreferrer">WhatsApp</a></div></div></div><div className="sr-footer-bottom"><span>© {new Date().getFullYear()} SubRed Ingeniería E.I.R.L.</span><span>Quilpué · Región de Valparaíso · Chile</span></div></div></footer>
+    <footer className="sr-footer"><div className="sr-wrap"><div className="sr-footer-main"><div><Link to="/" className="sr-footer-logo"><img src={logo} alt="SubRed Ingeniería"/></Link><p>Ingeniería, seguridad y soporte<br/>desde Quilpué, Chile.</p></div><div className="sr-footer-nav"><div><b>Explora</b><a href="#servicios">Servicios</a><Link to="/camara">Cámaras</Link><Link to="/alarma">Alarmas</Link><Link to="/redes">Redes</Link><Link to="/energia">Energía</Link><Link to="/domotica">Domótica</Link></div><div><b>Contacto</b><a href="tel:+56958216959">+56 9 5821 6959</a><a href="tel:+56996985294">+56 9 9698 5294</a><a href={whatsapp()} target="_blank" rel="noreferrer">WhatsApp</a></div></div></div><div className="sr-footer-bottom"><span>© {new Date().getFullYear()} SubRed Ingeniería E.I.R.L.</span><span>Quilpué · Región de Valparaíso · Chile</span></div></div></footer>
     <button className={`sr-back-to-top${scrollProgress > 12 ? " is-visible" : ""}`} type="button" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })} aria-label="Volver arriba" tabIndex={scrollProgress > 12 ? 0 : -1}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
     <a className="sr-whatsapp" href={whatsapp()} target="_blank" rel="noreferrer" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.3 2.4 2.1 4.2 4.5 4.5l1-1.1 2 1c-.2 1-1 1.8-2.1 1.8-3.6-.2-6.9-3.4-7.1-7 0-1.1.8-1.9 1.8-2.1l1 2L9 8.5Z"/></svg></a>
   </main>;
