@@ -13,6 +13,7 @@ const services = [
   { number: "02", icon: "⌁", title: "Alarmas para hogar y negocio", text: "Soluciones de seguridad y alertas para proteger tus espacios.", link: "/alarma", label: "Explorar alarmas" },
   { number: "03", icon: "⌘", title: "Redes y conectividad", text: "WiFi, cableado y soporte para que tus equipos se mantengan conectados.", link: whatsapp("Hola SubRed, necesito asesoría en redes y conectividad"), label: "Consultar servicio" },
   { number: "04", icon: "ϟ", title: "Energía y respaldo", text: "Asesoría en soluciones solares y respaldo eléctrico según tu proyecto.", link: whatsapp("Hola SubRed, quiero consultar por energía solar y respaldo"), label: "Consultar proyecto" },
+  { number: "05", icon: "⌂", title: "Domótica a tu medida", text: "Automatizaciones con Home Assistant, Zigbee y dispositivos a medida.", link: "#domotica", label: "Explorar domótica" },
 ];
 
 const faqs = [
@@ -123,9 +124,27 @@ export default function Home() {
       <div className="sr-section-head sr-reveal"><div><div className="sr-eyebrow">LO QUE HACEMOS</div><h2>Tecnología útil.<br/><em>Trabajo bien hecho.</em></h2></div><p>Cada lugar tiene necesidades distintas. Te ayudamos a encontrar una solución que funcione en tu día a día.</p></div>
       <div className="sr-service-grid">{services.map((service, index) => <article className="sr-service sr-reveal" style={{ "--sr-reveal-delay": `${index * 90}ms` }} key={service.number}>
         <div className="sr-service-top"><span className="sr-service-icon">{service.icon}</span><span>{service.number}</span></div><h3>{service.title}</h3><p>{service.text}</p>
-        {service.link.startsWith("/") ? <Link to={service.link} className="sr-service-link">{service.label}<Arrow/></Link> : <a href={service.link} target="_blank" rel="noreferrer" className="sr-service-link">{service.label}<Arrow/></a>}
+        {service.link.startsWith("/") ? <Link to={service.link} className="sr-service-link">{service.label}<Arrow/></Link> : service.link.startsWith("#") ? <a href={service.link} className="sr-service-link">{service.label}<Arrow/></a> : <a href={service.link} target="_blank" rel="noreferrer" className="sr-service-link">{service.label}<Arrow/></a>}
       </article>)}</div>
     </div></section>
+
+    <section id="domotica" className="sr-domotics">
+      <div className="sr-wrap sr-domotics-grid">
+        <div className="sr-domotics-intro sr-reveal">
+          <div className="sr-eyebrow">TECNOLOGÍA QUE TRABAJA POR TI</div>
+          <h2>Tu espacio, más <em>inteligente.</em></h2>
+          <p>Diseñamos automatizaciones prácticas para que iluminación, sensores y equipos colaboren. Partimos por lo que quieres resolver y elegimos la tecnología adecuada; no necesitas llenar tu casa de dispositivos.</p>
+          <a className="sr-button" href={whatsapp("Hola SubRed, quiero conversar sobre un proyecto de domótica")} target="_blank" rel="noreferrer">Conversemos sobre domótica <Arrow/></a>
+        </div>
+        <div className="sr-domotics-tools">
+          <article className="sr-domotics-tool sr-reveal"><span>01 / CONTROL LOCAL</span><h3>Home Assistant</h3><p>Un panel para reunir dispositivos compatibles, crear automatizaciones y consultar el estado de tu hogar. Según el equipo y la configuración, muchas funciones pueden mantenerse dentro de tu red local.</p></article>
+          <article className="sr-domotics-tool sr-reveal"><span>02 / SENSORES Y MANDOS</span><h3>Zigbee</h3><p>Una red de bajo consumo para sensores, botones y luces compatibles. Revisamos el modelo, el coordinador y la cobertura antes de definir qué integrar.</p></article>
+          <article className="sr-domotics-tool sr-reveal"><span>03 / PROYECTOS A MEDIDA</span><h3>ESP32</h3><p>Microcontroladores para prototipos y sensores específicos, como temperatura o apertura. Cada proyecto se diseña según su uso, alimentación y conexión de red.</p></article>
+          <article className="sr-domotics-tool sr-reveal"><span>04 / FABRICACIÓN PERSONALIZADA</span><h3>Impresión 3D</h3><p>Soportes, adaptadores y carcasas para ordenar o montar componentes. Las piezas impresas se seleccionan para su entorno; no sustituyen cajas eléctricas certificadas.</p></article>
+        </div>
+        <div className="sr-domotics-example sr-reveal"><span className="sr-domotics-pulse"/><p><b>Un ejemplo:</b> al abrir una puerta, encender una luz de cortesía y recibir una notificación si la casa está vacía. La automatización se adapta a los dispositivos y reglas que definamos contigo.</p></div>
+      </div>
+    </section>
 
     <section id="nosotros" className="sr-process"><div className="sr-wrap sr-process-grid"><div className="sr-reveal"><div className="sr-eyebrow">ASÍ LO HACEMOS</div><h2>Claro desde el primer <em>mensaje.</em></h2><p className="sr-process-intro">Nos importa que entiendas qué instalamos, por qué lo recomendamos y cómo usarlo.</p><a className="sr-button sr-button-outline" href={whatsapp("Hola SubRed, quiero conversar sobre un proyecto") } target="_blank" rel="noreferrer">Conversemos <Arrow/></a></div>
       <div className="sr-steps">{[["01", "Nos cuentas", "Conversamos sobre tu necesidad y el lugar donde trabajaremos."], ["02", "Revisamos contigo", "Evaluamos alternativas y aclaramos el alcance antes de cotizar."], ["03", "Instalamos y explicamos", "Dejamos el sistema funcionando y te mostramos cómo utilizarlo."]].map(([number, title, copy], index) => <article className="sr-reveal" style={{ "--sr-reveal-delay": `${index * 100}ms` }} key={number}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
@@ -135,7 +154,7 @@ export default function Home() {
 
     <section className="sr-cta"><div className="sr-wrap sr-cta-content"><div className="sr-reveal"><div className="sr-eyebrow">HABLEMOS DE TU PROYECTO</div><h2>Una buena solución<br/>empieza con una <em>conversación.</em></h2></div><a className="sr-button sr-button-light sr-reveal sr-reveal-late" href={whatsapp()} target="_blank" rel="noreferrer">Escríbenos por WhatsApp <Arrow/></a><div className="sr-cta-orbit" aria-hidden="true"/></div></section>
 
-    <footer className="sr-footer"><div className="sr-wrap"><div className="sr-footer-main"><div><Link to="/" className="sr-footer-logo"><img src={logo} alt="SubRed Ingeniería"/></Link><p>Ingeniería, seguridad y soporte<br/>desde Quilpué, Chile.</p></div><div className="sr-footer-nav"><div><b>Explora</b><a href="#servicios">Servicios</a><Link to="/camara">Cámaras</Link><Link to="/alarma">Alarmas</Link></div><div><b>Contacto</b><a href="tel:+56958216959">+56 9 5821 6959</a><a href="tel:+56996985294">+56 9 9698 5294</a><a href={whatsapp()} target="_blank" rel="noreferrer">WhatsApp</a></div></div></div><div className="sr-footer-bottom"><span>© {new Date().getFullYear()} SubRed Ingeniería E.I.R.L.</span><span>Quilpué · Región de Valparaíso · Chile</span></div></div></footer>
+    <footer className="sr-footer"><div className="sr-wrap"><div className="sr-footer-main"><div><Link to="/" className="sr-footer-logo"><img src={logo} alt="SubRed Ingeniería"/></Link><p>Ingeniería, seguridad y soporte<br/>desde Quilpué, Chile.</p></div><div className="sr-footer-nav"><div><b>Explora</b><a href="#servicios">Servicios</a><a href="#domotica">Domótica</a><Link to="/camara">Cámaras</Link><Link to="/alarma">Alarmas</Link></div><div><b>Contacto</b><a href="tel:+56958216959">+56 9 5821 6959</a><a href="tel:+56996985294">+56 9 9698 5294</a><a href={whatsapp()} target="_blank" rel="noreferrer">WhatsApp</a></div></div></div><div className="sr-footer-bottom"><span>© {new Date().getFullYear()} SubRed Ingeniería E.I.R.L.</span><span>Quilpué · Región de Valparaíso · Chile</span></div></div></footer>
     <button className={`sr-back-to-top${scrollProgress > 12 ? " is-visible" : ""}`} type="button" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })} aria-label="Volver arriba" tabIndex={scrollProgress > 12 ? 0 : -1}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
     <a className="sr-whatsapp" href={whatsapp()} target="_blank" rel="noreferrer" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.3 2.4 2.1 4.2 4.5 4.5l1-1.1 2 1c-.2 1-1 1.8-2.1 1.8-3.6-.2-6.9-3.4-7.1-7 0-1.1.8-1.9 1.8-2.1l1 2L9 8.5Z"/></svg></a>
   </main>;

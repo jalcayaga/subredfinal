@@ -35,3 +35,21 @@ html.subred-scrollbar::-webkit-scrollbar-thumb:hover{background:#a0df26}
 .sr-back-to-top svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:640px){.sr-back-to-top{bottom:18px;width:42px;height:42px}}
 @media(prefers-reduced-motion:reduce){.subred-home *, .subred-home *::before,.subred-home *::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.subred-home .sr-reveal{opacity:1;transform:none}}
+.sr-domotics{padding:96px 0;background:linear-gradient(132deg,#0b1722 0%,#0b1b25 58%,#111e1b 100%);border-top:1px solid var(--sr-border);border-bottom:1px solid var(--sr-border)}
+.sr-domotics-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:34px 72px;align-items:start}
+.sr-domotics-intro h2{font-family:Manrope,sans-serif;font-size:clamp(36px,4.1vw,50px);font-weight:600;line-height:1.12;letter-spacing:-.05em;margin:0 0 18px}
+.sr-domotics-intro h2 em{font-style:normal;color:var(--sr-cyan)}
+.sr-domotics-intro>p{max-width:420px;color:var(--sr-muted);font-size:14px;line-height:1.85;margin:0 0 28px}
+.sr-domotics-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sr-domotics-tool{min-height:190px;padding:22px;border:1px solid var(--sr-border);background:linear-gradient(145deg,rgba(14,31,43,.9),rgba(10,20,31,.86));transition:transform .25s,border-color .25s,background .25s}
+.sr-domotics-tool:hover{transform:translateY(-3px);border-color:rgba(0,201,228,.38);background:linear-gradient(145deg,rgba(15,43,52,.94),rgba(12,28,34,.9))}
+.sr-domotics-tool>span{font-size:8px;font-weight:800;letter-spacing:.15em;color:var(--sr-green)}
+.sr-domotics-tool h3{font-family:Manrope,sans-serif;font-size:18px;margin:13px 0 7px;color:var(--sr-text)}
+.sr-domotics-tool p{font-size:11px;line-height:1.75;color:var(--sr-muted);margin:0}
+.sr-domotics-example{grid-column:1/-1;display:flex;align-items:center;gap:15px;padding:16px 19px;border-left:2px solid var(--sr-green);background:rgba(132,189,0,.055)}
+.sr-domotics-example p{margin:0;color:#b8c8ce;font-size:12px;line-height:1.75}
+.sr-domotics-example b{color:#eff5f7}
+.sr-domotics-pulse{flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--sr-green);box-shadow:0 0 14px rgba(132,189,0,.65)}
+@media(min-width:1101px){.sr-service-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:900px){.sr-service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border:0}.sr-service{border:1px solid var(--sr-border)}.sr-service:nth-child(2){border-right:1px solid var(--sr-border)}.sr-domotics{padding:76px 0}.sr-domotics-grid{grid-template-columns:1fr;gap:30px}.sr-domotics-intro>p{max-width:640px}.sr-domotics-example{grid-column:auto}}
+@media(max-width:640px){.sr-service-grid{grid-template-columns:1fr}.sr-service{border-right:0}.sr-domotics{padding:68px 0}.sr-domotics-tools{grid-template-columns:1fr}.sr-domotics-tool{min-height:0;padding:20px}}
