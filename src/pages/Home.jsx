@@ -13,7 +13,7 @@ const services = [
   { number: "02", icon: "⌁", title: "Alarmas para hogar y negocio", text: "Soluciones de seguridad y alertas para proteger tus espacios.", link: "/alarma", label: "Explorar alarmas" },
   { number: "03", icon: "⌘", title: "Redes y conectividad", text: "WiFi, cableado y soporte para que tus equipos se mantengan conectados.", link: whatsapp("Hola SubRed, necesito asesoría en redes y conectividad"), label: "Consultar servicio" },
   { number: "04", icon: "ϟ", title: "Energía y respaldo", text: "Asesoría en soluciones solares y respaldo eléctrico según tu proyecto.", link: whatsapp("Hola SubRed, quiero consultar por energía solar y respaldo"), label: "Consultar proyecto" },
-  { number: "05", icon: "⌂", title: "Domótica a tu medida", text: "Automatizaciones con Home Assistant, Zigbee y dispositivos a medida.", link: "#domotica", label: "Explorar domótica" },
+  { number: "05", icon: "⌂", title: "Domótica con Home Assistant", text: "Conectamos y mejoramos tus equipos para reunir tu hogar inteligente en un solo sistema.", link: "#domotica", label: "Explorar domótica" },
 ];
 
 const faqs = [
@@ -133,16 +133,16 @@ export default function Home() {
         <div className="sr-domotics-intro sr-reveal">
           <div className="sr-eyebrow">TECNOLOGÍA QUE TRABAJA POR TI</div>
           <h2>Tu espacio, más <em>inteligente.</em></h2>
-          <p>Diseñamos automatizaciones prácticas para que iluminación, sensores y equipos colaboren. Partimos por lo que quieres resolver y elegimos la tecnología adecuada; no necesitas llenar tu casa de dispositivos.</p>
+          <p>Conectamos y mejoramos los dispositivos que ya tienes para que trabajen juntos desde Home Assistant. Revisamos cada equipo y su compatibilidad, aprovechamos lo que sirve y sumamos tecnología nueva solo cuando realmente aporta.</p>
           <a className="sr-button" href={whatsapp("Hola SubRed, quiero conversar sobre un proyecto de domótica")} target="_blank" rel="noreferrer">Conversemos sobre domótica <Arrow/></a>
         </div>
         <div className="sr-domotics-tools">
-          <article className="sr-domotics-tool sr-reveal"><span>01 / CONTROL LOCAL</span><h3>Home Assistant</h3><p>Un panel para reunir dispositivos compatibles, crear automatizaciones y consultar el estado de tu hogar. Según el equipo y la configuración, muchas funciones pueden mantenerse dentro de tu red local.</p></article>
+          <article className="sr-domotics-tool sr-reveal"><span>01 / TODO EN UN SOLO LUGAR</span><h3>Home Assistant</h3><p>Unificamos equipos compatibles de distintas marcas en un panel común. Creamos automatizaciones y vistas claras para controlar tu hogar; según los dispositivos y la configuración, muchas funciones pueden mantenerse dentro de tu red local.</p></article>
           <article className="sr-domotics-tool sr-reveal"><span>02 / SENSORES Y MANDOS</span><h3>Zigbee</h3><p>Una red de bajo consumo para sensores, botones y luces compatibles. Revisamos el modelo, el coordinador y la cobertura antes de definir qué integrar.</p></article>
           <article className="sr-domotics-tool sr-reveal"><span>03 / PROYECTOS A MEDIDA</span><h3>ESP32</h3><p>Microcontroladores para prototipos y sensores específicos, como temperatura o apertura. Cada proyecto se diseña según su uso, alimentación y conexión de red.</p></article>
           <article className="sr-domotics-tool sr-reveal"><span>04 / FABRICACIÓN PERSONALIZADA</span><h3>Impresión 3D</h3><p>Soportes, adaptadores y carcasas para ordenar o montar componentes. Las piezas impresas se seleccionan para su entorno; no sustituyen cajas eléctricas certificadas.</p></article>
         </div>
-        <div className="sr-domotics-example sr-reveal"><span className="sr-domotics-pulse"/><p><b>Un ejemplo:</b> al abrir una puerta, encender una luz de cortesía y recibir una notificación si la casa está vacía. La automatización se adapta a los dispositivos y reglas que definamos contigo.</p></div>
+        <div className="sr-domotics-example sr-reveal"><span className="sr-domotics-pulse"/><p><b>Partimos de lo que ya tienes:</b> revisamos tus equipos, conectividad y necesidades; integramos y mejoramos lo compatible, y te proponemos alternativas claras para lo que no se pueda unificar. La meta es que controles tu hogar desde Home Assistant.</p></div>
       </div>
     </section>
 
