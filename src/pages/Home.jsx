@@ -96,6 +96,7 @@ export default function Home() {
 
   return <main className="subred-home">
     <div className="sr-scroll-progress" style={{ "--sr-scroll-progress": `${scrollProgress}%` }} aria-hidden="true" />
+    <div className="sr-scroll-progress-vertical" aria-hidden="true"><span style={{ height: `${scrollProgress}%` }} /></div>
     <div className="sr-topline"><div className="sr-wrap">INGENIERÍA Y SOPORTE EN LA REGIÓN DE VALPARAÍSO <span>Quilpué · Villa Alemana · Viña del Mar</span></div></div>
     <header className="sr-header"><div className="sr-wrap sr-nav">
       <Link to="/" className="sr-brand" aria-label="SubRed Ingeniería, inicio"><img src={logo} alt="SubRed Ingeniería" /></Link>
