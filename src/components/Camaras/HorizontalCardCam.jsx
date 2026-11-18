@@ -62,7 +62,7 @@ const HorizontalCard = () => {
             <CardBody>
               <Heading size="lg" className="font-poppins py-1" fontSize={{ base: "24px", lg: "38px" }}>Seguridad Integral</Heading>
 
-              <Text py="3" fontSize={{ base: "15px", lg: "18px" }} className="font-poppins font-normal text-dimWhite">
+              <Text py="3" fontSize={{ base: "15px", lg: "18px" }} className="font-poppins font-normal text-dim-white">
                 Desde disuadir el crimen hasta proporcionar evidencia crucial en caso de incidentes, nuestras cámaras de seguridad ofrecen una amplia gama de beneficios. Con nuestras soluciones, puedes estar seguro de que tu seguridad está en buenas manos.
               </Text>
 
@@ -100,7 +100,7 @@ const HorizontalCard = () => {
             <CardBody>
               <Heading size="lg" className="font-poppins py-6" fontSize={{ base: "25px", lg: "38px" }}>Temor a sufrir un delito llega a nivel más alto en 9 años según Cadem: 82% está "muy preocupado"</Heading>
 
-             <Text py="4" fontSize={{ base: "14px", lg: "16px" }} className="font-poppins font-normal text-dimWhite">
+             <Text py="4" fontSize={{ base: "14px", lg: "16px" }} className="font-poppins font-normal text-dim-white">
              Según un reciente estudio de Cadem, este alarmante aumento en la percepción de inseguridad no solo es un llamado de atención para la sociedad en su conjunto, sino también una urgente señal para aquellos involucrados en la protección y seguridad de nuestras comunidades, como lo son los vecinos de toda la V región.
           
                 <br /><br />

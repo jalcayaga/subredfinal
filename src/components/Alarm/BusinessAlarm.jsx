@@ -12,7 +12,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
     } feature-card`}
   >
     <div
-      className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}
+      className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dim-blue`}
     >
       <img
         src={icon}
@@ -24,7 +24,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
       <h4 className="font-poppins font-semibold text-yell text-[20px] leading-[35px] mb-1">
         {title}
       </h4>
-      <p className="font-poppins font-normal text-dimWhite text-[16px] leading-[30px]">
+      <p className="font-poppins font-normal text-dim-white text-[16px] leading-[30px]">
         {content}
       </p>
     </div>

@@ -24,9 +24,9 @@ import ButtonAccess from "./ButtonAccess";
 //           {navLinks.map((nav, index) => (
 //             <li
 //               key={nav.id}
-//               className={`font-poppins font-normal text-dimWhite hover:text-secondary cursor-pointer text-[16px] 
+//               className={`font-poppins font-normal text-dim-white hover:text-secondary cursor-pointer text-[16px]
 //                           ${
-//                 active === nav.title ? "text-white text-[22px] " : "text-dimWhite"
+//                 active === nav.title ? "text-white text-[22px] " : "text-dim-white"
 //               } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
 //               onClick={() => setActive(nav.title)}
 //             >
@@ -56,9 +56,9 @@ import ButtonAccess from "./ButtonAccess";
 //               <li
 //                 key={nav.id}
 //                 className={`font-poppins font-medium 
-//                             text-dimWhite hover:text-secondary 
+//                             text-dim-white hover:text-secondary
 //                             cursor-pointer text-[16px] ${
-//                   active === nav.title ? "text-secondary text-[22px] mb-4" : "text-dimWhite"
+//                   active === nav.title ? "text-secondary text-[22px] mb-4" : "text-dim-white"
 //                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
 //                 onClick={() => setActive(nav.title)}
 //               >
@@ -93,9 +93,9 @@ const Navbar = () => {
           {navLinks.map((nav, index) => (
             <li
               key={nav.id}
-              className={`font-poppins font-normal text-dimWhite hover:text-secondary cursor-pointer text-[16px] 
+              className={`font-poppins font-normal text-dim-white hover:text-secondary cursor-pointer text-[16px]
                           ${
-                active === nav.title ? "text-white text-[25px] " : "text-dimWhite"
+                active === nav.title ? "text-white text-[25px] " : "text-dim-white"
               } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
               onClick={() => setActive(nav.title)}
             >
@@ -125,9 +125,9 @@ const Navbar = () => {
               <li
                 key={nav.id}
                 className={`font-poppins font-medium 
-                            text-dimWhite hover:text-secondary
+                            text-dim-white hover:text-secondary
                             cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-secondary text-[20px]" : "text-dimWhite"
+                  active === nav.title ? "text-secondary text-[20px]" : "text-dim-white"
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >

@@ -1,8 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-primary: #00040f;
+  --color-secondary: #00f6ff;
+  --color-dim-white: rgba(255, 255, 255, 0.7);
+  --color-dim-blue: rgba(9, 151, 124, 0.1);
+  --color-gn: #84bd00;
+  --color-yell: #ffff00;
+  --color-red: #e74c3c;
+
+  --font-poppins: "Poppins", sans-serif;
+
+  --breakpoint-xs: 30rem;
+  --breakpoint-ss: 38.75rem;
+  --breakpoint-sm: 48rem;
+  --breakpoint-md: 66.25rem;
+  --breakpoint-lg: 75rem;
+  --breakpoint-xl: 106.25rem;
+}
 
 :root {
   --black-gradient: linear-gradient(

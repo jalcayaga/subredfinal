@@ -25,7 +25,7 @@ const FeedbackCard = ({ content, name, title, img }) => (
           {name}
         </h4>
         <p className="font-poppins font-normal text-[16px] 
-                      leading-[25px] text-dimWhite">
+                      leading-[25px] text-dim-white">
           {title}
         </p>
       </div>
