@@ -49,6 +49,7 @@ function NetworkArt() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
@@ -71,7 +72,30 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.add("subred-scrollbar");
+    let frame = 0;
+    const updateProgress = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        setScrollProgress(scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0);
+      });
+    };
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+    return () => {
+      document.documentElement.classList.remove("subred-scrollbar");
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return <main className="subred-home">
+    <div className="sr-scroll-progress" style={{ "--sr-scroll-progress": `${scrollProgress}%` }} aria-hidden="true" />
     <div className="sr-topline"><div className="sr-wrap">INGENIERÍA Y SOPORTE EN LA REGIÓN DE VALPARAÍSO <span>Quilpué · Villa Alemana · Viña del Mar</span></div></div>
     <header className="sr-header"><div className="sr-wrap sr-nav">
       <Link to="/" className="sr-brand" aria-label="SubRed Ingeniería, inicio"><img src={logo} alt="SubRed Ingeniería" /></Link>
