@@ -24,27 +24,53 @@ const faqs = [
   ["¿Cómo puedo pedir una cotización?", "Escríbenos por WhatsApp con una breve descripción del proyecto y la comuna. Coordinaremos los siguientes pasos."],
 ];
 
+const assemblySteps = [
+  { title: "BASE", detail: "Terreno nivelado, radier y fundación listos." },
+  { title: "MUROS", detail: "Se levantan los recintos y se preparan los puntos de instalación." },
+  { title: "CUBIERTA", detail: "La techumbre protege la vivienda y deja visible el corte interior." },
+  { title: "ENERGÍA", detail: "Paneles solares, inversor y respaldo se conectan a la casa." },
+  { title: "SEGURIDAD", detail: "Cámaras, detectores, contactos y sirena cubren los accesos." },
+  { title: "CONTROL TOTAL", detail: "La central AX PRO y la pantalla táctil reúnen el sistema." },
+];
+
 function NetworkArt() {
   const [space, setSpace] = useState("hogar");
   const [activeModule, setActiveModule] = useState("all");
   const [exploded, setExploded] = useState(false);
+  const [assemblyStep, setAssemblyStep] = useState(0);
+  const [assemblyRun, setAssemblyRun] = useState(0);
   const useCases = {
     hogar: { title: "Hogar", detail: "Cámaras, WiFi y domótica pensados para tu rutina.", tags: ["Seguridad", "Conectividad", "Domótica"] },
     negocio: { title: "Negocio", detail: "Seguridad, redes y respaldo para que tu operación siga.", tags: ["CCTV", "Redes", "Energía"] },
   };
   const selected = useCases[space];
 
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setAssemblyStep(assemblySteps.length - 1);
+      return undefined;
+    }
+    setAssemblyStep(0);
+    const timers = assemblySteps.slice(1).map((_, index) => window.setTimeout(
+      () => setAssemblyStep(index + 1),
+      720 * (index + 1),
+    ));
+    return () => timers.forEach(window.clearTimeout);
+  }, [assemblyRun]);
+
   return <div className="sr-network">
-    <div className={`sr-network-visual sr-anatomy-visual${exploded ? " is-exploded" : ""}`} data-active-module={activeModule}>
+    <div className={`sr-network-visual sr-anatomy-visual${exploded ? " is-exploded" : ""}`} data-active-module={activeModule} data-build-stage={assemblyStep}>
       <div className="sr-network-fallback">
       <div className="sr-network-glow" />
-      <HomeAnatomy />
+      <HomeAnatomy buildStage={assemblyStep} />
       <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> TODO CONECTADO <b>EN UN SOLO LUGAR</b></div>
       <div className="sr-float-card sr-float-bottom"><span className="sr-float-icon">⌂</span><span>HOGAR + NEGOCIO<small>Diseñado para tu espacio</small></span></div>
       </div>
     </div>
     <div className="sr-hero-inspector">
-      <div className="sr-hero-inspector-top"><span className="sr-inspector-hint">CASA ISOMÉTRICA · EXPLORA SUS SISTEMAS</span><button type="button" className="sr-explode-button" aria-pressed={exploded} onClick={() => setExploded(!exploded)}>{exploded ? "Integrar sistemas" : "Ver capas"}</button></div>
+      <div className="sr-hero-inspector-top"><span className="sr-inspector-hint">MONTAJE INTERACTIVO · {String(assemblyStep + 1).padStart(2, "0")} / 06</span><div className="sr-assembly-actions"><button type="button" className="sr-replay-button" onClick={() => { setExploded(false); setAssemblyRun((run) => run + 1); }}>Repetir montaje</button><button type="button" className="sr-explode-button" aria-pressed={exploded} onClick={() => setExploded(!exploded)}>{exploded ? "Integrar sistemas" : "Ver capas"}</button></div></div>
+      <div className="sr-assembly-progress" aria-hidden="true"><span style={{ width: `${(assemblyStep / (assemblySteps.length - 1)) * 100}%` }} /></div>
+      <p className="sr-assembly-caption" aria-live="polite"><b>{assemblySteps[assemblyStep].title}</b><span>{assemblySteps[assemblyStep].detail}</span></p>
       <div className="sr-hero-module-tabs" role="group" aria-label="Seleccionar un sistema de la vivienda">
         <button type="button" aria-pressed={activeModule === "all"} onClick={() => setActiveModule("all")}>Vista general</button>
         {heroModules.map(([key, label]) => <button key={key} type="button" aria-pressed={activeModule === key} onClick={() => setActiveModule(key)}>{label}</button>)}

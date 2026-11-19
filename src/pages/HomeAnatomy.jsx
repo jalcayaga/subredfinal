@@ -3,8 +3,8 @@
  * shown where it physically belongs. SVG keeps this explainer available when
  * the browser has no WebGL context.
  */
-export default function HomeAnatomy() {
-  return <svg className="sr-anatomy-art" viewBox="0 0 560 460" role="img" aria-label="Ilustración isométrica de una vivienda contemporánea en corte: paneles solares, batería, cámaras, sensores, red Wi-Fi y automatización">
+export default function HomeAnatomy({ buildStage = 5 }) {
+  return <svg className="sr-anatomy-art" data-build-stage={buildStage} viewBox="0 0 560 460" role="img" aria-label="Montaje isométrico de una vivienda protegida con sistema de alarma AX PRO, sensores, cámaras, sirena, pantalla táctil y energía solar">
     <defs>
       <linearGradient id="an-base" x2="0" y2="1"><stop stopColor="#66756f"/><stop offset="1" stopColor="#343e3b"/></linearGradient>
       <linearGradient id="an-wall" x2=".95" y2="1"><stop stopColor="#e5e3da"/><stop offset="1" stopColor="#b9b8ae"/></linearGradient>
@@ -99,6 +99,11 @@ export default function HomeAnatomy() {
       <path d="m449 248 12-7 11 6-12 7z" fill="#263032" stroke="#c8d0c6" strokeWidth="1"/><path d="m458 254 2 8 7-4-2-8z" fill="#4a5854"/><circle cx="464" cy="255" r="1.8" fill="#73d5dc"/>
       <path d="m244 222 9-5 8 5-9 5z" fill="#4f5a55" stroke="#d7d8cc"/><circle cx="253" cy="222" r="1.4" fill="#84bd00"/>
       <path d="m181 297 10-6 9 5-10 6z" fill="#ece7d9" stroke="#68736b"/><circle cx="191" cy="297" r="1.5" fill="#84bd00"/>
+      {/* Exterior siren: weatherproof body, speaker grille and visible status beacon. */}
+      <path d="m474 269 13-8 11 6-13 8z" fill="#253033" stroke="#d0d6ca" strokeWidth="1"/>
+      <path d="m474 269 11 6v18l-11-6z" fill="#d7d9cf" stroke="#68736b" strokeWidth=".8"/>
+      <path d="m477 273 5 3v9l-5-3zm6 3 1 1v9l-1-1zm3 2 1 1v9l-1-1z" fill="#76847d"/>
+      <path d="m485 266 5-3 4 2-5 3z" fill="#b94f49" filter="url(#an-glow)"/>
     </g>
     {/* Network and automation devices are placed inside the living area and utility room. */}
     <g className="an-network">
@@ -110,6 +115,22 @@ export default function HomeAnatomy() {
       <path d="m334 268 14-8 13 7-14 9z" fill="#e4e3d8" stroke="#67726b"/><circle cx="347" cy="268" r="2" fill="#84bd00"/>
       <path d="m316 335 10-6 10 6-10 6z" fill="#354440" stroke="#c5c8ba"/><circle cx="326" cy="335" r="1.5" fill="#72d4d7"/>
       <path d="m383 279 10-6 10 6-10 6z" fill="#e0e0d6" stroke="#69736b"/><circle cx="393" cy="279" r="1.5" fill="#84bd00"/>
+    </g>
+    {/* Alarm hub and touch panel: the user-facing centre of an AX PRO-like setup. */}
+    <g className="an-control">
+      {/* Wall-mounted touch screen, angled to the room with a live home status view. */}
+      <path d="m292 243 19-11 20 11-19 12z" fill="#f0eee4" stroke="#596560" strokeWidth="1.5"/>
+      <path d="m294 243 17 10v25l-17-10z" fill="#202e31" stroke="#aeb8ac" strokeWidth="1"/>
+      <path d="m297 246 11 6v3l-11-6z" fill="#6c8580"/><circle cx="303" cy="254" r="2" fill="#84bd00"/>
+      <path d="m297 254 11 6m-11-2 7 4m-7 1 9 5" stroke="#a5c0b1" strokeWidth="1"/>
+      <path d="m311 253 18-10v28l-18 10z" fill="#f0eee4" stroke="#7a857d" strokeWidth="1"/>
+      {/* Alarm hub with radio/status light and a subtle engraved model mark. */}
+      <path d="m402 273 22-13 22 12-22 13z" fill="#f2f0e7" stroke="#717c74" strokeWidth="1"/>
+      <path d="m402 273 22 12v30l-22-12z" fill="#d6d9cf" stroke="#747f77" strokeWidth="1"/>
+      <path d="m424 285 22-13v30l-22 13z" fill="#aeb7ae" stroke="#68736d" strokeWidth="1"/>
+      <path d="m407 277 12 7v15l-12-7z" fill="#39494a"/><circle cx="412" cy="283" r="1.5" fill="#83bd00"/><circle cx="416" cy="285" r="1" fill="#6fc5d1"/>
+      <path d="m428 290 12-7m-12 11 12-7m-12 11 12-7" stroke="#7d8980" strokeWidth="1"/>
+      <text x="407" y="306" fill="#46534c" fontSize="3.8" fontFamily="system-ui,sans-serif" fontWeight="800" letterSpacing=".5" transform="rotate(29 407 306)">AX PRO</text>
     </g>
     {/* Subtle service routes and device signals terminate on actual equipment. */}
     <g className="an-signals" fill="none" stroke="#66c5c7" strokeWidth="1" strokeDasharray="2 5" opacity=".72">

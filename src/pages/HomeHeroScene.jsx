@@ -9,10 +9,10 @@ const modules = [
 
 const moduleCopy = {
   all: "Una solución coordinada, diseñada para el lugar y para quienes lo usan.",
-  camera: "Cámaras, sensores de movimiento y contactos protegen accesos y espacios clave.",
+  camera: "Una alarma tipo AX PRO integra sensores, contactos, cámaras y sirena para proteger accesos y espacios clave.",
   network: "Wi-Fi y cableado para que tus equipos se mantengan conectados.",
   energy: "Paneles y respaldo definidos según el consumo y las prioridades.",
-  automation: "Dispositivos compatibles trabajando en conjunto con Home Assistant.",
+  automation: "La pantalla táctil y la central reúnen alarmas y automatizaciones en un control sencillo.",
 };
 
 function makeBox(THREE, parent, size, position, material, module = "all") {
