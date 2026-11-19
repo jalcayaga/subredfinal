@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { logo, Foto7Slide, Foto11Slide, AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage04 } from "../assets";
+import { logo } from "../assets";
 import { useEffect, useState } from "react";
 import "./ServicePage.css";
 
@@ -8,7 +8,7 @@ const whatsapp = (message) => `https://wa.me/56935989392?text=${encodeURICompone
 const services = {
   camera: {
     index: "01", eyebrow: "SEGURIDAD · CÁMARAS", navName: "Cámaras",
-    image: Foto7Slide, imageAlt: "Monitores con imágenes de cámaras de seguridad", accent: "#00c9e4",
+    accent: "#00c9e4",
     title: "Ve con claridad lo que importa.",
     intro: "Diseñamos e instalamos sistemas de cámaras para que puedas revisar tus espacios con una imagen útil, una ubicación bien pensada y acceso configurado para ti.",
     outcome: "Cámaras y visualización pensadas para tu espacio",
@@ -23,7 +23,7 @@ const services = {
   },
   alarm: {
     index: "02", eyebrow: "SEGURIDAD · ALARMAS", navName: "Alarmas",
-    image: AXPROLandingpage02, imageAlt: "Sensor de alarma instalado en el techo de una vivienda", accent: "#a0df26",
+    accent: "#a0df26",
     title: "Protección que se adapta a tu rutina.",
     intro: "Configuramos alarmas para hogares y pequeños negocios, considerando accesos, zonas de circulación y la forma en que quieres recibir alertas.",
     outcome: "Un sistema claro, configurado y explicado",
@@ -38,7 +38,7 @@ const services = {
   },
   networks: {
     index: "03", eyebrow: "CONECTIVIDAD · REDES", navName: "Redes",
-    image: Foto11Slide, imageAlt: "Trabajo técnico de instalación en terreno", accent: "#6bd0c2",
+    accent: "#6bd0c2",
     title: "Conexión estable en los lugares que usas.",
     intro: "Revisamos tu red Wi-Fi y cableada para encontrar por qué falla y mejorar la cobertura donde realmente la necesitas, en casa o en un espacio de trabajo.",
     outcome: "Una red ordenada y adecuada para tus dispositivos",
@@ -53,7 +53,7 @@ const services = {
   },
   energy: {
     index: "04", eyebrow: "ENERGÍA · RESPALDO", navName: "Energía",
-    image: AXPROLandingpage04, imageAlt: "Vivienda con paneles solares y control desde un teléfono", accent: "#efc163",
+    accent: "#efc163",
     title: "Energía pensada para tu proyecto.",
     intro: "Evaluamos alternativas de respaldo y soluciones solares según los equipos que necesitas mantener funcionando y las condiciones del lugar.",
     outcome: "Una propuesta basada en consumo y prioridades reales",
@@ -68,7 +68,7 @@ const services = {
   },
   domotics: {
     index: "05", eyebrow: "HOGAR INTELIGENTE · DOMÓTICA", navName: "Domótica",
-    image: AXPROLandingpage01, imageAlt: "Vivienda inteligente con control desde un teléfono", accent: "#84bd00",
+    accent: "#84bd00",
     title: "Todo tu hogar, trabajando en conjunto.",
     intro: "Conectamos y mejoramos dispositivos que ya tienes para reunir los compatibles en Home Assistant. Sumamos equipos nuevos solo cuando ayudan a completar lo que buscas.",
     outcome: "Una experiencia unificada y sencilla de usar",
@@ -86,6 +86,69 @@ const services = {
 const serviceLinks = [
   ["Cámaras", "/camara"], ["Alarmas", "/alarma"], ["Redes", "/redes"], ["Energía", "/energia"], ["Domótica", "/domotica"],
 ];
+
+function ServiceArtwork({ serviceKey }) {
+  return (
+    <div className={`sr-detail-art sr-detail-art-${serviceKey}`} aria-hidden="true">
+      <div className="sr-detail-art-grid" />
+      <div className="sr-detail-art-glow" />
+      <svg viewBox="0 0 480 420" className="sr-detail-art-svg" fill="none">
+        <g className="sr-art-lines" stroke="var(--sr-detail-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          {serviceKey === "camera" && <>
+            <path d="M141 162h174l26 25v102H141z" fill="rgba(9,24,35,.92)" />
+            <path d="M176 161l18-28h68l19 28" fill="rgba(9,24,35,.92)" />
+            <circle cx="239" cy="237" r="57" fill="rgba(4,14,23,.8)" />
+            <circle cx="239" cy="237" r="36" />
+            <circle cx="239" cy="237" r="12" fill="var(--sr-detail-accent)" opacity=".32" />
+            <path d="M337 209h21v42h-21M210 287v29h58v-29" />
+            <path className="sr-art-scanline" d="M144 184h194" opacity=".7" />
+            <path d="M89 134v-20h20M391 134v-20h-20M89 286v20h20M391 286v20h-20" opacity=".55" />
+          </>}
+          {serviceKey === "alarm" && <>
+            <path d="M240 96 343 137v72c0 68-45 112-103 145-58-33-103-77-103-145v-72z" fill="rgba(9,24,35,.92)" />
+            <path d="M194 231h31l19-43 25 89 18-46h31" />
+            <circle className="sr-art-ripple" cx="240" cy="224" r="131" opacity=".23" />
+            <circle className="sr-art-ripple sr-art-ripple-delay" cx="240" cy="224" r="158" opacity=".14" />
+            <path d="M88 340h304M110 358h260" opacity=".34" />
+          </>}
+          {serviceKey === "networks" && <>
+            <path d="M240 210 126 126M240 210l115-84M240 210l-117 100M240 210l117 100" opacity=".55" />
+            <path d="M126 126v-27M355 126V99M123 310v27M357 310v27" opacity=".35" />
+            <rect x="202" y="174" width="76" height="72" rx="18" fill="rgba(9,24,35,.96)" />
+            <path d="M222 217a25 25 0 0 1 36 0M229 225a15 15 0 0 1 22 0" />
+            <circle cx="240" cy="234" r="2.5" fill="var(--sr-detail-accent)" />
+            <circle className="sr-art-node" cx="126" cy="126" r="20" fill="rgba(9,24,35,.94)" />
+            <circle className="sr-art-node" cx="355" cy="126" r="20" fill="rgba(9,24,35,.94)" />
+            <circle className="sr-art-node" cx="123" cy="310" r="20" fill="rgba(9,24,35,.94)" />
+            <circle className="sr-art-node" cx="357" cy="310" r="20" fill="rgba(9,24,35,.94)" />
+            <circle className="sr-art-packet" cx="164" cy="154" r="4" fill="var(--sr-detail-accent)" />
+          </>}
+          {serviceKey === "energy" && <>
+            <circle className="sr-art-sun" cx="334" cy="119" r="34" fill="var(--sr-detail-accent)" opacity=".18" />
+            <circle cx="334" cy="119" r="21" fill="var(--sr-detail-accent)" opacity=".78" />
+            <path d="m93 263 210-85 70 33-210 87z" fill="rgba(9,24,35,.94)" />
+            <path d="m163 271 210-86M128 283l210-85M199 250l-7 40M250 230l-8 40M300 210l-8 40" opacity=".55" />
+            <path d="M353 250h47v102h-47zM363 239h27v11h-27z" fill="rgba(9,24,35,.95)" />
+            <path d="M365 315h23M365 296h23M365 277h23" opacity=".68" />
+            <path className="sr-art-charge" d="m379 265-10 22h11l-8 21 19-27h-12l8-16z" fill="var(--sr-detail-accent)" />
+          </>}
+          {serviceKey === "domotics" && <>
+            <path d="m106 199 134-106 134 106v148H106z" fill="rgba(9,24,35,.94)" />
+            <path d="M207 347v-88h66v88M139 220h53v47h-53zM288 220h53v47h-53z" />
+            <path d="M164 220v47M314 220v47M139 243h53M288 243h53" opacity=".42" />
+            <circle className="sr-art-light sr-art-light-one" cx="165" cy="243" r="7" fill="var(--sr-detail-accent)" />
+            <circle className="sr-art-light sr-art-light-two" cx="314" cy="243" r="7" fill="var(--sr-detail-accent)" />
+            <path d="M240 128v-26M196 151l-17-17M284 151l17-17" opacity=".64" />
+            <circle cx="240" cy="92" r="8" fill="var(--sr-detail-accent)" />
+            <path d="M95 365h290" opacity=".4" />
+          </>}
+        </g>
+      </svg>
+      <span className="sr-detail-art-tag">{serviceKey === "camera" ? "CCTV" : serviceKey === "alarm" ? "ZONAS Y SENSORES" : serviceKey === "networks" ? "WI-FI · CABLEADO" : serviceKey === "energy" ? "GENERACIÓN · RESPALDO" : "HOME ASSISTANT"}</span>
+      <div className="sr-detail-art-caption"><span>DISEÑO SUBRED</span><b>{serviceKey === "camera" ? "Cobertura clara" : serviceKey === "alarm" ? "Protección por zonas" : serviceKey === "networks" ? "Conexión donde importa" : serviceKey === "energy" ? "Energía para lo esencial" : "Todo trabajando en conjunto"}</b></div>
+    </div>
+  );
+}
 
 export default function ServicePage() {
   const serviceKey = { "/camara": "camera", "/alarma": "alarm", "/redes": "networks", "/energia": "energy", "/domotica": "domotics" }[window.location.pathname] ?? "camera";
@@ -123,11 +186,8 @@ export default function ServicePage() {
       <section className="sr-detail-hero"><div className="sr-wrap sr-detail-hero-grid">
         <div className="sr-detail-copy"><div className="sr-eyebrow">{service.eyebrow}</div><h1>{service.title}</h1><p>{service.intro}</p><div className="sr-detail-actions"><a className="sr-button" href={whatsapp(service.contact)} target="_blank" rel="noreferrer">Cuéntanos tu proyecto <span aria-hidden="true">↗</span></a><a href="#soluciones" className="sr-detail-text-link">Ver qué incluye <span aria-hidden="true">↓</span></a></div></div>
         <div className="sr-detail-visual">
-          <img className="sr-detail-photo" src={service.image} alt={service.imageAlt} fetchPriority="high" />
-          <div className="sr-detail-photo-shade" aria-hidden="true" />
-          <span className="sr-detail-visual-index">SUBRED / {service.index}</span>
-          <span className="sr-detail-photo-label">{service.eyebrow}</span>
-          <div className="sr-detail-visual-caption"><span>{service.navName.toUpperCase()}</span><b>{service.outcome}</b></div>
+          <ServiceArtwork serviceKey={serviceKey} />
+          <span className="sr-detail-visual-label">{service.eyebrow}</span>
         </div>
         <div className="sr-detail-index"><span>{service.index} / 05</span><span>Soluciones claras · Instalación explicada</span></div>
       </div></section>
