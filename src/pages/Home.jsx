@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { logo, Foto7Slide, Foto11Slide, AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage04 } from "../assets";
-import HomeHeroScene, { modules as heroModules, moduleCopy } from "./HomeHeroScene";
+import HomeAnatomy from "./HomeAnatomy";
+import { modules as heroModules, moduleCopy } from "./HomeHeroScene";
 import "./Home.css";
 
 const whatsapp = (message = "Hola SubRed, quiero cotizar") =>
@@ -27,73 +28,23 @@ function NetworkArt() {
   const [space, setSpace] = useState("hogar");
   const [activeModule, setActiveModule] = useState("all");
   const [exploded, setExploded] = useState(false);
-  const [sceneAvailable, setSceneAvailable] = useState(false);
-  const [sceneFailed, setSceneFailed] = useState(false);
   const useCases = {
     hogar: { title: "Hogar", detail: "Cámaras, WiFi y domótica pensados para tu rutina.", tags: ["Seguridad", "Conectividad", "Domótica"] },
     negocio: { title: "Negocio", detail: "Seguridad, redes y respaldo para que tu operación siga.", tags: ["CCTV", "Redes", "Energía"] },
   };
   const selected = useCases[space];
 
-  useEffect(() => {
-    const handleSceneSelection = (event) => setActiveModule(event.detail);
-    const handleSceneReady = (event) => {
-      setSceneAvailable(event.detail);
-      setSceneFailed(!event.detail);
-      if (!event.detail) setExploded(true);
-    };
-    window.addEventListener("subred-hero-select", handleSceneSelection);
-    window.addEventListener("subred-hero-ready", handleSceneReady);
-    return () => {
-      window.removeEventListener("subred-hero-select", handleSceneSelection);
-      window.removeEventListener("subred-hero-ready", handleSceneReady);
-    };
-  }, []);
-
   return <div className="sr-network">
-    <div className={`sr-network-visual${exploded ? " is-exploded" : ""}${sceneFailed ? " is-fallback" : ""}`} data-active-module={activeModule}>
-      <div className="sr-network-fallback" role="img" aria-label="Casa isométrica con cámaras, conexión Wi-Fi, energía solar y automatización integradas">
+    <div className={`sr-network-visual sr-anatomy-visual${exploded ? " is-exploded" : ""}`} data-active-module={activeModule}>
+      <div className="sr-network-fallback">
       <div className="sr-network-glow" />
-      <svg viewBox="0 0 560 460" aria-hidden="true">
-        <defs>
-          <linearGradient id="sr-house-front" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#d8d3c8"/><stop offset="1" stopColor="#aaa79e"/></linearGradient>
-          <linearGradient id="sr-house-side" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#777e7b"/><stop offset="1" stopColor="#454e4c"/></linearGradient>
-          <linearGradient id="sr-roof" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#424a48"/><stop offset="1" stopColor="#242c2b"/></linearGradient>
-          <linearGradient id="sr-house-glass" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#9bbab4"/><stop offset=".55" stopColor="#587571"/><stop offset="1" stopColor="#2d4041"/></linearGradient>
-          <linearGradient id="sr-house-wood" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#a77c56"/><stop offset="1" stopColor="#634934"/></linearGradient>
-          <filter id="sr-house-glow"><feGaussianBlur stdDeviation="14"/></filter>
-          <filter id="sr-house-shadow" x="-30%" y="-30%" width="160%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="9"/><feOffset dy="12"/><feComponentTransfer><feFuncA type="linear" slope=".32"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <ellipse cx="284" cy="410" rx="204" ry="24" fill="#121817" opacity=".52" filter="url(#sr-house-glow)" />
-        <path d="M59 382 276 255l226 126-216 72z" fill="#74766e" stroke="#b1aea4" strokeOpacity=".45" filter="url(#sr-house-shadow)" />
-        <path d="M85 375 276 265l194 108-190 64z" fill="#aaa79d" opacity=".58" />
-        <path d="M105 378 281 462V359l-177-97z" fill="url(#sr-house-front)" stroke="#eeeadf" strokeOpacity=".34" strokeWidth="1.5" />
-        <path d="m281 462 174-108V251L281 359z" fill="url(#sr-house-side)" stroke="#aab0a8" strokeOpacity=".24" strokeWidth="1.5" />
-        <g className="sr-fallback-roof" filter="url(#sr-house-shadow)"><path d="m104 262 172-105 179 94-174 108z" fill="url(#sr-roof)" stroke="#8c928b" strokeOpacity=".65" strokeWidth="1.5" /><path d="m88 260 187-116 196 105-16 10-180-96-169 105z" fill="#575e59" stroke="#b0b2a9" strokeOpacity=".58" strokeWidth="1.5" /></g>
-        <g className="sr-fallback-energy"><path d="m154 222 89-55 92 49-90 56z" fill="#263840" stroke="#778c8a" strokeOpacity=".78" /><path d="m170 223 84-52m-57 62 84-51m-56 63 84-51m-123 28 92 49m-69-65 92 49m-68-65 92 49" stroke="#8d9d96" strokeOpacity=".52" strokeWidth=".8" /></g>
-        <g className="sr-fallback-security"><path d="m126 250 14-8 12 7-14 8z" fill="#252c2b" stroke="#c2c3b9" strokeWidth=".7"/><path d="m137 256 2 7 7-4-2-7z" fill="#343c39" stroke="#a6aaa1" strokeWidth=".6"/><circle cx="143" cy="256" r="1.25" fill="#79b9b5"/><path d="m420 264 13-8 11 6-13 8z" fill="#252c2b" stroke="#c2c3b9" strokeWidth=".7"/><path d="m430 270 2 7 7-4-2-7z" fill="#343c39" stroke="#a6aaa1" strokeWidth=".6"/><circle cx="436" cy="270" r="1.25" fill="#79b9b5"/></g>
-        <g className="sr-fallback-network"><path d="m221 353 22 12v28l-22-13z" fill="#303636" stroke="#7c8580" strokeWidth=".9"/><path d="m226 357 12 7v18l-12-7z" fill="#5e7a77" opacity=".8"/><path d="m232 350q3-8 9-9m-13 6q4-13 14-14" fill="none" stroke="#91b1a9" strokeWidth="1" opacity=".68"/></g>
-        <g className="sr-fallback-automation"><path d="m345 349 19-12v27l-19 12z" fill="#303636" stroke="#a5a79f" strokeWidth=".8"/><path d="m350 350 9-6v14l-9 6z" fill="#73847a"/><circle cx="354" cy="365" r="1.2" fill="#b4bd9b"/></g>
-        <g className="sr-fallback-cladding" fill="none" stroke="#846a50" strokeWidth=".8" opacity=".8"><path d="m108 269 17 10v67m-12-70v68m-4-63v65m-4-60v62m13-56v59m-5-63v65"/><path d="m108 269 17 10"/></g>
-        <g fill="none" stroke="#202827" strokeWidth="3"><path d="m132 279 66 37v66l-66-37z"/><path d="m220 329 43 24v65l-43-24z"/><path d="m317 337 76-47v58l-76 47z"/></g>
-        <path d="m136 284 58 33v59l-58-33z" fill="url(#sr-house-glass)"/><path d="m164 300 3 2v58l-3-2z" fill="#253130" opacity=".8"/>
-        <path d="m224 334 35 20v58l-35-20z" fill="url(#sr-house-wood)"/><circle cx="252" cy="365" r="1.7" fill="#d2ba91"/>
-        <path d="m323 340 65-40v42l-65 40z" fill="url(#sr-house-glass)"/><path d="m356 320 2 46m-31-27 65-40" fill="none" stroke="#2e3937" strokeWidth="1.3" opacity=".85"/>
-        <path d="m286 400 45 27v-5l-45-27z" fill="#535954"/><path d="m296 403 2 20m10-15 2 21m10-16 2 22" stroke="#b7b1a3" strokeWidth=".8" opacity=".8"/>
-        <g className="sr-house-signal" fill="none" stroke="#789f98" strokeWidth=".8" strokeDasharray="2 5" opacity=".55"><path d="m143 250-28-25-30-10M436 263l27-34 29-12M232 350l-8-52-3-24M354 347l38-29 35-10"/></g>
-        <g className="sr-house-device"><path d="M85 206 115 225M493 212 462 231M223 274l10 23M432 281l-38 29" stroke="#85958c" strokeWidth=".8"/><circle cx="84" cy="205" r="2.3" fill="#83b5ad"/><circle cx="493" cy="211" r="2.3" fill="#a6aa86"/><circle cx="223" cy="273" r="1.7" fill="#83b5ad"/><circle cx="432" cy="280" r="1.7" fill="#a6aa86"/><circle className="sr-house-pulse" cx="84" cy="205" r="10"/><circle className="sr-house-pulse sr-house-pulse-delay" cx="493" cy="211" r="10"/></g>
-        <g fill="#c9d0c9" fontFamily="system-ui,sans-serif" fontSize="8" fontWeight="700" letterSpacing="1.2">
-          <text x="29" y="184">SEGURIDAD</text><text x="451" y="187">ENERGÍA</text><text x="28" y="405">RED LOCAL</text><text x="456" y="418">CONTROL</text>
-        </g>
-      </svg>
+      <HomeAnatomy />
       <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> TODO CONECTADO <b>EN UN SOLO LUGAR</b></div>
       <div className="sr-float-card sr-float-bottom"><span className="sr-float-icon">⌂</span><span>HOGAR + NEGOCIO<small>Diseñado para tu espacio</small></span></div>
-      {sceneFailed && <span className="sr-fallback-view-label">VISTA TÉCNICA · SISTEMAS DESPLEGADOS</span>}
       </div>
-      <HomeHeroScene activeModule={activeModule} exploded={exploded} />
     </div>
     <div className="sr-hero-inspector">
-      <div className="sr-hero-inspector-top"><span className="sr-inspector-hint">{sceneAvailable ? "MODELO 3D · ARRASTRA PARA GIRAR" : sceneFailed ? "VISTA TÉCNICA · WEBGL NO DISPONIBLE" : "PREPARANDO MODELO INTERACTIVO"}</span><button type="button" className="sr-explode-button" aria-pressed={exploded} onClick={() => setExploded(!exploded)}>{exploded ? "Integrar sistemas" : "Separar sistemas"}</button></div>
+      <div className="sr-hero-inspector-top"><span className="sr-inspector-hint">CASA ISOMÉTRICA · EXPLORA SUS SISTEMAS</span><button type="button" className="sr-explode-button" aria-pressed={exploded} onClick={() => setExploded(!exploded)}>{exploded ? "Integrar sistemas" : "Ver capas"}</button></div>
       <div className="sr-hero-module-tabs" role="group" aria-label="Seleccionar un sistema de la vivienda">
         <button type="button" aria-pressed={activeModule === "all"} onClick={() => setActiveModule("all")}>Vista general</button>
         {heroModules.map(([key, label]) => <button key={key} type="button" aria-pressed={activeModule === key} onClick={() => setActiveModule(key)}>{label}</button>)}
