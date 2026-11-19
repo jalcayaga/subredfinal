@@ -26,6 +26,22 @@ function makeBox(THREE, parent, size, position, material, module = "all") {
   return mesh;
 }
 
+function makeSlats(THREE, parent, size, count, start, spacing, material) {
+  const geometry = new THREE.BoxGeometry(...size);
+  const mesh = new THREE.InstancedMesh(geometry, material.clone(), count);
+  const item = new THREE.Object3D();
+  for (let index = 0; index < count; index++) {
+    item.position.set(start[0] + index * spacing, start[1], start[2]);
+    item.updateMatrix();
+    mesh.setMatrixAt(index, item.matrix);
+  }
+  mesh.instanceMatrix.needsUpdate = true;
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  parent.add(mesh);
+  return mesh;
+}
+
 function setModuleEmphasis(root, active) {
   root.traverse((object) => {
     const materials = Array.isArray(object.material) ? object.material : [object.material];
@@ -67,10 +83,14 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.35));
         renderer.setClearColor(0x000000, 0);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.15;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-        camera.position.set(9.2, 7.4, 11.8);
+        camera.position.set(10.3, 7.8, 13.2);
         camera.lookAt(0, 1.1, 0);
         controls = new OrbitControls(camera, renderer.domElement);
         controls.target.set(0, 1.05, 0);
@@ -78,117 +98,148 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         controls.dampingFactor = 0.07;
         controls.enablePan = false;
         controls.minDistance = 9;
-        controls.maxDistance = 19;
+        controls.maxDistance = 23;
         controls.minPolarAngle = 0.48;
         controls.maxPolarAngle = 1.35;
         controls.autoRotate = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         controls.autoRotateSpeed = 0.38;
 
-        scene.add(new THREE.HemisphereLight(0xdaf8ff, 0x07111b, 2.1));
-        const keyLight = new THREE.DirectionalLight(0x8beeff, 3.2);
-        keyLight.position.set(-5, 10, 7);
+        scene.add(new THREE.HemisphereLight(0xe7f0f4, 0x202723, 1.6));
+        const keyLight = new THREE.DirectionalLight(0xffe5ca, 3.4);
+        keyLight.position.set(-7, 12, 8);
+        keyLight.castShadow = true;
+        keyLight.shadow.mapSize.set(1024, 1024);
+        keyLight.shadow.camera.left = -10;
+        keyLight.shadow.camera.right = 10;
+        keyLight.shadow.camera.top = 10;
+        keyLight.shadow.camera.bottom = -10;
+        keyLight.shadow.bias = -0.00025;
         scene.add(keyLight);
-        const greenLight = new THREE.PointLight(0x84bd00, 17, 20);
-        greenLight.position.set(5, 4, -4);
-        scene.add(greenLight);
+        const fillLight = new THREE.DirectionalLight(0x9bdde4, 1.4);
+        fillLight.position.set(8, 6, 4);
+        scene.add(fillLight);
 
-        const mat = (color, emissive = 0x000000, metalness = 0.1, roughness = 0.68) => new THREE.MeshStandardMaterial({ color, emissive, emissiveIntensity: 0.1, metalness, roughness });
-        const wallMat = mat(0x193643, 0x09202a);
-        const darkMat = mat(0x0a1721, 0x06121a);
-        const roofMat = mat(0x234a55, 0x071e23, 0.32);
-        const glassMat = new THREE.MeshStandardMaterial({ color: 0x36cfe1, emissive: 0x00a9be, emissiveIntensity: 1.1, metalness: 0.3, roughness: 0.2 });
-        const solarMat = mat(0x315d43, 0x163b1b, 0.38, 0.36);
-        const cyanMat = mat(0x00c9e4, 0x00a9be, 0.24, 0.38);
-        const greenMat = mat(0x84bd00, 0x456500, 0.18, 0.4);
+        const mat = (color, emissive = 0x000000, metalness = 0.05, roughness = 0.82) => new THREE.MeshStandardMaterial({ color, emissive, emissiveIntensity: 0.02, metalness, roughness });
+        const plaster = mat(0xd6d2c7);
+        const concrete = mat(0x777873);
+        const charcoal = mat(0x252d30, 0x11191a, 0.18, 0.68);
+        const cedar = mat(0x755744, 0x17100a, 0.02, 0.86);
+        const roofMat = mat(0x343b3c, 0x080b0b, 0.25, 0.72);
+        const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x73999b, emissive: 0x15282a, emissiveIntensity: 0.18, roughness: 0.18, metalness: 0.12, transparent: true, opacity: 0.7, depthWrite: false });
+        const solarMat = mat(0x18303a, 0x071219, 0.42, 0.35);
+        const statusCyan = mat(0x58c2c5, 0x1b6d72, 0.12, 0.45);
+        const statusGreen = mat(0x91a966, 0x34431d, 0.08, 0.55);
+        const pathMat = mat(0x9d9b90);
         const house = new THREE.Group();
         model = new THREE.Group();
         scene.add(model);
         model.add(house);
 
-        // A small architectural cutaway gives the systems a real place in the scene.
-        makeBox(THREE, house, [6.2, 0.34, 5], [0, 0.18, 0], darkMat);
-        makeBox(THREE, house, [0.25, 3.05, 4.75], [-2.83, 1.86, 0], wallMat);
-        makeBox(THREE, house, [0.25, 3.05, 4.75], [2.83, 1.86, 0], wallMat);
-        makeBox(THREE, house, [5.9, 3.05, 0.25], [0, 1.86, -2.35], wallMat);
-        makeBox(THREE, house, [0.92, 2.35, 0.12], [-2.18, 1.36, 2.12], mat(0x1c3339, 0x0a201e));
-        makeBox(THREE, house, [0.92, 2.35, 0.12], [2.18, 1.36, 2.12], mat(0x1c3339, 0x0a201e));
-        makeBox(THREE, house, [1.7, 0.38, 0.16], [0, 2.78, 2.22], wallMat);
-        makeBox(THREE, house, [0.94, 1.18, 0.08], [0, 0.94, 2.22], mat(0x1c3339, 0x0a201e));
-        makeBox(THREE, house, [1.1, 1.12, 0.12], [-1.78, 1.85, -2.18], glassMat);
-        makeBox(THREE, house, [1.1, 1.12, 0.12], [1.78, 1.85, -2.18], glassMat);
-        makeBox(THREE, house, [0.08, 1.16, 0.1], [-1.78, 1.85, -2.12], cyanMat);
-        makeBox(THREE, house, [0.08, 1.16, 0.1], [1.78, 1.85, -2.12], cyanMat);
+        // Contemporary single-storey home: restrained materials, a glazed living area and a separate garage volume.
+        const site = makeBox(THREE, model, [12, 0.28, 8.4], [0, -0.04, 0], concrete);
+        site.receiveShadow = true;
+        makeBox(THREE, house, [7.25, 0.28, 5.6], [-0.7, 0.26, 0], charcoal);
+        makeBox(THREE, house, [6.95, 0.04, 5.28], [-0.7, 0.42, 0], mat(0xb9b5a9));
+
+        // Rear and side walls form a cutaway while keeping the architectural massing legible.
+        makeBox(THREE, house, [0.2, 3.1, 5.15], [-4.08, 1.98, -0.02], plaster);
+        makeBox(THREE, house, [0.2, 3.1, 5.15], [2.68, 1.98, -0.02], plaster);
+        makeBox(THREE, house, [6.95, 3.1, 0.2], [-0.7, 1.98, -2.52], plaster);
+        makeBox(THREE, house, [1.35, 3.1, 0.2], [-3.53, 1.98, 2.52], plaster);
+        makeBox(THREE, house, [0.25, 3.1, 0.2], [2.43, 1.98, 2.52], plaster);
+
+        // Wide framed glazing, timber entrance and vertical cedar screen.
+        makeBox(THREE, house, [3.9, 2.55, 0.075], [-0.98, 2.0, 2.36], glassMat);
+        for (const x of [-2.93, -1.95, 0.02, 0.99]) makeBox(THREE, house, [0.055, 2.62, 0.14], [x, 2.0, 2.42], charcoal);
+        makeBox(THREE, house, [4.0, 0.075, 0.14], [-0.98, 0.72, 2.42], charcoal);
+        makeBox(THREE, house, [4.0, 0.075, 0.14], [-0.98, 3.28, 2.42], charcoal);
+        makeBox(THREE, house, [0.94, 2.34, 0.11], [1.93, 1.76, 2.43], cedar);
+        makeBox(THREE, house, [0.045, 2.18, 0.045], [1.85, 1.76, 2.5], mat(0x2e2924, 0, 0.2));
+        makeSlats(THREE, house, [0.035, 2.5, 0.05], 13, [-3.75, 2.0, 2.57], 0.105, cedar);
+
+        // A quiet, dark-framed clerestory and slim skylight articulate the rear elevation.
+        makeBox(THREE, house, [2.4, 0.72, 0.07], [0.8, 2.55, -2.4], glassMat);
+        makeBox(THREE, house, [2.48, 0.07, 0.14], [0.8, 2.93, -2.4], charcoal);
+        makeBox(THREE, house, [0.07, 0.78, 0.14], [-0.44, 2.55, -2.4], charcoal);
+        makeBox(THREE, house, [0.07, 0.78, 0.14], [2.04, 2.55, -2.4], charcoal);
+
+        // The second volume reads as a real garage and service wing, not another toy-like cube.
+        makeBox(THREE, house, [3.25, 2.65, 3.55], [4.12, 1.72, -0.92], plaster);
+        makeBox(THREE, house, [2.7, 2.3, 0.08], [4.12, 1.65, 0.88], charcoal);
+        makeSlats(THREE, house, [0.035, 2.24, 0.035], 17, [2.85, 1.65, 0.94], 0.16, mat(0x777a73));
+        makeBox(THREE, house, [3.55, 0.22, 3.9], [4.1, 3.1, -0.88], roofMat);
+        makeBox(THREE, house, [2.6, 0.22, 0.25], [-0.25, 3.55, 2.68], roofMat);
+        makeBox(THREE, house, [2.5, 0.12, 1.15], [-0.2, 3.42, 3.2], cedar);
+        makeSlats(THREE, house, [0.035, 0.75, 1.12], 9, [-1.34, 3.0, 3.2], 0.28, cedar);
+
+        // Front path and low planters anchor the building in a believable site.
+        makeBox(THREE, house, [2.05, 0.08, 2.25], [2.38, 0.47, 3.42], pathMat);
+        for (let i = 0; i < 3; i++) makeBox(THREE, house, [0.56, 0.055, 0.56], [2.0 + i * 0.72, 0.53, 4.12], mat(0xaaa79a));
+        makeBox(THREE, house, [1.6, 0.48, 0.55], [-4.42, 0.58, 2.75], charcoal);
+        makeBox(THREE, house, [1.6, 0.48, 0.55], [5.55, 0.58, 1.95], charcoal);
+        for (const [x, z] of [[-4.8, 2.7], [-4.3, 2.8], [-3.9, 2.7], [5.2, 1.9], [5.6, 2], [5.95, 1.9]]) {
+          const plant = new THREE.Mesh(new THREE.IcosahedronGeometry(0.28, 1), mat(0x58664c, 0x151b10, 0.02, 0.95));
+          plant.position.set(x, 0.92, z);
+          plant.scale.set(1, 0.74, 0.9);
+          plant.castShadow = true;
+          house.add(plant);
+        }
 
         const roof = new THREE.Group();
-        roof.position.set(0, 3.5, 0);
+        roof.position.set(0, 0, 0);
         house.add(roof);
-        const roofLeft = makeBox(THREE, roof, [3.45, 0.22, 5.35], [-1.34, 0.52, 0], roofMat);
-        roofLeft.rotation.z = 0.32;
-        const roofRight = makeBox(THREE, roof, [3.45, 0.22, 5.35], [1.34, 0.52, 0], roofMat);
-        roofRight.rotation.z = -0.32;
+        makeBox(THREE, roof, [7.45, 0.24, 5.75], [-0.7, 3.63, 0], roofMat);
+        makeBox(THREE, roof, [0.07, 0.36, 5.78], [-4.38, 3.74, 0], mat(0x505655));
+        makeBox(THREE, roof, [0.07, 0.36, 5.78], [2.98, 3.74, 0], mat(0x505655));
 
         const energy = new THREE.Group();
-        energy.position.set(0, 3.5, 0);
+        energy.position.set(0, 0, 0);
         house.add(energy);
-        const solar = makeBox(THREE, energy, [2.15, 0.08, 2.8], [-1.34, 0.82, -0.35], solarMat, "energy");
-        solar.rotation.z = 0.32;
-        for (let i = 0; i < 4; i++) {
-          const rib = makeBox(THREE, energy, [0.025, 0.035, 2.74], [-2.2 + i * 0.58, 0.89 + (i * 0.58) * 0.32, -0.35], greenMat, "energy");
-          rib.rotation.z = 0.32;
-        }
+        makeBox(THREE, energy, [2.65, 0.075, 1.5], [-2.22, 3.79, -0.7], solarMat, "energy");
+        for (let i = 0; i < 5; i++) makeBox(THREE, energy, [0.018, 0.022, 1.45], [-3.27 + i * 0.52, 3.84, -0.7], mat(0x73939a, 0, 0.3, 0.5), "energy");
+        for (let i = 0; i < 3; i++) makeBox(THREE, energy, [2.58, 0.022, 0.018], [-2.22, 3.84, -1.2 + i * 0.5], mat(0x73939a, 0, 0.3, 0.5), "energy");
 
         const cameras = new THREE.Group();
         const addCamera = (x, y, z, direction) => {
-          const mount = makeBox(THREE, cameras, [0.28, 0.1, 0.1], [x, y, z], darkMat, "camera");
+          const mount = makeBox(THREE, cameras, [0.13, 0.05, 0.06], [x, y, z], charcoal, "camera");
           mount.rotation.y = direction;
-          const body = makeBox(THREE, cameras, [0.38, 0.2, 0.24], [x, y - 0.13, z + Math.cos(direction) * 0.16], cyanMat, "camera");
+          const body = makeBox(THREE, cameras, [0.2, 0.105, 0.12], [x, y - 0.075, z + Math.cos(direction) * 0.09], charcoal, "camera");
           body.rotation.y = direction;
-          const lens = new THREE.Mesh(new THREE.SphereGeometry(0.065, 12, 8), mat(0x6defff, 0x00c9e4, 0.2, 0.2));
-          lens.position.set(x, y - 0.13, z + Math.cos(direction) * 0.29);
+          const lens = new THREE.Mesh(new THREE.SphereGeometry(0.032, 12, 8), statusCyan.clone());
+          lens.position.set(x, y - 0.075, z + Math.cos(direction) * 0.15);
           lens.userData.module = "camera";
           cameras.add(lens);
         };
-        addCamera(-2.1, 3.12, 2.5, 0);
-        addCamera(2.7, 3.12, 0.9, 0.8);
+        addCamera(-3.95, 3.12, 2.6, 0);
+        addCamera(6.0, 2.92, 0.82, 0.8);
         house.add(cameras);
         moduleParts.camera = cameras;
 
         const network = new THREE.Group();
-        const router = makeBox(THREE, network, [0.78, 0.18, 0.48], [0.4, 0.83, 0.8], cyanMat, "network");
+        const router = makeBox(THREE, network, [0.52, 0.1, 0.34], [-0.15, 0.78, 1.18], charcoal, "network");
         router.rotation.y = 0.38;
-        for (const x of [0.15, 0.4, 0.65]) {
-          const antenna = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.3, 8), darkMat);
-          antenna.position.set(x, 1.08, 0.74);
+        for (const x of [-0.32, -0.15, 0.02]) {
+          const antenna = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.22, 8), charcoal.clone());
+          antenna.position.set(x, 0.93, 1.18);
           network.add(antenna);
         }
-        const wifiRing = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.018, 6, 40, Math.PI), new THREE.MeshBasicMaterial({ color: 0x00c9e4, transparent: true, opacity: 0.7 }));
+        const wifiRing = new THREE.Mesh(new THREE.TorusGeometry(0.36, 0.009, 5, 36, Math.PI), new THREE.MeshBasicMaterial({ color: 0x76c4c4, transparent: true, opacity: 0.42 }));
         wifiRing.rotation.x = Math.PI / 2;
-        wifiRing.position.set(0.4, 1.45, 0.8);
+        wifiRing.position.set(-0.15, 1.15, 1.18);
         wifiRing.userData.module = "network";
         network.add(wifiRing);
         house.add(network);
         moduleParts.network = network;
 
         const automation = new THREE.Group();
-        const sensor = makeBox(THREE, automation, [0.28, 0.16, 0.22], [-1.5, 2.55, 2.25], greenMat, "automation");
-        sensor.rotation.y = -0.18;
-        const panel = makeBox(THREE, automation, [0.42, 0.58, 0.09], [2.2, 1.76, 2.22], darkMat, "automation");
-        panel.rotation.y = -0.12;
-        makeBox(THREE, automation, [0.18, 0.04, 0.025], [2.2, 1.92, 2.27], greenMat, "automation");
+        makeBox(THREE, automation, [0.16, 0.11, 0.055], [-2.4, 2.85, 2.58], statusGreen, "automation");
+        makeBox(THREE, automation, [0.24, 0.42, 0.07], [2.15, 1.72, 2.55], charcoal, "automation");
+        makeBox(THREE, automation, [0.12, 0.025, 0.02], [2.15, 1.88, 2.6], statusCyan, "automation");
         house.add(automation);
         moduleParts.energy = energy;
         moduleParts.automation = automation;
 
-        const base = new THREE.Mesh(new THREE.CylinderGeometry(4.7, 5.15, 0.12, 6), mat(0x101f2a, 0x06161c, 0.18));
-        base.rotation.y = Math.PI / 6;
-        base.position.y = -0.12;
-        model.add(base);
-
-        const grid = new THREE.GridHelper(14, 22, 0x236071, 0x17313d);
-        grid.position.y = -0.2;
-        grid.material.opacity = 0.3;
-        grid.material.transparent = true;
-        scene.add(grid);
+        makeBox(THREE, model, [1.1, 0.08, 0.8], [1.95, 0.52, 3.0], pathMat);
 
         const raycaster = new THREE.Raycaster();
         const pointer = new THREE.Vector2();
@@ -247,9 +298,9 @@ export default function HomeHeroScene({ activeModule, exploded }) {
           setExploded: (value) => {
           const destinations = {
             camera: value ? [0, 0.9, 1.05] : [0, 0, 0],
-            energy: value ? [-0.15, 4.7, -0.8] : [0, 3.5, 0],
+            energy: value ? [-0.15, 1.05, -0.8] : [0, 0, 0],
             network: value ? [0, -0.25, 1.25] : [0, 0, 0],
-            automation: value ? [0.2, 0.2, -1.2] : [0, 0, 0],
+            automation: value ? [0.2, 0.2, 1.2] : [0, 0, 0],
           };
             Object.entries(moduleParts).forEach(([key, part]) => { part.userData.targetPosition.set(...destinations[key]); });
           },
