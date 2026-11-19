@@ -36,7 +36,8 @@
 
 
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Home from '../pages/Home';
 import Blog from '../pages/Blog';
 import ServicePage from '../pages/ServicePage';
@@ -44,6 +45,7 @@ import ServicePage from '../pages/ServicePage';
 const AppRouter = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/camara" element={<ServicePage />} />
@@ -56,6 +58,16 @@ const AppRouter = () => {
     </BrowserRouter>
   );
 };
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 export default AppRouter;
 

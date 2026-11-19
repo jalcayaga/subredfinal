@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { logo } from "../assets";
+import { logo, Foto7Slide, Foto11Slide, AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage04 } from "../assets";
 import { useEffect, useState } from "react";
 import "./ServicePage.css";
 
@@ -8,6 +8,7 @@ const whatsapp = (message) => `https://wa.me/56935989392?text=${encodeURICompone
 const services = {
   camera: {
     index: "01", eyebrow: "SEGURIDAD · CÁMARAS", navName: "Cámaras",
+    image: Foto7Slide, imageAlt: "Monitores con imágenes de cámaras de seguridad", accent: "#00c9e4",
     title: "Ve con claridad lo que importa.",
     intro: "Diseñamos e instalamos sistemas de cámaras para que puedas revisar tus espacios con una imagen útil, una ubicación bien pensada y acceso configurado para ti.",
     outcome: "Cámaras y visualización pensadas para tu espacio",
@@ -22,6 +23,7 @@ const services = {
   },
   alarm: {
     index: "02", eyebrow: "SEGURIDAD · ALARMAS", navName: "Alarmas",
+    image: AXPROLandingpage02, imageAlt: "Sensor de alarma instalado en el techo de una vivienda", accent: "#a0df26",
     title: "Protección que se adapta a tu rutina.",
     intro: "Configuramos alarmas para hogares y pequeños negocios, considerando accesos, zonas de circulación y la forma en que quieres recibir alertas.",
     outcome: "Un sistema claro, configurado y explicado",
@@ -36,6 +38,7 @@ const services = {
   },
   networks: {
     index: "03", eyebrow: "CONECTIVIDAD · REDES", navName: "Redes",
+    image: Foto11Slide, imageAlt: "Trabajo técnico de instalación en terreno", accent: "#6bd0c2",
     title: "Conexión estable en los lugares que usas.",
     intro: "Revisamos tu red Wi-Fi y cableada para encontrar por qué falla y mejorar la cobertura donde realmente la necesitas, en casa o en un espacio de trabajo.",
     outcome: "Una red ordenada y adecuada para tus dispositivos",
@@ -50,6 +53,7 @@ const services = {
   },
   energy: {
     index: "04", eyebrow: "ENERGÍA · RESPALDO", navName: "Energía",
+    image: AXPROLandingpage04, imageAlt: "Vivienda con paneles solares y control desde un teléfono", accent: "#efc163",
     title: "Energía pensada para tu proyecto.",
     intro: "Evaluamos alternativas de respaldo y soluciones solares según los equipos que necesitas mantener funcionando y las condiciones del lugar.",
     outcome: "Una propuesta basada en consumo y prioridades reales",
@@ -64,6 +68,7 @@ const services = {
   },
   domotics: {
     index: "05", eyebrow: "HOGAR INTELIGENTE · DOMÓTICA", navName: "Domótica",
+    image: AXPROLandingpage01, imageAlt: "Vivienda inteligente con control desde un teléfono", accent: "#84bd00",
     title: "Todo tu hogar, trabajando en conjunto.",
     intro: "Conectamos y mejoramos dispositivos que ya tienes para reunir los compatibles en Home Assistant. Sumamos equipos nuevos solo cuando ayudan a completar lo que buscas.",
     outcome: "Una experiencia unificada y sencilla de usar",
@@ -104,7 +109,7 @@ export default function ServicePage() {
   }, []);
 
   return (
-    <main className="subred-home sr-detail">
+    <main className="subred-home sr-detail" data-service={serviceKey} style={{ "--sr-detail-accent": service.accent }}>
       <div className="sr-scroll-progress" style={{ "--sr-scroll-progress": `${progress}%` }} aria-hidden="true" />
       <div className="sr-topline"><div className="sr-wrap">INGENIERÍA Y SOPORTE EN LA REGIÓN DE VALPARAÍSO <span>Quilpué · Villa Alemana · Viña del Mar</span></div></div>
       <header className="sr-header"><div className="sr-wrap sr-detail-nav">
@@ -117,7 +122,13 @@ export default function ServicePage() {
 
       <section className="sr-detail-hero"><div className="sr-wrap sr-detail-hero-grid">
         <div className="sr-detail-copy"><div className="sr-eyebrow">{service.eyebrow}</div><h1>{service.title}</h1><p>{service.intro}</p><div className="sr-detail-actions"><a className="sr-button" href={whatsapp(service.contact)} target="_blank" rel="noreferrer">Cuéntanos tu proyecto <span aria-hidden="true">↗</span></a><a href="#soluciones" className="sr-detail-text-link">Ver qué incluye <span aria-hidden="true">↓</span></a></div></div>
-        <div className="sr-detail-visual" aria-hidden="true"><span className="sr-detail-visual-index">SUBRED / {service.index}</span><div className="sr-detail-orbit sr-detail-orbit-one"/><div className="sr-detail-orbit sr-detail-orbit-two"/><div className="sr-detail-visual-center"><span>{service.index}</span><b>{service.navName.toUpperCase()}</b></div><i className="sr-detail-node sr-detail-node-one"/><i className="sr-detail-node sr-detail-node-two"/><i className="sr-detail-node sr-detail-node-three"/><span className="sr-detail-visual-caption">{service.outcome}</span></div>
+        <div className="sr-detail-visual">
+          <img className="sr-detail-photo" src={service.image} alt={service.imageAlt} fetchPriority="high" />
+          <div className="sr-detail-photo-shade" aria-hidden="true" />
+          <span className="sr-detail-visual-index">SUBRED / {service.index}</span>
+          <span className="sr-detail-photo-label">{service.eyebrow}</span>
+          <div className="sr-detail-visual-caption"><span>{service.navName.toUpperCase()}</span><b>{service.outcome}</b></div>
+        </div>
         <div className="sr-detail-index"><span>{service.index} / 05</span><span>Soluciones claras · Instalación explicada</span></div>
       </div></section>
 
