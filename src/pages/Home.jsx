@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { logo } from "../assets";
+import { logo, Foto7Slide, Foto11Slide, AXPROLandingpage01, AXPROLandingpage02, AXPROLandingpage04 } from "../assets";
 import "./Home.css";
 
 const whatsapp = (message = "Hola SubRed, quiero cotizar") =>
@@ -9,11 +9,11 @@ const whatsapp = (message = "Hola SubRed, quiero cotizar") =>
 const Arrow = () => <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M10 4l6 6-6 6" /></svg>;
 
 const services = [
-  { number: "01", icon: "◉", title: "Cámaras de seguridad", text: "Diseño, instalación y configuración de sistemas CCTV con acceso remoto.", link: "/camara", label: "Explorar cámaras" },
-  { number: "02", icon: "⌁", title: "Alarmas para hogar y negocio", text: "Soluciones de seguridad y alertas para proteger tus espacios.", link: "/alarma", label: "Explorar alarmas" },
-  { number: "03", icon: "⌘", title: "Redes y conectividad", text: "WiFi, cableado y soporte para que tus equipos se mantengan conectados.", link: "/redes", label: "Explorar redes" },
-  { number: "04", icon: "ϟ", title: "Energía y respaldo", text: "Asesoría en soluciones solares y respaldo eléctrico según tu proyecto.", link: "/energia", label: "Explorar energía" },
-  { number: "05", icon: "⌂", title: "Domótica con Home Assistant", text: "Conectamos y mejoramos tus equipos para reunir tu hogar inteligente en un solo sistema.", link: "/domotica", label: "Explorar domótica" },
+  { number: "01", icon: "◉", title: "Cámaras de seguridad", text: "Diseño, instalación y configuración de sistemas CCTV con acceso remoto.", image: Foto7Slide, imageAlt: "Vista de un sistema de cámaras de seguridad", link: "/camara", label: "Explorar cámaras" },
+  { number: "02", icon: "⌁", title: "Alarmas para hogar y negocio", text: "Soluciones de seguridad y alertas para proteger tus espacios.", image: AXPROLandingpage02, imageAlt: "Sensor de alarma instalado en una vivienda", link: "/alarma", label: "Explorar alarmas" },
+  { number: "03", icon: "⌘", title: "Redes y conectividad", text: "WiFi, cableado y soporte para que tus equipos se mantengan conectados.", image: Foto11Slide, imageAlt: "Trabajo técnico de instalación en terreno", link: "/redes", label: "Explorar redes" },
+  { number: "04", icon: "ϟ", title: "Energía y respaldo", text: "Asesoría en soluciones solares y respaldo eléctrico según tu proyecto.", image: AXPROLandingpage04, imageAlt: "Vivienda con paneles solares y control desde el teléfono", link: "/energia", label: "Explorar energía" },
+  { number: "05", icon: "⌂", title: "Domótica con Home Assistant", text: "Conectamos y mejoramos tus equipos para reunir tu hogar inteligente en un solo sistema.", image: AXPROLandingpage01, imageAlt: "Control de una vivienda inteligente desde el teléfono", link: "/domotica", label: "Explorar domótica" },
 ];
 
 const faqs = [
@@ -139,8 +139,9 @@ export default function Home() {
     <section id="servicios" className="sr-section"><div className="sr-wrap">
       <div className="sr-section-head sr-reveal"><div><div className="sr-eyebrow">LO QUE HACEMOS</div><h2>Tecnología útil.<br/><em>Trabajo bien hecho.</em></h2></div><p>Cada lugar tiene necesidades distintas. Te ayudamos a encontrar una solución que funcione en tu día a día.</p></div>
       <div className="sr-service-grid">{services.map((service, index) => <article className="sr-service sr-reveal" style={{ "--sr-reveal-delay": `${index * 90}ms` }} key={service.number}>
-        <div className="sr-service-top"><span className="sr-service-icon">{service.icon}</span><span>{service.number}</span></div><h3>{service.title}</h3><p>{service.text}</p>
-        {service.link.startsWith("/") ? <Link to={service.link} className="sr-service-link">{service.label}<Arrow/></Link> : <a href={service.link} target="_blank" rel="noreferrer" className="sr-service-link">{service.label}<Arrow/></a>}
+        <div className="sr-service-media"><img src={service.image} alt={service.imageAlt} loading="lazy"/><div className="sr-service-image-shade"/><div className="sr-service-top"><span className="sr-service-icon">{service.icon}</span><span>{service.number}</span></div></div>
+        <div className="sr-service-content"><h3>{service.title}</h3><p>{service.text}</p>
+        {service.link.startsWith("/") ? <Link to={service.link} className="sr-service-link">{service.label}<Arrow/></Link> : <a href={service.link} target="_blank" rel="noreferrer" className="sr-service-link">{service.label}<Arrow/></a>}</div>
       </article>)}</div>
     </div></section>
 
