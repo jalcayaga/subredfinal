@@ -23,28 +23,44 @@ const faqs = [
 ];
 
 function NetworkArt() {
-  return <div className="sr-network" aria-label="Ilustración de una red conectada" role="img">
-    <div className="sr-network-glow" />
-    <svg viewBox="0 0 520 460" aria-hidden="true">
-      <defs><linearGradient id="sr-line" x1="0" x2="1"><stop stopColor="#00c9e4" stopOpacity=".15"/><stop offset="1" stopColor="#00c9e4" stopOpacity=".8"/></linearGradient><filter id="sr-glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-      <g className="sr-lines" fill="none" stroke="url(#sr-line)" strokeWidth="1.5"><path d="M260 225 95 98M260 225 430 85M260 225 80 350M260 225 445 355M95 98 430 85M80 350 445 355M95 98 80 350M430 85 445 355"/><path d="M260 225 95 98M260 225 430 85M260 225 80 350M260 225 445 355" strokeDasharray="5 9"/></g>
-      <g filter="url(#sr-glow)">
-        <circle className="sr-pulse-ring sr-pulse-center" cx="260" cy="225" r="43"/>
-        <circle cx="260" cy="225" r="36" fill="#0d2531" stroke="#00c9e4" strokeWidth="2"/>
-        <circle cx="260" cy="225" r="25" fill="#00c9e4" opacity=".12"/>
-        <circle className="sr-pulse-ring" cx="95" cy="98" r="23" style={{ animationDelay: "-1.2s" }}/>
-        <circle cx="95" cy="98" r="17" fill="#102a35" stroke="#00c9e4" strokeWidth="2"/>
-        <circle className="sr-pulse-ring sr-pulse-green" cx="430" cy="85" r="23" style={{ animationDelay: "-2.4s" }}/>
-        <circle cx="430" cy="85" r="17" fill="#1e2917" stroke="#84bd00" strokeWidth="2"/>
-        <circle className="sr-pulse-ring" cx="80" cy="350" r="23" style={{ animationDelay: "-2s" }}/>
-        <circle cx="80" cy="350" r="17" fill="#102a35" stroke="#00c9e4" strokeWidth="2"/>
-        <circle className="sr-pulse-ring sr-pulse-green" cx="445" cy="355" r="23" style={{ animationDelay: "-1s" }}/>
-        <circle cx="445" cy="355" r="17" fill="#1e2917" stroke="#84bd00" strokeWidth="2"/>
-      </g>
-      <g fill="#e7f3f6" fontFamily="system-ui,sans-serif" fontSize="12" fontWeight="700" textAnchor="middle"><text x="260" y="229">SUBRED</text><text x="95" y="65">CCTV</text><text x="430" y="50">ENERGÍA</text><text x="80" y="393">WIFI</text><text x="445" y="398">SOPORTE</text></g>
-    </svg>
-    <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> Conectividad activa <b>ESTABLE</b></div>
-    <div className="sr-float-card sr-float-bottom"><span className="sr-mini-icon">⌁</span><span><small>INGENIERÍA LOCAL</small><b>Personas que resuelven</b></span></div>
+  const [space, setSpace] = useState("hogar");
+  const useCases = {
+    hogar: { title: "Hogar", detail: "Cámaras, WiFi y domótica pensados para tu rutina.", tags: ["Seguridad", "Conectividad", "Domótica"] },
+    negocio: { title: "Negocio", detail: "Seguridad, redes y respaldo para que tu operación siga.", tags: ["CCTV", "Redes", "Energía"] },
+  };
+  const selected = useCases[space];
+
+  return <div className="sr-network">
+    <div className="sr-network-visual" role="img" aria-label="Ilustración de servicios de SubRed conectados">
+      <div className="sr-network-glow" />
+      <svg viewBox="0 0 520 460" aria-hidden="true">
+        <defs><linearGradient id="sr-line" x1="0" x2="1"><stop stopColor="#00c9e4" stopOpacity=".15"/><stop offset="1" stopColor="#00c9e4" stopOpacity=".8"/></linearGradient><filter id="sr-glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <g className="sr-lines" fill="none" stroke="url(#sr-line)" strokeWidth="1.5"><path d="M260 225 95 98M260 225 430 85M260 225 80 350M260 225 445 355M95 98 430 85M80 350 445 355M95 98 80 350M430 85 445 355"/><path d="M260 225 95 98M260 225 430 85M260 225 80 350M260 225 445 355" strokeDasharray="5 9"/></g>
+        <g filter="url(#sr-glow)">
+          <circle className="sr-pulse-ring sr-pulse-center" cx="260" cy="225" r="43"/>
+          <circle cx="260" cy="225" r="36" fill="#0d2531" stroke="#00c9e4" strokeWidth="2"/>
+          <circle cx="260" cy="225" r="25" fill="#00c9e4" opacity=".12"/>
+          <circle className="sr-pulse-ring" cx="95" cy="98" r="23" style={{ animationDelay: "-1.2s" }}/>
+          <circle cx="95" cy="98" r="17" fill="#102a35" stroke="#00c9e4" strokeWidth="2"/>
+          <circle className="sr-pulse-ring sr-pulse-green" cx="430" cy="85" r="23" style={{ animationDelay: "-2.4s" }}/>
+          <circle cx="430" cy="85" r="17" fill="#1e2917" stroke="#84bd00" strokeWidth="2"/>
+          <circle className="sr-pulse-ring" cx="80" cy="350" r="23" style={{ animationDelay: "-2s" }}/>
+          <circle cx="80" cy="350" r="17" fill="#102a35" stroke="#00c9e4" strokeWidth="2"/>
+          <circle className="sr-pulse-ring sr-pulse-green" cx="445" cy="355" r="23" style={{ animationDelay: "-1s" }}/>
+          <circle cx="445" cy="355" r="17" fill="#1e2917" stroke="#84bd00" strokeWidth="2"/>
+        </g>
+        <g fill="#e7f3f6" fontFamily="system-ui,sans-serif" fontSize="12" fontWeight="700" textAnchor="middle"><text x="260" y="229">SUBRED</text><text x="95" y="65">CCTV</text><text x="430" y="50">ENERGÍA</text><text x="80" y="393">WIFI</text><text x="445" y="398">SOPORTE</text></g>
+      </svg>
+      <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> INGENIERÍA LOCAL <b>QUILPUÉ</b></div>
+    </div>
+    <section className="sr-usecase-card" aria-label="Explora soluciones por tipo de espacio">
+      <div className="sr-usecase-heading"><span className="sr-usecase-kicker">SOLUCIONES A TU MEDIDA</span><strong>¿Qué espacio quieres mejorar?</strong></div>
+      <div className="sr-usecase-tabs" role="group" aria-label="Tipo de espacio">
+        {Object.entries(useCases).map(([key, option]) => <button key={key} type="button" aria-pressed={space === key} onClick={() => setSpace(key)}>{option.title}</button>)}
+      </div>
+      <p className="sr-usecase-detail" aria-live="polite">{selected.detail}</p>
+      <div className="sr-usecase-tags">{selected.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+    </section>
   </div>;
 }
 
