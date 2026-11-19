@@ -28,6 +28,7 @@ function NetworkArt() {
   const [activeModule, setActiveModule] = useState("all");
   const [exploded, setExploded] = useState(false);
   const [sceneAvailable, setSceneAvailable] = useState(false);
+  const [sceneFailed, setSceneFailed] = useState(false);
   const useCases = {
     hogar: { title: "Hogar", detail: "Cámaras, WiFi y domótica pensados para tu rutina.", tags: ["Seguridad", "Conectividad", "Domótica"] },
     negocio: { title: "Negocio", detail: "Seguridad, redes y respaldo para que tu operación siga.", tags: ["CCTV", "Redes", "Energía"] },
@@ -36,7 +37,11 @@ function NetworkArt() {
 
   useEffect(() => {
     const handleSceneSelection = (event) => setActiveModule(event.detail);
-    const handleSceneReady = (event) => setSceneAvailable(event.detail);
+    const handleSceneReady = (event) => {
+      setSceneAvailable(event.detail);
+      setSceneFailed(!event.detail);
+      if (!event.detail) setExploded(true);
+    };
     window.addEventListener("subred-hero-select", handleSceneSelection);
     window.addEventListener("subred-hero-ready", handleSceneReady);
     return () => {
@@ -46,7 +51,7 @@ function NetworkArt() {
   }, []);
 
   return <div className="sr-network">
-    <div className={`sr-network-visual${exploded ? " is-exploded" : ""}`} data-active-module={activeModule}>
+    <div className={`sr-network-visual${exploded ? " is-exploded" : ""}${sceneFailed ? " is-fallback" : ""}`} data-active-module={activeModule}>
       <div className="sr-network-fallback" role="img" aria-label="Casa isométrica con cámaras, conexión Wi-Fi, energía solar y automatización integradas">
       <div className="sr-network-glow" />
       <svg viewBox="0 0 560 460" aria-hidden="true">
@@ -58,10 +63,9 @@ function NetworkArt() {
         </defs>
         <ellipse cx="284" cy="391" rx="196" ry="28" fill="#00c9e4" opacity=".08" filter="url(#sr-house-glow)" />
         <path d="M69 378 277 264l217 117-210 57z" fill="#10222d" stroke="#3c6975" strokeOpacity=".55" />
-        <path d="m104 262 172-105 179 94-174 108z" fill="url(#sr-roof)" stroke="#6bd0c2" strokeOpacity=".55" strokeWidth="1.5" />
         <path d="m104 262 177 97v103l-177-99z" fill="url(#sr-house-front)" stroke="#4c7881" strokeOpacity=".65" strokeWidth="1.5" />
         <path d="m281 359 174-108v105L281 462z" fill="url(#sr-house-side)" stroke="#3c6975" strokeOpacity=".55" strokeWidth="1.5" />
-        <path d="m88 260 187-116 196 105-16 10-180-96-169 105z" fill="#1d3945" stroke="#6bd0c2" strokeOpacity=".64" strokeWidth="1.5" />
+        <g className="sr-fallback-roof"><path d="m104 262 172-105 179 94-174 108z" fill="url(#sr-roof)" stroke="#6bd0c2" strokeOpacity=".55" strokeWidth="1.5" /><path d="m88 260 187-116 196 105-16 10-180-96-169 105z" fill="#1d3945" stroke="#6bd0c2" strokeOpacity=".64" strokeWidth="1.5" /></g>
         <g className="sr-fallback-energy"><path d="m154 222 89-55 92 49-90 56z" fill="#17333e" stroke="#84bd00" strokeOpacity=".7" /><path d="m170 223 84-52m-57 62 84-51m-56 63 84-51m-123 28 92 49m-69-65 92 49m-68-65 92 49" stroke="#84bd00" strokeOpacity=".43" strokeWidth="1" /></g>
         <g className="sr-fallback-security"><path d="m131 279 38 21v44l-38-21zM374 327l38-23v45l-38 23z" fill="#0b1822" stroke="#00c9e4" strokeOpacity=".68" /><path d="m137 286 26 14v29l-26-15zM380 331l26-16v29l-26 16z" fill="#00c9e4" opacity=".18" /></g>
         <g className="sr-fallback-network"><path d="m190 312 37 21v45l-37-21z" fill="#0b1822" stroke="#00c9e4" strokeOpacity=".68" /><path d="m196 319 25 14v30l-25-15z" fill="#00c9e4" opacity=".18" /></g>
@@ -81,11 +85,12 @@ function NetworkArt() {
       </svg>
       <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> TODO CONECTADO <b>EN UN SOLO LUGAR</b></div>
       <div className="sr-float-card sr-float-bottom"><span className="sr-float-icon">⌂</span><span>HOGAR + NEGOCIO<small>Diseñado para tu espacio</small></span></div>
+      {sceneFailed && <span className="sr-fallback-view-label">VISTA TÉCNICA · SISTEMAS DESPLEGADOS</span>}
       </div>
       <HomeHeroScene activeModule={activeModule} exploded={exploded} />
     </div>
     <div className="sr-hero-inspector">
-      <div className="sr-hero-inspector-top"><span className="sr-inspector-hint">{sceneAvailable ? "MODELO 3D · ARRASTRA PARA GIRAR" : "VISTA INTERACTIVA · COMPATIBLE"}</span><button type="button" className="sr-explode-button" aria-pressed={exploded} onClick={() => setExploded(!exploded)}>{exploded ? "Integrar sistemas" : "Separar sistemas"}</button></div>
+      <div className="sr-hero-inspector-top"><span className="sr-inspector-hint">{sceneAvailable ? "MODELO 3D · ARRASTRA PARA GIRAR" : sceneFailed ? "VISTA TÉCNICA · WEBGL NO DISPONIBLE" : "PREPARANDO MODELO INTERACTIVO"}</span><button type="button" className="sr-explode-button" aria-pressed={exploded} onClick={() => setExploded(!exploded)}>{exploded ? "Integrar sistemas" : "Separar sistemas"}</button></div>
       <div className="sr-hero-module-tabs" role="group" aria-label="Seleccionar un sistema de la vivienda">
         <button type="button" aria-pressed={activeModule === "all"} onClick={() => setActiveModule("all")}>Vista general</button>
         {heroModules.map(([key, label]) => <button key={key} type="button" aria-pressed={activeModule === key} onClick={() => setActiveModule(key)}>{label}</button>)}
