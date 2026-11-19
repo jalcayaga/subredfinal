@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const modules = [
-  ["camera", "Cámaras"],
+  ["camera", "Seguridad"],
   ["network", "Conectividad"],
   ["energy", "Energía"],
   ["automation", "Domótica"],
@@ -9,7 +9,7 @@ const modules = [
 
 const moduleCopy = {
   all: "Una solución coordinada, diseñada para el lugar y para quienes lo usan.",
-  camera: "Cámaras ubicadas para cubrir los accesos y espacios importantes.",
+  camera: "Cámaras, sensores de movimiento y contactos protegen accesos y espacios clave.",
   network: "Wi-Fi y cableado para que tus equipos se mantengan conectados.",
   energy: "Paneles y respaldo definidos según el consumo y las prioridades.",
   automation: "Dispositivos compatibles trabajando en conjunto con Home Assistant.",
@@ -130,16 +130,18 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         const statusCyan = mat(0x58c2c5, 0x1b6d72, 0.12, 0.45);
         const statusGreen = mat(0x91a966, 0x34431d, 0.08, 0.55);
         const pathMat = mat(0x9d9b90);
+        const upholstery = mat(0x77776b, 0x080806, 0.02, 0.94);
+        const warmLight = new THREE.MeshStandardMaterial({ color: 0xffe7b3, emissive: 0xf2c76e, emissiveIntensity: 0.65, roughness: 0.5 });
         const house = new THREE.Group();
         model = new THREE.Group();
         scene.add(model);
         model.add(house);
 
         // Contemporary single-storey home: restrained materials, a glazed living area and a separate garage volume.
-        const site = makeBox(THREE, model, [12, 0.28, 8.4], [0, -0.04, 0], concrete);
+        const site = makeBox(THREE, model, [13.4, 0.28, 10.4], [0.55, -0.02, 0.8], concrete);
         site.receiveShadow = true;
-        makeBox(THREE, house, [7.25, 0.28, 5.6], [-0.7, 0.26, 0], charcoal);
-        makeBox(THREE, house, [6.95, 0.04, 5.28], [-0.7, 0.42, 0], mat(0xb9b5a9));
+        makeBox(THREE, house, [10.9, 0.28, 5.7], [1.05, 0.26, -0.05], charcoal);
+        makeBox(THREE, house, [10.55, 0.04, 5.42], [1.05, 0.42, -0.05], mat(0xb9b5a9));
 
         // Rear and side walls form a cutaway while keeping the architectural massing legible.
         makeBox(THREE, house, [0.2, 3.1, 5.15], [-4.08, 1.98, -0.02], plaster);
@@ -163,6 +165,19 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         makeBox(THREE, house, [0.07, 0.78, 0.14], [-0.44, 2.55, -2.4], charcoal);
         makeBox(THREE, house, [0.07, 0.78, 0.14], [2.04, 2.55, -2.4], charcoal);
 
+        // Sparse interior furniture helps the cutaway read as a lived-in home, not a display block.
+        makeBox(THREE, house, [1.72, 0.34, 0.64], [-1.05, 0.72, 0.68], upholstery);
+        makeBox(THREE, house, [1.72, 0.58, 0.2], [-1.05, 1.08, 0.91], upholstery);
+        makeBox(THREE, house, [0.56, 0.2, 0.42], [-0.85, 0.54, 1.4], mat(0x8a7257));
+        makeBox(THREE, house, [1.55, 0.08, 0.55], [0.95, 0.8, -0.72], mat(0x89785e));
+        for (const x of [0.34, 1.56]) makeBox(THREE, house, [0.07, 0.32, 0.07], [x, 0.59, -0.72], charcoal);
+        const pendant = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.11, 0.11, 16), warmLight.clone());
+        pendant.position.set(-0.45, 3.07, 0.05);
+        house.add(pendant);
+        const pendantWire = new THREE.Mesh(new THREE.CylinderGeometry(0.009, 0.009, 0.43, 6), charcoal.clone());
+        pendantWire.position.set(-0.45, 3.31, 0.05);
+        house.add(pendantWire);
+
         // The second volume reads as a real garage and service wing, not another toy-like cube.
         makeBox(THREE, house, [3.25, 2.65, 3.55], [4.12, 1.72, -0.92], plaster);
         makeBox(THREE, house, [2.7, 2.3, 0.08], [4.12, 1.65, 0.88], charcoal);
@@ -175,11 +190,11 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         // Front path and low planters anchor the building in a believable site.
         makeBox(THREE, house, [2.05, 0.08, 2.25], [2.38, 0.47, 3.42], pathMat);
         for (let i = 0; i < 3; i++) makeBox(THREE, house, [0.56, 0.055, 0.56], [2.0 + i * 0.72, 0.53, 4.12], mat(0xaaa79a));
-        makeBox(THREE, house, [1.6, 0.48, 0.55], [-4.42, 0.58, 2.75], charcoal);
-        makeBox(THREE, house, [1.6, 0.48, 0.55], [5.55, 0.58, 1.95], charcoal);
+        makeBox(THREE, house, [1.6, 0.48, 0.55], [-4.42, 0.36, 2.75], charcoal);
+        makeBox(THREE, house, [1.6, 0.48, 0.55], [5.55, 0.36, 1.95], charcoal);
         for (const [x, z] of [[-4.8, 2.7], [-4.3, 2.8], [-3.9, 2.7], [5.2, 1.9], [5.6, 2], [5.95, 1.9]]) {
           const plant = new THREE.Mesh(new THREE.IcosahedronGeometry(0.28, 1), mat(0x58664c, 0x151b10, 0.02, 0.95));
-          plant.position.set(x, 0.92, z);
+          plant.position.set(x, 0.82, z);
           plant.scale.set(1, 0.74, 0.9);
           plant.castShadow = true;
           house.add(plant);
@@ -198,6 +213,22 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         makeBox(THREE, energy, [2.65, 0.075, 1.5], [-2.22, 3.79, -0.7], solarMat, "energy");
         for (let i = 0; i < 5; i++) makeBox(THREE, energy, [0.018, 0.022, 1.45], [-3.27 + i * 0.52, 3.84, -0.7], mat(0x73939a, 0, 0.3, 0.5), "energy");
         for (let i = 0; i < 3; i++) makeBox(THREE, energy, [2.58, 0.022, 0.018], [-2.22, 3.84, -1.2 + i * 0.5], mat(0x73939a, 0, 0.3, 0.5), "energy");
+        makeBox(THREE, energy, [0.12, 0.62, 0.38], [5.82, 1.72, -1.35], charcoal, "energy");
+        makeBox(THREE, energy, [0.025, 0.045, 0.13], [5.89, 1.91, -1.35], statusCyan, "energy");
+        makeBox(THREE, energy, [0.34, 0.78, 0.54], [5.92, 0.79, -0.6], mat(0xd3d2cb, 0, 0.06, 0.72), "energy");
+        makeBox(THREE, energy, [0.025, 0.025, 0.45], [6.1, 0.91, -0.6], mat(0xb8b8af), "energy");
+        makeBox(THREE, energy, [0.025, 0.025, 0.45], [6.1, 0.69, -0.6], mat(0xb8b8af), "energy");
+        const solarFeed = new THREE.CatmullRomCurve3([
+          new THREE.Vector3(-0.88, 3.86, -0.7),
+          new THREE.Vector3(1.8, 3.86, -0.7),
+          new THREE.Vector3(3.6, 3.65, -1.1),
+          new THREE.Vector3(5.6, 3.25, -2.3),
+          new THREE.Vector3(5.8, 2.5, -1.7),
+          new THREE.Vector3(5.95, 1.18, -0.6),
+        ]);
+        const solarConduit = new THREE.Mesh(new THREE.TubeGeometry(solarFeed, 36, 0.025, 6, false), mat(0x69726d, 0, 0.2, 0.72));
+        solarConduit.userData.module = "energy";
+        energy.add(solarConduit);
 
         const cameras = new THREE.Group();
         const addCamera = (x, y, z, direction) => {
@@ -212,12 +243,18 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         };
         addCamera(-3.95, 3.12, 2.6, 0);
         addCamera(6.0, 2.92, 0.82, 0.8);
+        addCamera(2.18, 2.45, 2.61, 0);
+        makeBox(THREE, cameras, [0.16, 0.11, 0.055], [-2.4, 2.85, 2.58], statusGreen, "camera");
+        makeBox(THREE, cameras, [0.1, 0.075, 0.045], [2.38, 2.5, 2.58], statusGreen, "camera");
+        makeBox(THREE, cameras, [0.14, 0.08, 0.045], [0.55, 2.78, 2.58], mat(0xe1ded1), "camera");
         house.add(cameras);
         moduleParts.camera = cameras;
 
         const network = new THREE.Group();
         const router = makeBox(THREE, network, [0.52, 0.1, 0.34], [-0.15, 0.78, 1.18], charcoal, "network");
         router.rotation.y = 0.38;
+        makeBox(THREE, network, [0.3, 0.13, 0.24], [-0.84, 0.72, 1.1], mat(0x303b3a, 0x101714, 0.08, 0.5), "network");
+        makeBox(THREE, network, [0.045, 0.018, 0.018], [-0.7, 0.75, 1.225], statusGreen, "network");
         for (const x of [-0.32, -0.15, 0.02]) {
           const antenna = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.22, 8), charcoal.clone());
           antenna.position.set(x, 0.93, 1.18);
@@ -228,6 +265,10 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         wifiRing.position.set(-0.15, 1.15, 1.18);
         wifiRing.userData.module = "network";
         network.add(wifiRing);
+        const accessPoint = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.055, 24), mat(0xd2d0c7, 0, 0.04, 0.7));
+        accessPoint.position.set(1.6, 3.38, -0.35);
+        accessPoint.userData.module = "network";
+        network.add(accessPoint);
         house.add(network);
         moduleParts.network = network;
 
@@ -235,6 +276,7 @@ export default function HomeHeroScene({ activeModule, exploded }) {
         makeBox(THREE, automation, [0.16, 0.11, 0.055], [-2.4, 2.85, 2.58], statusGreen, "automation");
         makeBox(THREE, automation, [0.24, 0.42, 0.07], [2.15, 1.72, 2.55], charcoal, "automation");
         makeBox(THREE, automation, [0.12, 0.025, 0.02], [2.15, 1.88, 2.6], statusCyan, "automation");
+        makeBox(THREE, automation, [0.11, 0.18, 0.045], [2.38, 1.55, 2.56], mat(0xa48b65), "automation");
         house.add(automation);
         moduleParts.energy = energy;
         moduleParts.automation = automation;
