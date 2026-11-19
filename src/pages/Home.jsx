@@ -31,27 +31,40 @@ function NetworkArt() {
   const selected = useCases[space];
 
   return <div className="sr-network">
-    <div className="sr-network-visual" role="img" aria-label="Ilustración de servicios de SubRed conectados">
+    <div className="sr-network-visual" role="img" aria-label="Casa isométrica con cámaras, conexión Wi-Fi, energía solar y automatización integradas">
       <div className="sr-network-glow" />
-      <svg viewBox="0 0 520 460" aria-hidden="true">
-        <defs><linearGradient id="sr-line" x1="0" x2="1"><stop stopColor="#00c9e4" stopOpacity=".15"/><stop offset="1" stopColor="#00c9e4" stopOpacity=".8"/></linearGradient><filter id="sr-glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-        <g className="sr-lines" fill="none" stroke="url(#sr-line)" strokeWidth="1.5"><path d="M260 225 95 98M260 225 430 85M260 225 80 350M260 225 445 355M95 98 430 85M80 350 445 355M95 98 80 350M430 85 445 355"/><path d="M260 225 95 98M260 225 430 85M260 225 80 350M260 225 445 355" strokeDasharray="5 9"/></g>
-        <g filter="url(#sr-glow)">
-          <circle className="sr-pulse-ring sr-pulse-center" cx="260" cy="225" r="43"/>
-          <circle cx="260" cy="225" r="36" fill="#0d2531" stroke="#00c9e4" strokeWidth="2"/>
-          <circle cx="260" cy="225" r="25" fill="#00c9e4" opacity=".12"/>
-          <circle className="sr-pulse-ring" cx="95" cy="98" r="23" style={{ animationDelay: "-1.2s" }}/>
-          <circle cx="95" cy="98" r="17" fill="#102a35" stroke="#00c9e4" strokeWidth="2"/>
-          <circle className="sr-pulse-ring sr-pulse-green" cx="430" cy="85" r="23" style={{ animationDelay: "-2.4s" }}/>
-          <circle cx="430" cy="85" r="17" fill="#1e2917" stroke="#84bd00" strokeWidth="2"/>
-          <circle className="sr-pulse-ring" cx="80" cy="350" r="23" style={{ animationDelay: "-2s" }}/>
-          <circle cx="80" cy="350" r="17" fill="#102a35" stroke="#00c9e4" strokeWidth="2"/>
-          <circle className="sr-pulse-ring sr-pulse-green" cx="445" cy="355" r="23" style={{ animationDelay: "-1s" }}/>
-          <circle cx="445" cy="355" r="17" fill="#1e2917" stroke="#84bd00" strokeWidth="2"/>
+      <svg viewBox="0 0 560 460" aria-hidden="true">
+        <defs>
+          <linearGradient id="sr-house-front" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#173442"/><stop offset="1" stopColor="#0b1925"/></linearGradient>
+          <linearGradient id="sr-house-side" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#102632"/><stop offset="1" stopColor="#09151f"/></linearGradient>
+          <linearGradient id="sr-roof" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#234857"/><stop offset="1" stopColor="#10212d"/></linearGradient>
+          <filter id="sr-house-glow"><feGaussianBlur stdDeviation="7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <ellipse cx="284" cy="391" rx="196" ry="28" fill="#00c9e4" opacity=".08" filter="url(#sr-house-glow)" />
+        <path d="M69 378 277 264l217 117-210 57z" fill="#10222d" stroke="#3c6975" strokeOpacity=".55" />
+        <path d="m104 262 172-105 179 94-174 108z" fill="url(#sr-roof)" stroke="#6bd0c2" strokeOpacity=".55" strokeWidth="1.5" />
+        <path d="m104 262 177 97v103l-177-99z" fill="url(#sr-house-front)" stroke="#4c7881" strokeOpacity=".65" strokeWidth="1.5" />
+        <path d="m281 359 174-108v105L281 462z" fill="url(#sr-house-side)" stroke="#3c6975" strokeOpacity=".55" strokeWidth="1.5" />
+        <path d="m88 260 187-116 196 105-16 10-180-96-169 105z" fill="#1d3945" stroke="#6bd0c2" strokeOpacity=".64" strokeWidth="1.5" />
+        <path d="m154 222 89-55 92 49-90 56z" fill="#17333e" stroke="#84bd00" strokeOpacity=".7" />
+        <path d="m170 223 84-52m-57 62 84-51m-56 63 84-51m-123 28 92 49m-69-65 92 49m-68-65 92 49" stroke="#84bd00" strokeOpacity=".43" strokeWidth="1" />
+        <path d="m131 279 38 21v44l-38-21zM190 312l37 21v45l-37-21zM310 367l37-23v45l-37 23zM374 327l38-23v45l-38 23z" fill="#0b1822" stroke="#00c9e4" strokeOpacity=".68" />
+        <path d="m137 286 26 14v29l-26-15zM196 319l25 14v30l-25-15zM316 371l25-15v29l-25 16zM380 331l26-16v29l-26 16z" fill="#00c9e4" opacity=".18" />
+        <path d="m247 391 34 19v50l-34-19z" fill="#08141c" stroke="#84bd00" strokeOpacity=".82" />
+        <circle cx="273" cy="427" r="2" fill="#84bd00" />
+        <g className="sr-house-signal" fill="none" stroke="#00c9e4" strokeWidth="1.5" strokeDasharray="4 7" opacity=".75">
+          <path d="m124 272-28-48-32-18M435 258l32-39 30-12M153 349l-51 27-29 2M409 351l47 31 32 2" />
         </g>
-        <g fill="#e7f3f6" fontFamily="system-ui,sans-serif" fontSize="12" fontWeight="700" textAnchor="middle"><text x="260" y="229">SUBRED</text><text x="95" y="65">CCTV</text><text x="430" y="50">ENERGÍA</text><text x="80" y="393">WIFI</text><text x="445" y="398">SOPORTE</text></g>
+        <g className="sr-house-device" filter="url(#sr-house-glow)">
+          <circle cx="64" cy="203" r="7" fill="#00c9e4"/><circle cx="498" cy="206" r="7" fill="#84bd00"/><circle cx="69" cy="378" r="7" fill="#84bd00"/><circle cx="488" cy="384" r="7" fill="#00c9e4"/>
+          <circle className="sr-house-pulse" cx="64" cy="203" r="17"/><circle className="sr-house-pulse sr-house-pulse-delay" cx="498" cy="206" r="17"/>
+        </g>
+        <g fill="#c9dce1" fontFamily="system-ui,sans-serif" fontSize="9" fontWeight="700" letterSpacing="1.2">
+          <text x="25" y="185">CÁMARAS</text><text x="450" y="184">ENERGÍA</text><text x="35" y="405">CONECTIVIDAD</text><text x="450" y="411">DOMÓTICA</text>
+        </g>
       </svg>
-      <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> INGENIERÍA LOCAL <b>QUILPUÉ</b></div>
+      <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> TODO CONECTADO <b>EN UN SOLO LUGAR</b></div>
+      <div className="sr-float-card sr-float-bottom"><span className="sr-float-icon">⌂</span><span>HOGAR + NEGOCIO<small>Diseñado para tu espacio</small></span></div>
     </div>
     <section className="sr-usecase-card" aria-label="Explora soluciones por tipo de espacio">
       <div className="sr-usecase-heading"><span className="sr-usecase-kicker">SOLUCIONES A TU MEDIDA</span><strong>¿Qué espacio quieres mejorar?</strong></div>
