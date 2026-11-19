@@ -76,6 +76,10 @@ html.subred-scrollbar::-webkit-scrollbar-thumb:hover{background:#a0df26}
 #servicios .sr-section-head>p{max-width:360px;margin:0 0 4px;padding-left:20px;border-left:1px solid rgba(132,189,0,.55);font-size:14px;line-height:1.85;color:#aab8c4}
 #servicios .sr-service-grid{gap:16px}
 @media(max-width:700px){#servicios .sr-section-head{grid-template-columns:1fr;gap:15px;margin-bottom:22px;padding-bottom:21px}#servicios .sr-section-head h2{font-size:clamp(36px,10vw,46px)}#servicios .sr-section-head>p{max-width:480px;margin:0;padding-left:14px;font-size:13px}}
+#servicios .sr-service-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+#servicios .sr-service,#servicios .sr-service:nth-child(4),#servicios .sr-service:nth-child(5){grid-column:auto}
+@media(max-width:900px){#servicios .sr-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){#servicios .sr-service-grid{grid-template-columns:1fr}}
 @media(min-width:1101px){.sr-service-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(max-width:900px){.sr-service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border:0}.sr-service{border:1px solid var(--sr-border)}.sr-service:nth-child(2){border-right:1px solid var(--sr-border)}.sr-domotics{padding:76px 0}.sr-domotics-grid{grid-template-columns:1fr;gap:30px}.sr-domotics-intro>p{max-width:640px}.sr-domotics-example{grid-column:auto}}
 @media(max-width:640px){.sr-service-grid{grid-template-columns:1fr}.sr-service{border-right:0}.sr-domotics{padding:68px 0}.sr-domotics-tools{grid-template-columns:1fr}.sr-domotics-tool{min-height:0;padding:20px}}
