@@ -25,12 +25,12 @@ const faqs = [
 ];
 
 const assemblySteps = [
-  { title: "BASE", detail: "Terreno nivelado, radier y fundación listos." },
-  { title: "MUROS", detail: "Se levantan los recintos y se preparan los puntos de instalación." },
-  { title: "CUBIERTA", detail: "La techumbre protege la vivienda y deja visible el corte interior." },
-  { title: "ENERGÍA", detail: "Paneles solares, inversor y respaldo se conectan a la casa." },
-  { title: "SEGURIDAD", detail: "Cámaras, detectores, contactos y sirena cubren los accesos." },
-  { title: "CONTROL TOTAL", detail: "La central AX PRO y la pantalla táctil reúnen el sistema." },
+  { title: "BASE", detail: "Terreno, patio, acceso y fundación preparan la vivienda." },
+  { title: "MUROS", detail: "Se levantan los espacios y accesos de la vivienda." },
+  { title: "RECINTOS", detail: "Living, cocina, baño, dormitorios y garage toman forma." },
+  { title: "PERÍMETRO", detail: "Cámaras y radares cubren patio, accesos y zonas muertas." },
+  { title: "DETECCIÓN INTERNA", detail: "Sensores de movimiento y contactos protegen cada recinto." },
+  { title: "CONTROL Y RESPALDO", detail: "Central, pantalla táctil, alarma y energía se integran." },
 ];
 
 function NetworkArt() {
