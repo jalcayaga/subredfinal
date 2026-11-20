@@ -4,7 +4,7 @@
  * the browser has no WebGL context.
  */
 export default function HomeAnatomy({ buildStage = 5 }) {
-  return <svg className="sr-anatomy-art" data-build-stage={buildStage} viewBox="0 0 560 460" role="img" aria-label="Montaje isométrico de una vivienda protegida con sistema de alarma AX PRO, sensores, cámaras, sirena, pantalla táctil y energía solar">
+  return <svg className="sr-anatomy-art" data-build-stage={buildStage} viewBox="0 0 680 460" role="img" aria-label="Montaje isométrico de una vivienda protegida con sistema de alarma AX PRO, sensores, cámaras, sirena, pantalla táctil y un módulo solar independiente">
     <defs>
       <linearGradient id="an-base" x2="0" y2="1"><stop stopColor="#66756f"/><stop offset="1" stopColor="#343e3b"/></linearGradient>
       <linearGradient id="an-wall" x2=".95" y2="1"><stop stopColor="#e5e3da"/><stop offset="1" stopColor="#b9b8ae"/></linearGradient>
@@ -74,24 +74,28 @@ export default function HomeAnatomy({ buildStage = 5 }) {
       <path d="m275 256 1-32 20-12 24 13v25"/><path d="m426 285-24-14-12 7-19-11"/>
       <path d="m301 257 19-11 16 9" stroke="#8ebd62"/>
     </g>
-    {/* Flat roof, rafters and parapet are a distinct liftable assembly. */}
+    {/* A compact rear roof wing leaves most rooms exposed in the cutaway. */}
     <g className="an-roof">
-      {/* The rear roof section stays in place; the open front half reveals the rooms. */}
-      <path d="m78 232 192-112 132 72-204 119z" fill="#303b3c" stroke="#aeb8b0" strokeWidth="2"/>
-      <path d="m94 231 176-101 111 61-181 105z" fill="#465252" stroke="#77857f" strokeWidth="1.2"/>
-      <path d="m78 232 14-8 126 68-20 11z" fill="#202b2d"/><path d="m270 120 14-8 132 72-14 8z" fill="#626c68"/>
-      {/* Solar array in a rack, divided into individual modules with rails and clamps. */}
-      <g className="an-energy">
-        <path d="m143 214 99-57 99 54-100 58z" fill="url(#an-solar)" stroke="#a0b6ae" strokeWidth="2"/>
-        <path d="m163 214 98-57m-58 68 98-56m-58 67 99-56" stroke="#73959a" strokeWidth="1.15" opacity=".9"/>
-        <path d="m158 223 100 54m-80-77 99 55m-80-77 99 54" stroke="#73959a" strokeWidth="1.15" opacity=".9"/>
-        <path d="m141 216 103-60 101 55m-201 12 101 56" fill="none" stroke="#c0c9be" strokeWidth="2"/>
-        <path d="m151 211 6-4 4 3-6 4zm57-33 6-4 4 3-6 4zm62 33 6-4 4 3-6 4z" fill="#c6cabb"/>
-        <path d="m193 265 20 11m-4-19 19 11m37-55 20 11" stroke="#596663" strokeWidth="2"/>
-      </g>
-      <path d="m359 191 16-9 29 16-16 9z" fill="#71817a" stroke="#c0c9be"/><path d="m367 190 8-5 15 9-8 5z" fill="#25353a"/>
-      <path d="m398 208 24 13v14" fill="none" stroke="#82bd00" strokeWidth="2"/>
-      <path d="m419 235 3-2 3 2v15l-3 2-3-2z" fill="#87938b" stroke="#d0d4c9" strokeWidth=".8"/>
+      <path d="m87 228 183-108 81 44-184 107z" fill="#303b3c" stroke="#aeb8b0" strokeWidth="2"/>
+      <path d="m103 227 167-97 58 32-168 98z" fill="#465252" stroke="#77857f" strokeWidth="1.2"/>
+      <path d="m87 228 16-9 77 42-13 8z" fill="#202b2d"/><path d="m270 120 14-8 81 44-14 8z" fill="#626c68"/>
+      <path d="m112 219 159-92m-135 102 159-92" fill="none" stroke="#64716c" strokeWidth="1" opacity=".8"/>
+    </g>
+    {/* Solar generation is a separate ground-mounted island, linked back to the utility wall. */}
+    <g className="an-energy">
+      <ellipse cx="591" cy="348" rx="70" ry="12" fill="#000" opacity=".28"/>
+      <path d="m509 331 76-45 83 45-78 46z" fill="#4a5550" stroke="#aeb9ad" strokeWidth="1.2"/>
+      <path d="m509 331 81 46v8l-81-46z" fill="#303a37"/><path d="m590 377 78-46v8l-78 46z" fill="#39433f"/>
+      <path d="m533 330 5-3 2 20-5 3zm34-20 5-3 2 23-5 3zm48 25 5-3 2 20-5 3zm34-19 5-3 2 23-5 3z" fill="#87948a" stroke="#c5ccc0" strokeWidth=".7"/>
+      <path d="m520 286 66-39 76 41-68 40z" fill="#273840" stroke="#c1cdc2" strokeWidth="2"/>
+      <path d="m543 286 65-39m-28 55 66-39" stroke="#81a1a3" strokeWidth="1.2"/>
+      <path d="m540 274 76 41m-57-51 76 41" stroke="#81a1a3" strokeWidth="1.2"/>
+      <path d="m518 288 76-44 71 39m-143 5 72 40" fill="none" stroke="#d2d7ca" strokeWidth="2"/>
+      <path d="m539 279 6-4 4 3-6 4zm56-33 6-4 4 3-6 4zm57 32 6-4 4 3-6 4z" fill="#d9ddcf"/>
+      <path d="m579 322 16-9 13 7-17 10z" fill="#717e77" stroke="#c1c9bd"/>
+      <path d="m584 320 7-4 7 4-7 4z" fill="#283a40"/><circle cx="591" cy="320" r="1.5" fill="#84bd00" filter="url(#an-glow)"/>
+      <path d="m586 344-31 18-35-20-28 17" fill="none" stroke="#84bd00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="m489 356 4 3-4 3-4-3z" fill="#d8e2d3" stroke="#66756a"/>
     </g>
     {/* Security devices are discrete mounted hardware, with a restrained status light. */}
     <g className="an-security">
@@ -137,7 +141,7 @@ export default function HomeAnatomy({ buildStage = 5 }) {
       <path d="m120 251-18-19-17-9M464 255l21-18 13-7M263 304l-1-25-14-8M347 265l15-18 20-3"/>
     </g>
     <g className="an-markers" fill="#d3e1d8" fontFamily="system-ui,sans-serif" fontSize="8" fontWeight="700" letterSpacing="1.4">
-      <text x="36" y="207">PROTECCIÓN</text><text x="429" y="203">GENERACIÓN</text><text x="30" y="407">RED LOCAL</text><text x="448" y="393">CONTROL</text>
+      <text x="36" y="207">PROTECCIÓN</text><text x="545" y="232">GENERACIÓN</text><text x="30" y="407">RED LOCAL</text><text x="448" y="393">CONTROL</text>
     </g>
   </svg>;
 }
