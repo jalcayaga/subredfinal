@@ -63,7 +63,6 @@ function NetworkArt() {
       <div className="sr-network-fallback">
       <div className="sr-network-glow" />
       <HomeAnatomy buildStage={assemblyStep} />
-      <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> TODO CONECTADO <b>EN UN SOLO LUGAR</b></div>
       </div>
     </div>
     <div className="sr-hero-inspector">
