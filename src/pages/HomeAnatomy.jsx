@@ -43,12 +43,12 @@ export default function HomeAnatomy({ buildStage = 5 }) {
     {/* Roofless shell: the open plan stays visible from above. */}
     <g className="an-shell">
       <path d="m94 334 179-104 205 111-190 111z" fill="url(#an-floor)" stroke="#e1ddd2" strokeWidth="1.2"/>
-      <path d="m94 334 179-104v-94L94 240z" fill="url(#an-wall)" stroke="#f2eee4" strokeOpacity=".74"/>
-      <path d="m273 230 205 111v-94L273 136z" fill="url(#an-wall-side)" stroke="#d9ded6" strokeOpacity=".54"/>
+      <path d="m94 334 179-104v-70L94 264z" fill="url(#an-wall)" stroke="#f2eee4" strokeOpacity=".74"/>
+      <path d="m273 230 205 111v-70L273 160z" fill="url(#an-wall-side)" stroke="#d9ded6" strokeOpacity=".54"/>
       {/* Room divisions and interior wall caps */}
-      <path d="m244 246 1-77 20-12v80z" fill="#aaa99f" stroke="#eeeadf" strokeOpacity=".65"/>
-      <path d="m350 286v-77l15 8v77z" fill="#8a938a" stroke="#e0e2d9" strokeOpacity=".4"/>
-      <path d="m244 169 18-10 18 10-18 11zM350 209l15-9 17 9-16 10z" fill="#ede9df"/>
+      <path d="m244 246 1-45 20-12v48z" fill="#aaa99f" stroke="#eeeadf" strokeOpacity=".65"/>
+      <path d="m350 286v-48l15 8v48z" fill="#8a938a" stroke="#e0e2d9" strokeOpacity=".4"/>
+      <path d="m244 201 21-12 17 10-17 12zM350 238l15-8 17 9-17 10z" fill="#ede9df"/>
     </g>
     <g className="an-interior">
       {/* Bathroom: shower tray and screen, toilet, small vanity and basin. */}
@@ -60,15 +60,15 @@ export default function HomeAnatomy({ buildStage = 5 }) {
       <path d="m269 290 17-10 20 11-18 10z" fill="#5c6660" stroke="#d1d3c8"/><path d="m269 290 19 11v13l-19-11z" fill="#817f72"/><path d="m275 287 11-6 12 7-11 7z" fill="#d6d7cc"/><ellipse cx="287" cy="288" rx="4" ry="2" fill="#8fa8a1"/>
       <path d="m270 318 22-13m20-34 19-11" stroke="#65766f" strokeWidth="1" strokeDasharray="2 3"/>
       {/* Room names anchor the floor plan for first-time visitors. */}
-      <g fill="#53645c" fontFamily="system-ui,sans-serif" fontSize="6.5" fontWeight="800" letterSpacing=".8" opacity=".92">
-        <text x="136" y="382">LIVING</text><text x="307" y="354">COCINA</text><text x="279" y="304">BAÑO</text><text x="390" y="386">DORMITORIO</text>
+      <g fill="#46584f" fontFamily="system-ui,sans-serif" fontSize="9" fontWeight="800" letterSpacing=".55" opacity=".96">
+        <text x="139" y="385">LIVING</text><text x="311" y="357">COCINA</text><text x="278" y="305">BAÑO</text><text x="385" y="384">DORMITORIO</text>
       </g>
       {/* Exterior glazing with mullions and real depth */}
       <path d="m111 260 72-42v58l-72 42z" fill="url(#an-glass)" stroke="#293a3c" strokeWidth="5"/>
       <path d="m147 239v58m-36-29 72-42" stroke="#394a49" strokeWidth="2"/>
-      <path d="m395 223 66 36v57l-66-36z" fill="url(#an-glass)" stroke="#34413f" strokeWidth="4"/>
-      <path d="m428 241v58m-33-40 66 36" stroke="#46524f" strokeWidth="2"/>
-      <path d="m207 272 28-16v60l-28 16z" fill="#795b42" stroke="#44372e" strokeWidth="2"/>
+      <path d="m395 230 66 36v50l-66-36z" fill="url(#an-glass)" stroke="#34413f" strokeWidth="4"/>
+      <path d="m428 248v50m-33-32 66 36" stroke="#46524f" strokeWidth="2"/>
+      <path d="m207 272 28-16v57l-28 16z" fill="#795b42" stroke="#44372e" strokeWidth="2"/>
       <circle cx="228" cy="301" r="2.4" fill="#d5bd8c"/>
       {/* Living room: sofa, coffee table, rug and floor lamp */}
       <path d="m130 342 48-28 46 25-48 29z" fill="#7d817a" stroke="#444d49" strokeWidth="2"/>
@@ -94,16 +94,15 @@ export default function HomeAnatomy({ buildStage = 5 }) {
       <path d="m449 307 8-5m-31-11-4-2m4 15-4-2" fill="none" stroke="#77a9a3" strokeWidth="1.2"/>
     </g>
     {/* Cabling is routed along walls and service runs rather than floating as decoration. */}
-    <g className="an-wiring" fill="none" stroke="#78a9a0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="m115 273 16-10 22 12 33-19 29 16 31-18 35 20 34-20 31 17 29-17 37 21 31-18" strokeDasharray="3 4"/>
-      <path d="m275 256 1-32 20-12 24 13v25"/><path d="m426 285-24-14-12 7-19-11"/>
-      <path d="m301 257 19-11 16 9" stroke="#8ebd62"/>
+    <g className="an-wiring" fill="none" stroke="#78a9a0" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m275 256 1-22 20-12 24 13v20"/><path d="m426 285-18-10-12 7-14-8"/>
+      <path d="m301 257 19-11 16 9" stroke="#8ebd62" opacity=".7"/>
     </g>
     {/* Attached garage: open bay, structural posts, sectional door and a parked car. */}
-    <g className="an-garage" transform="translate(35 15)">
+    <g className="an-garage" transform="translate(76 54) scale(.78)">
       <path d="m427 355 71-42 80 43-74 44z" fill="#6c746d" stroke="#c4c9bd" strokeWidth="1.2"/>
-      <path d="m427 355 71 41v-51l-71-41z" fill="#424c49" stroke="#aab3aa" strokeWidth="1"/>
-      <path d="m498 313 80 43v51l-80-45z" fill="#899189" stroke="#d5d8ce" strokeWidth="1"/>
+      <path d="m427 355 71 41v-51l-71-41z" fill="#515b54" stroke="#aab3aa" strokeWidth="1"/>
+      <path d="m498 313 80 43v51l-80-45z" fill="#747f75" stroke="#d5d8ce" strokeWidth="1"/>
       <path d="m427 304 71-42 80 43-80 47z" fill="#d4d5ca" stroke="#eef0e7" strokeWidth="1.2"/>
       <path d="m427 304 71 48v-9l-71-40z" fill="#555e59"/>
       <path d="m435 350 7-4v-48l-7 4zm63 40 7-4v-50l-7 4zm68-33 7 4v48l-7-4z" fill="#404b48" stroke="#cbd1c6" strokeWidth=".8"/>
@@ -122,7 +121,7 @@ export default function HomeAnatomy({ buildStage = 5 }) {
     </g>
     {/* Separate solar island sits in the patio, never on the house or over its rooms. */}
     <g className="an-energy">
-      <g transform="translate(74 -120)">
+      <g transform="translate(280 250) scale(.5)">
       <ellipse cx="591" cy="348" rx="70" ry="12" fill="#000" opacity=".28"/>
       <path d="m509 331 76-45 83 45-78 46z" fill="#4a5550" stroke="#aeb9ad" strokeWidth="1.2"/>
       <path d="m509 331 81 46v8l-81-46z" fill="#303a37"/><path d="m590 377 78-46v8l-78 46z" fill="#39433f"/>
@@ -134,8 +133,8 @@ export default function HomeAnatomy({ buildStage = 5 }) {
       <path d="m539 279 6-4 4 3-6 4zm56-33 6-4 4 3-6 4zm57 32 6-4 4 3-6 4z" fill="#d9ddcf"/>
       <path d="m579 322 16-9 13 7-17 10z" fill="#717e77" stroke="#c1c9bd"/>
       <path d="m584 320 7-4 7 4-7 4z" fill="#283a40"/><circle cx="591" cy="320" r="1.5" fill="#84bd00" filter="url(#an-glow)"/>
-      <path d="m586 385v18l-22 24-27 18" fill="none" stroke="#84bd00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="m533 442 4 3-4 3-4-3z" fill="#d8e2d3" stroke="#66756a"/>
+      <path d="m586 385-42-42-49-29-65-32-80-77" fill="none" stroke="#84bd00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity=".72"/>
+      <path d="m350 205 4 3-4 3-4-3z" fill="#d8e2d3" stroke="#66756a"/>
       </g>
     </g>
     {/* Perimeter protection: corner cameras, radar sectors, access contact and siren. */}
@@ -149,10 +148,12 @@ export default function HomeAnatomy({ buildStage = 5 }) {
       <path d="m71 328 12-7 12 7-12 7z" fill="#303d3b" stroke="#c5d0c5"/><circle cx="83" cy="328" r="2.3" fill="#84bd00" filter="url(#an-glow)"/>
       <path d="m627 397 12-7 12 7-12 7z" fill="#303d3b" stroke="#c5d0c5"/><circle cx="639" cy="397" r="2.3" fill="#84bd00" filter="url(#an-glow)"/>
       {/* Siren on the garage's exterior wall, visible from the patio. */}
-      <path d="m602 303 13-8 11 6-13 8z" fill="#253033" stroke="#d0d6ca" strokeWidth="1"/>
-      <path d="m602 303 11 6v18l-11-6z" fill="#d7d9cf" stroke="#68736b" strokeWidth=".8"/>
+      <g transform="translate(-85 0)">
+      <path d="m572 314 13-8 11 6-13 8z" fill="#253033" stroke="#d0d6ca" strokeWidth="1"/>
+      <path d="m572 314 11 6v18l-11-6z" fill="#d7d9cf" stroke="#68736b" strokeWidth=".8"/>
       <path d="m605 307 5 3v9l-5-3zm6 3 1 1v9l-1-1zm3 2 1 1v9l-1-1z" fill="#76847d"/>
       <path d="m613 300 5-3 4 2-5 3z" fill="#b94f49" filter="url(#an-glow)"/>
+      </g>
       {/* Gate reader and door contact mark the only planned entry. */}
       <path d="m388 486 11-7 12 7-11 7z" fill="#263332" stroke="#d1d8cd"/><circle cx="399" cy="486" r="2" fill="#84bd00"/>
     </g>
@@ -195,12 +196,11 @@ export default function HomeAnatomy({ buildStage = 5 }) {
       <text x="407" y="306" fill="#46534c" fontSize="3.8" fontFamily="system-ui,sans-serif" fontWeight="800" letterSpacing=".5" transform="rotate(29 407 306)">AX PRO</text>
     </g>
     {/* Subtle service routes and device signals terminate on actual equipment. */}
-    <g className="an-signals" fill="none" stroke="#66c5c7" strokeWidth="1" strokeDasharray="2 5" opacity=".72">
-      <path d="m120 251-18-19-17-9M464 255l21-18 13-7M263 304l-1-25-14-8M347 265l15-18 20-3"/>
+    <g className="an-signals" fill="none" stroke="#66c5c7" strokeWidth=".9" strokeDasharray="2 7" opacity=".42">
+      <path d="m120 251-18-19-17-9M464 255l21-18 13-7"/>
     </g>
     <g className="an-markers" fill="#d3e1d8" fontFamily="system-ui,sans-serif" fontSize="8" fontWeight="700" letterSpacing="1.4">
-      <text x="36" y="207">PROTECCIÓN</text><text x="616" y="126">GENERACIÓN</text><text x="30" y="407">RED LOCAL</text><text x="448" y="393">CONTROL</text>
-      <text x="611" y="430">RADAR EXTERIOR</text><text x="346" y="477">ACCESO</text>
+      <text x="36" y="207">PERÍMETRO</text><text x="30" y="407">RED LOCAL</text><text x="346" y="477">ACCESO</text>
     </g>
   </svg>;
 }

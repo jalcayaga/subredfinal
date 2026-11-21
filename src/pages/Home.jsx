@@ -64,7 +64,6 @@ function NetworkArt() {
       <div className="sr-network-glow" />
       <HomeAnatomy buildStage={assemblyStep} />
       <div className="sr-float-card sr-float-top"><span className="sr-live-dot"/> TODO CONECTADO <b>EN UN SOLO LUGAR</b></div>
-      <div className="sr-float-card sr-float-bottom"><span className="sr-float-icon">⌂</span><span>HOGAR + NEGOCIO<small>Diseñado para tu espacio</small></span></div>
       </div>
     </div>
     <div className="sr-hero-inspector">
